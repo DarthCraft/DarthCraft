@@ -1,0 +1,117 @@
+##
+## DarthCraft - v2.0 configuration
+## By DarthSalamon
+##
+
+# Enable the plugin
+enabled: true
+
+# Debugging - More info to the console
+debug: false
+
+# ForceIp - Force player-joining by 
+forceip:
+  enabled: true
+  hostname: play.darthcraft.net
+  port: 25565
+  kickmessage: Please connect to play.darthcraft.net to play.
+
+chat:
+  
+  # AntiSwear - Prevent a message from being sent if it contains swearwords
+  antiswear:
+    enabled: true
+    swearwords:
+      - dick
+      - fuck
+      - cunt
+      - asshole
+      - nigg
+      - bitch
+      - pussy
+      - penis
+      - vagina
+      - slut
+      - smd
+      - tits
+      - titties
+      - cum
+      - wank
+      - faggot
+      - seks
+      - sex
+      - douchebag
+      - blowjob
+      - milf
+      - hump
+      - testicle
+      - rimjob
+      - handjob
+      - mastrubate
+      - gaylord
+  
+  # AntiCaps - Maximum amount of capitalised letters in a message - Ignores 'I' and the first letter
+  anticaps:
+    enabled: true
+    maxcaps: 5
+    
+  # Replacements - Replace a specific part of a message with something else; Supports color codes
+  replacements:
+    enabled: true
+    phrases:
+    - kkk;I-love-you club&f
+    - shit;&cfæces&f
+    - love;&dlove&f
+
+  # Trollmode - options for /trollmode
+  trollmode:
+    enabled: true 
+    phrases:
+      - noob;nub
+      - ok;okies
+      - lol;lawel
+      - yeah;yeeh
+      - hi;hei
+      - hai;hei
+      - hello;hei
+      - yo;yoh
+      - omg;omglolwtf
+      - lol;roflmao
+      - rofl;roflcopter
+      - xd;>|D
+      - tp;teepee
+      - come;cum
+      - to;tou
+      - brb;beriteback
+      - lool;lolzorz
+      - darth;TruelyEvilPerson
+      - the;ze
+      - and;end
+      - what;wut
+      - that;dat
+      - they;dey
+      - ofc;oh f*ckourse
+      - this;dis
+      - love;nevaaaaaa
+      - me;mi
+      - am;em
+      - how;howl
+      - are;arrr
+      - do;du
+      - grief;greef
+      - gtg;got to stay right here
+      - know;knuw
+      - bye;booboo
+      - stop;stahp
+      - now;nao
+      - see;zee
+      - do;nau
+      - aww;nao
+      - no;nao
+      - know;weet
+      - jop;joppermans
+      - muslim;joppermans
+      - scott;scotteh
+      - ben;benneh
+      - ooo;uuu
+      - haha;haha, no.

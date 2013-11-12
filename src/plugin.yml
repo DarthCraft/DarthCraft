@@ -1,0 +1,39 @@
+name: DarthCraft
+version: 2.0
+description: Custom plugin for DarthCraft
+authors: [DarthSalamon]
+main: net.darthcraft.dcmod.DarthCraft
+commands:
+  ban:
+    description: Bans a player
+    usage: /<command> <player> <reason>
+  banip:
+    description: Bans the last Ip of a player (or all)
+    usage: /<command> [-a] <player> <reason>
+  unban:
+    description: Unbans a player and all attached IPs
+    usage: /<command> <player>
+  o:
+    description: Says a message in AdminChat
+    usage: /<command> [message]
+  setrank:
+    description: Sets (forcefully) the rank of a player
+    usage: /<command> [-f] <player> <guest|member|loyal|admin|pradmin|headadmin|host>
+  trollmode:
+    description: Trololol
+    usage: /<command> <on|off>
+  mute:
+    description: Mutes a player
+    usage: /<command> <player>
+  unmute:
+    description: Unmutes a player
+    usage: /<command> <player>
+  kick:
+    description: Kicks a player
+    usage: /<command> <player> <reason>
+  tempban:
+    description: Temporarily bans a player
+    usage: /<command> <player> <timeoffset> <reason>
+  darthcraft:
+    description: Shows information about DarthCraft, the plugin that runs it or reloads the config.
+    usage: /<command> [<plugin | reload>]

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DarthCraft" default="default" basedir=".">
+    <description>Builds, tests, and runs the project DarthCraft.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!-- Includes the project build-number and build-date in the .jar file -->
+    <target name="-pre-jar">
+        <buildnumber file="buildnumber.properties" />
+        <propertyfile file="build.properties">
+            <entry key="program.buildnumber" value="${build.number}" />
+            <entry key="program.builddate" type="date" value="now" pattern="dd/MM/yyyy hh:mm aa" />
+        </propertyfile>
+        <copy file="build.properties" todir="${build.classes.dir}" />
+        <delete file="build.properties" />
+    </target>
+    
+    <target name="-post-jar">
+        <echo level="info" message="---- Bukkit Build Generator, by Jerom van der Sar" />
+        <echo level="info" message="---- Finalizing Build" />
+        
+        <!-- Rename unmapped (no libaries) .jar file -->
+        <copy file="${dist.jar}" tofile="${dist.dir}/${ant.project.name}-unmapped.jar" />
+        <delete file="${dist.dir}/${ant.project.name}.jar" />
+        
+        <!-- Generate mapped (with libraries) .jar file -->
+        <jar compress="${jar.compress}"  destfile="${dist.jar}">
+            
+            <zipfileset src="${dist.dir}/${ant.project.name}-unmapped.jar" excludes="META-INF/*" />
+            
+            <zipgroupfileset dir="${dist.dir}/lib/" includes="*.jar" excludes="*bukkit-*.jar" />
+            
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}" />
+            </manifest>
+        </jar>
+        
+        <!-- Delete README.txt -->
+        <delete file="${dist.dir}/README.TXT" />
+        
+        <!-- Delete Lib folder -->
+        <delete dir="${dist.dir}/lib/" />
+        
+        <echo level="info" message="---- Done" />
+    </target>
+</project>
