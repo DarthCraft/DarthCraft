@@ -30,7 +30,7 @@ public class AdminChat extends DarthCraftAddon {
                         + ChatColor.DARK_RED + name + ChatColor.WHITE + ": " + ChatColor.AQUA + msg);
             }
         }
-        plugin.logger.info("MADMIN> " + name + ": " + msg);
+        plugin.logger.info("<ADMIN> " + name + ": " + msg);
 
     }
 
