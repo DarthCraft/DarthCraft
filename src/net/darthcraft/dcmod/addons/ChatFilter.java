@@ -94,13 +94,6 @@ public class ChatFilter extends DarthCraftAddon {
             }
         }
 
-        // Replacements
-        if (replacementsEnabled) {
-            for (String replacement : replacements) {
-                message = message.replace(replacement.split(";")[0], ChatUtils.colorize(replacement.split(";")[1]));
-            }
-        }
-
         // De-caps, de-exclamationmark and de-questionmark 
         if (antiCapsEnabled && !PermissionUtils.hasPermission(player, Permission.HEADADMIN)) {
 
@@ -109,14 +102,17 @@ public class ChatFilter extends DarthCraftAddon {
             int ques = 0;
 
             for (int i = 1; i < pMessage.length(); i++) { // Ignore first character
-                if (Character.isUpperCase(pMessage.charAt(i))) {
-                    caps++;
-                }
-                if (pMessage.charAt(i) == '!') {
-                    excl++;
-                }
-                if (pMessage.charAt(i) == '?') {
-                    ques++;
+                try {
+                    if (Character.isUpperCase(pMessage.charAt(i))) {
+                        caps++;
+                    }
+                    if (message.charAt(i) == '!') {
+                        excl++;
+                    }
+                    if (message.charAt(i) == '?') {
+                        ques++;
+                    }
+                } catch (IndexOutOfBoundsException e) {
                 }
             }
 
@@ -131,6 +127,13 @@ public class ChatFilter extends DarthCraftAddon {
 
             if (ques > 2) {
                 message = message.replace("?", "") + "?";
+            }
+        }
+
+        // Replacements
+        if (replacementsEnabled) {
+            for (String replacement : replacements) {
+                message = message.replace(replacement.split(";")[0], ChatUtils.colorize(replacement.split(";")[1]));
             }
         }
 
