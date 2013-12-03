@@ -28,7 +28,7 @@ public class PlayerManager extends DarthCraftAddon {
         if (event.getResult() != Result.ALLOWED) {
             return;
         }
-        
+
         final Date date = new Date();
         final String ip = IpUtils.getIp(event);
 

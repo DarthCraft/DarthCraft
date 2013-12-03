@@ -42,9 +42,9 @@ public class Command_darthcraft extends DarthCraftCommand {
 
             if (args[0].equalsIgnoreCase("reload")) {
                 util.adminAction(sender, "Reloading DarthCraft config");
-                
+
                 plugin.mainConfig.load();
-                
+
                 // Debug-mode
                 plugin.logger.setDebugMode(plugin.mainConfig.getBoolean("debug"));
                 plugin.logger.debug("Debug-mode enabled!");
@@ -68,8 +68,8 @@ public class Command_darthcraft extends DarthCraftCommand {
                 plugin.trollMode.loadSettings();
                 plugin.chatFilter.loadSettings();
                 plugin.forceIp.loadSettings();
-                
-                
+
+
                 msg("Finished reloading config.");
                 return true;
             }

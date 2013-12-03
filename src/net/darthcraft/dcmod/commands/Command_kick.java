@@ -27,15 +27,15 @@ public class Command_kick extends DarthCraftCommand {
         if (player == null) {
             return warn("Player not found!");
         }
-         
+
         if (Permissions.PermissionUtils.hasPermission(player, Permission.ADMIN)) {
             if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN)) {
                 return warn("You may not kick that player.");
             }
         }
-        
+
         final String reason = StringUtils.join(args, " ", 1, args.length);
-        
+
         util.adminAction(sender, "Kicking " + player.getName() + " for " + reason);
 
         player.kickPlayer(ChatColor.RED

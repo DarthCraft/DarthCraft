@@ -10,14 +10,14 @@ import org.mcstats.Metrics;
 import org.mcstats.Metrics.Graph;
 
 public class MetricsPlotter extends DarthCraftAddon {
-    
+
     Graph bans;
     Metrics metrics;
-    
+
     public MetricsPlotter(DarthCraft plugin) {
         super(plugin);
     }
-    
+
     public void start() {
         // metrics
         try {
@@ -75,12 +75,12 @@ public class MetricsPlotter extends DarthCraftAddon {
                 public int getValue() {
                     try {
                         return new File(plugin.getDataFolder() + "/players").listFiles().length;
-                    } catch(NullPointerException e) {
+                    } catch (NullPointerException e) {
                         return 0;
                     }
                 }
             });
-            
+
             // Amount of online players
             players.addPlotter(new Metrics.Plotter("Online (Total)") {
                 @Override
@@ -88,7 +88,7 @@ public class MetricsPlotter extends DarthCraftAddon {
                     return plugin.getServer().getOnlinePlayers().length;
                 }
             });
-            
+
             // Amount of online admins
             players.addPlotter(new Metrics.Plotter("Online (Admin)") {
                 @Override

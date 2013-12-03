@@ -78,10 +78,9 @@ public class DarthCraft extends JavaPlugin {
         trollMode = new TrollMode(plugin);
         forceIp = new ForceIp(plugin);
         metricsPlotter = new MetricsPlotter(plugin);
-        
+
         // Plugin build-number and build-date
-        try
-        {
+        try {
             final InputStream in = plugin.getResource("build.properties");
             final Properties build = new Properties();
 
@@ -90,9 +89,7 @@ public class DarthCraft extends JavaPlugin {
 
             pluginBuildNumber = build.getProperty("program.buildnumber");
             pluginBuildDate = build.getProperty("program.builddate");
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             logger.severe("Could not load build information!");
             logger.severe(ex);
             pluginBuildNumber = "1";

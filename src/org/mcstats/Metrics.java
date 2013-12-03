@@ -167,8 +167,8 @@ public class Metrics {
     }
 
     /**
-     * Start measuring statistics. This will immediately create an async repeating task as the plugin and send the initial data to the metrics backend, and then after that it will post in increments
-     * of PING_INTERVAL * 1200 ticks.
+     * Start measuring statistics. This will immediately create an async repeating task as the plugin and send the initial data to the metrics backend, and then after that it will post in
+     * increments of PING_INTERVAL * 1200 ticks.
      *
      * @return True if statistics measuring is running, otherwise false.
      */
@@ -704,8 +704,8 @@ public class Metrics {
         }
 
         /**
-         * Get the current value for the plotted point. Since this function defers to an external function it may or may not return immediately thus cannot be guaranteed to be thread friendly or safe.
-         * This function can be called from any thread so care should be taken when accessing resources that need to be synchronized.
+         * Get the current value for the plotted point. Since this function defers to an external function it may or may not return immediately thus cannot be guaranteed to be thread
+         * friendly or safe. This function can be called from any thread so care should be taken when accessing resources that need to be synchronized.
          *
          * @return the current value for the point to be plotted.
          */

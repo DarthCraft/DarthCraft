@@ -31,7 +31,7 @@ public class Command_banip extends DarthCraftCommand {
         if (all) {
             args = Arrays.copyOfRange(args, 1, args.length); // Shift one
         }
-        
+
         if (args.length < 2) {
             return warn("Please specify proper reason when banning a player.");
         }

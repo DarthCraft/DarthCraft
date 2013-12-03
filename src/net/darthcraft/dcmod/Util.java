@@ -9,7 +9,6 @@ public class Util {
     private final DarthCraft plugin;
     private final Server server;
 
-
     public Util(DarthCraft plugin) {
         this.plugin = plugin;
         this.server = plugin.getServer();
@@ -17,30 +16,30 @@ public class Util {
 
     /* --- DarthCraft Logging --- */
     /*
-    public void debug(Object message) {
-        if (!plugin.debugMode) {
-            return;
-        }
+     public void debug(Object message) {
+     if (!plugin.debugMode) {
+     return;
+     }
 
-        if (message instanceof Exception || message instanceof Throwable) {
-            plugin.logger.info("[DEBUG] " + ExceptionUtils.getFullStackTrace((Exception) message));
-        } else {
-            plugin.logger.info("[DEBUG] " + (String) message);
-        }
-    }
+     if (message instanceof Exception || message instanceof Throwable) {
+     plugin.logger.info("[DEBUG] " + ExceptionUtils.getFullStackTrace((Exception) message));
+     } else {
+     plugin.logger.info("[DEBUG] " + (String) message);
+     }
+     }
     
-    public void info(String msg) {
-        LoggerUtils.info(plugin, msg);
-    }
+     public void info(String msg) {
+     LoggerUtils.info(plugin, msg);
+     }
 
-    public void warning(String msg) {
-        LoggerUtils.warning(plugin, msg);
-    }
+     public void warning(String msg) {
+     LoggerUtils.warning(plugin, msg);
+     }
 
-    public void severe(Object msg) {
-        LoggerUtils.severe(plugin, msg);
-    }
-    */
+     public void severe(Object msg) {
+     LoggerUtils.severe(plugin, msg);
+     }
+     */
 
     /* --- DarthCraft Utils --- */
     public void adminAction(String admin, String action, ChatColor color) {

@@ -33,10 +33,10 @@ public class ConfigConverter {
                     if (!config.isConfigurationSection("players." + banName)) {
                         return; // Not a ban
                     }
-                    
+
                     final ConfigurationSection cs = config.getConfigurationSection("players." + banName);
                     final Ban ban = new Ban();
-                    
+
                     ban.setType(BanType.PLAYER);
                     ban.setName(banName);
                     ban.setReason(cs.getString("reason"));
@@ -51,12 +51,12 @@ public class ConfigConverter {
                 }
             }
         }
-        
+
         int ips = 0;
         if (config.isSet("ips")) {
             for (String ip : config.getStringList("ips")) {
                 final Ban ban = new Ban();
-                
+
                 ban.setType(BanType.IP);
                 ban.addIp(ip);
                 ban.setReason("Unknown");
@@ -70,7 +70,7 @@ public class ConfigConverter {
 
         plugin.logger.info("Finished converting legacy bans");
         plugin.logger.info("Converted " + players + " player- and " + ips + " ip-bans in total");
-        
+
         final File banPlusFolder = new File(FileUtils.getPluginsFolder(), "BanPlus");
         FileUtils.deleteFolder(banPlusFolder);
     }

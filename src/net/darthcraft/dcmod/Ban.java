@@ -145,16 +145,16 @@ public class Ban {
                 + "Expires: " + DateUtils.parseDate(expiry) + "\n"
                 + "Banned by: " + by;
     }
-    
+
     public boolean isExpired() {
         if (expiry == null) {
             return false;
         }
-        
+
         if (expiry.after(new Date())) {
             return false;
         }
-        
+
         return true;
     }
 

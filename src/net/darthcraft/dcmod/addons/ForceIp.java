@@ -29,11 +29,10 @@ public class ForceIp extends DarthCraftAddon {
         }
 
         plugin.logger.debug("Using: " + event.getHostname());
-        
+
         if ((!event.getHostname().equalsIgnoreCase(hostname + ":" + port))) {
             event.disallow(Result.KICK_OTHER, kickMessage);
         }
 
     }
-    
 }

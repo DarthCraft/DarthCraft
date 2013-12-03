@@ -76,7 +76,7 @@ public class BanManager extends DarthCraftAddon {
 
             }
         }
-        
+
         removeExpired();
 
         logger.info("Loaded " + bans.size() + " bans");
