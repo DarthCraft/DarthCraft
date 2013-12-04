@@ -1,8 +1,12 @@
 package net.darthcraft.dcmod;
 
+import net.darthcraft.dcmod.commands.Permissions;
+import net.darthcraft.dcmod.commands.Permissions.Permission;
+import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class Util {
 
@@ -53,5 +57,21 @@ public class Util {
     public void sendMessage(CommandSender sender, String message) {
         sender.sendMessage(ChatColor.YELLOW + message);
 
+    }
+
+    public ChatColor getColor(Player player) {
+        if (PermissionUtils.hasPermission(player, Permission.HOST)) {
+            return ChatColor.LIGHT_PURPLE;
+        }
+        
+        if (PermissionUtils.hasPermission(player, Permission.ADMIN)) {
+            return ChatColor.GOLD;
+        }
+        
+        if (PermissionUtils.hasPermission(player, Permission.MEMBER)) {
+            return ChatColor.WHITE;
+        }
+        
+        return ChatColor.GRAY;
     }
 }

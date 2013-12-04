@@ -59,9 +59,9 @@ chat:
   replacements:
     enabled: true
     phrases:
-    - kkk;I-love-you club&f
-    - shit;&cfæces&f
-    - love;&dlove&f
+    - kkk;I-love-you club
+    - shit;&cfaeces
+    - love;&dlove
 
   # Trollmode - options for /trollmode
   trollmode:

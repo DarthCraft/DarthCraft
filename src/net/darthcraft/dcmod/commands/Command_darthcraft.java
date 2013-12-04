@@ -15,7 +15,7 @@ public class Command_darthcraft extends DarthCraftCommand {
     public boolean run(CommandSender sender, Command cmd, String[] args) {
         if (args.length == 0) {
             msg(ChatColor.GRAY + "-- " + ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GRAY + " --");
-            msg(ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GOLD + " is a community-focussed, "
+            msg(ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GOLD + " is a community-focussed,"
                     + " non-PvP survival server.");
             msg(ChatColor.GOLD + "It is made possible by a long list of names of whom which developers, administrators and "
                     + "other staff who can't all be named.");

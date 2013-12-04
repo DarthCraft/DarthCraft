@@ -9,6 +9,7 @@ import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.PlayerManager.PlayerInfo;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -133,7 +134,24 @@ public class ChatFilter extends DarthCraftAddon {
         // Replacements
         if (replacementsEnabled) {
             for (String replacement : replacements) {
-                message = message.replace(replacement.split(";")[0], ChatUtils.colorize(replacement.split(";")[1]));
+                if (!message.contains(replacement.split(";")[0])) {
+                    continue;
+                }
+
+                final StringBuilder newMessage = new StringBuilder();
+                String[] messageParts = message.split(replacement.split(";")[0]);
+
+                newMessage.append(messageParts[0]);
+                final String color = util.getColor(player).toString();
+
+                messageParts = (String[]) ArrayUtils.subarray(messageParts, 1, messageParts.length);
+
+                for (String part : messageParts) {
+                    newMessage.append(ChatUtils.colorize(replacement.split(";")[1]));
+                    newMessage.append(color);
+                    newMessage.append(part);
+                }
+                message = newMessage.toString();
             }
         }
 
