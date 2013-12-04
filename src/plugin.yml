@@ -37,3 +37,4 @@ commands:
   darthcraft:
     description: Shows information about DarthCraft, the plugin that runs it or reloads the config.
     usage: /<command> [<plugin | reload>]
+    aliases: [dc]

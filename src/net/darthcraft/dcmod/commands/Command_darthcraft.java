@@ -2,13 +2,14 @@ package net.darthcraft.dcmod.commands;
 
 import net.darthcraft.dcmod.ConfigConverter;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
+import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.command.SourceType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 @Source(SourceType.ANY)
-@Permissions(Permission.HOST)
+@Permissions(Permission.ANYONE)
 public class Command_darthcraft extends DarthCraftCommand {
 
     @Override
@@ -41,6 +42,10 @@ public class Command_darthcraft extends DarthCraftCommand {
             }
 
             if (args[0].equalsIgnoreCase("reload")) {
+                if (!PermissionUtils.hasPermission(sender, Permission.HOST)) {
+                    return noPerms();
+                }
+                
                 util.adminAction(sender, "Reloading DarthCraft config");
 
                 plugin.mainConfig.load();
