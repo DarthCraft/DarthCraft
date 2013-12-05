@@ -51,7 +51,7 @@ public class ChatFilter extends DarthCraftAddon {
         this.replacementsEnabled = plugin.mainConfig.getBoolean("chat.replacements.enabled");
         for (String replacement : plugin.mainConfig.getStringList("chat.replacements.phrases")) {
             if (replacement.contains(";")) {
-                replacements.add(replacement);
+                replacements.add(ChatUtils.colorize(replacement));
             } else {
                 plugin.logger.warning("Chat: Replacement " + replacement + " isn't valid!");
             }
@@ -137,6 +137,11 @@ public class ChatFilter extends DarthCraftAddon {
                 if (!message.contains(replacement.split(";")[0])) {
                     continue;
                 }
+                
+                if (message.trim().equals(replacement.split(";")[0])) {
+                    message = replacement.split(";")[1];
+                    break;
+                }
 
                 final StringBuilder newMessage = new StringBuilder();
                 String[] messageParts = message.split(replacement.split(";")[0]);
@@ -147,7 +152,7 @@ public class ChatFilter extends DarthCraftAddon {
                 messageParts = (String[]) ArrayUtils.subarray(messageParts, 1, messageParts.length);
 
                 for (String part : messageParts) {
-                    newMessage.append(ChatUtils.colorize(replacement.split(";")[1]));
+                    newMessage.append(replacement.split(";")[1]);
                     newMessage.append(color);
                     newMessage.append(part);
                 }
