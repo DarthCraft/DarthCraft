@@ -134,29 +134,7 @@ public class ChatFilter extends DarthCraftAddon {
         // Replacements
         if (replacementsEnabled) {
             for (String replacement : replacements) {
-                if (!message.contains(replacement.split(";")[0])) {
-                    continue;
-                }
-                
-                if (message.trim().equals(replacement.split(";")[0])) {
-                    message = replacement.split(";")[1];
-                    break;
-                }
-
-                final StringBuilder newMessage = new StringBuilder();
-                String[] messageParts = message.split(replacement.split(";")[0]);
-
-                newMessage.append(messageParts[0]);
-                final String color = util.getColor(player).toString();
-
-                messageParts = (String[]) ArrayUtils.subarray(messageParts, 1, messageParts.length);
-
-                for (String part : messageParts) {
-                    newMessage.append(replacement.split(";")[1]);
-                    newMessage.append(color);
-                    newMessage.append(part);
-                }
-                message = newMessage.toString();
+                message = message.replaceAll("(?i)" + replacement.split(";")[0], replacement.split(";")[1] + util.getChatColor(player));
             }
         }
 

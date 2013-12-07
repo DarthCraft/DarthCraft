@@ -45,7 +45,7 @@ public class Command_darthcraft extends DarthCraftCommand {
                 if (!PermissionUtils.hasPermission(sender, Permission.HOST)) {
                     return noPerms();
                 }
-                
+
                 util.adminAction(sender, "Reloading DarthCraft config");
 
                 plugin.mainConfig.load();

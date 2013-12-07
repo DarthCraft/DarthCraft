@@ -1,6 +1,5 @@
 package net.darthcraft.dcmod;
 
-import net.darthcraft.dcmod.commands.Permissions;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import org.bukkit.ChatColor;
@@ -18,34 +17,6 @@ public class Util {
         this.server = plugin.getServer();
     }
 
-    /* --- DarthCraft Logging --- */
-    /*
-     public void debug(Object message) {
-     if (!plugin.debugMode) {
-     return;
-     }
-
-     if (message instanceof Exception || message instanceof Throwable) {
-     plugin.logger.info("[DEBUG] " + ExceptionUtils.getFullStackTrace((Exception) message));
-     } else {
-     plugin.logger.info("[DEBUG] " + (String) message);
-     }
-     }
-    
-     public void info(String msg) {
-     LoggerUtils.info(plugin, msg);
-     }
-
-     public void warning(String msg) {
-     LoggerUtils.warning(plugin, msg);
-     }
-
-     public void severe(Object msg) {
-     LoggerUtils.severe(plugin, msg);
-     }
-     */
-
-    /* --- DarthCraft Utils --- */
     public void adminAction(String admin, String action, ChatColor color) {
         server.broadcastMessage(color + admin + " - " + action);
     }
@@ -59,19 +30,19 @@ public class Util {
 
     }
 
-    public ChatColor getColor(Player player) {
+    public ChatColor getChatColor(Player player) {
         if (PermissionUtils.hasPermission(player, Permission.HOST)) {
             return ChatColor.LIGHT_PURPLE;
         }
-        
+
         if (PermissionUtils.hasPermission(player, Permission.ADMIN)) {
             return ChatColor.GOLD;
         }
-        
+
         if (PermissionUtils.hasPermission(player, Permission.MEMBER)) {
             return ChatColor.WHITE;
         }
-        
+
         return ChatColor.GRAY;
     }
 }
