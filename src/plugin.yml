@@ -41,3 +41,6 @@ commands:
   like:
     description: Like DarthCraft!
     usage: /<command> [<amount | set | remove>]
+  busy:
+    description: Toggles busy status
+    usage: /<command>

@@ -1,21 +1,15 @@
 package net.darthcraft.dcmod;
 
+import net.darthcraft.dcmod.addons.*;
 import net.darthcraft.dcmod.listener.PlayerListener;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-import net.darthcraft.dcmod.addons.AdminChat;
-import net.darthcraft.dcmod.addons.BanManager;
-import net.darthcraft.dcmod.addons.ChatFilter;
-import net.darthcraft.dcmod.addons.ForceIp;
-import net.darthcraft.dcmod.addons.LikeSigns;
-import net.darthcraft.dcmod.addons.PlayerManager;
-import net.darthcraft.dcmod.addons.TrollMode;
+
 import net.darthcraft.dcmod.commands.DarthCraftCommand;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.config.YamlConfig;
-import net.darthcraft.dcmod.addons.MetricsPlotter;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
 import net.darthcraft.dcmod.listener.BlockListener;
 import net.pravian.bukkitlib.implementation.PluginLogger;
@@ -56,6 +50,7 @@ public class DarthCraft extends JavaPlugin {
     public ForceIp forceIp;
     public MetricsPlotter metricsPlotter;
     public LikeSigns likeSigns;
+    public AdminBusy adminBusy;
 
     @Override
     public void onLoad() {
@@ -85,6 +80,7 @@ public class DarthCraft extends JavaPlugin {
         forceIp = new ForceIp(plugin);
         metricsPlotter = new MetricsPlotter(plugin);
         likeSigns = new LikeSigns(plugin);
+        adminBusy = new AdminBusy(plugin);
 
         // Plugin build-number and build-date
         try {

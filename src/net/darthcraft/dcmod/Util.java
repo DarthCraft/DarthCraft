@@ -2,6 +2,7 @@ package net.darthcraft.dcmod;
 
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
@@ -44,5 +45,14 @@ public class Util {
         }
 
         return ChatColor.GRAY;
+    }
+
+    public void sendSyncMessage(final CommandSender sendTo, final String message) {
+        Bukkit.getScheduler().runTask(plugin, new Runnable() {
+            @Override
+            public void run() {
+                sendTo.sendMessage(message);
+            }
+        });
     }
 }

@@ -22,6 +22,7 @@ public class PlayerListener implements Listener {
         plugin.trollMode.onPlayerChat(event);
         plugin.chatFilter.onPlayerChat(event);
         plugin.adminChat.onPlayerChat(event);
+        plugin.adminBusy.onPlayerChat(event);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

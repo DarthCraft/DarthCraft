@@ -121,6 +121,7 @@ public class PlayerManager extends DarthCraftAddon {
         // Unsaved items
         private boolean inAdminChat = false;
         private boolean muted = false;
+        private boolean busy = false;
 
         public PlayerInfo(DarthCraft plugin, String name) {
             this.name = name;
@@ -258,5 +259,9 @@ public class PlayerManager extends DarthCraftAddon {
         public void setInAdminChat(boolean inAdminChat) {
             this.inAdminChat = inAdminChat;
         }
+
+        public boolean isBusy() { return busy; }
+
+        public void setBusy(boolean busy) { this.busy = busy; }
     }
 }
