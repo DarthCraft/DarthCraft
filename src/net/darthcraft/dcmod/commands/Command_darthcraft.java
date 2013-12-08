@@ -61,8 +61,9 @@ public class Command_darthcraft extends DarthCraftCommand {
                     return true;
                 }
 
-                // Load bans
+                // Load configs
                 plugin.bansConfig.load();
+                plugin.likersConfig.load();
 
                 // Parse old BanPlus ban files
                 final ConfigConverter converter = ConfigConverter.getInstance(plugin);
@@ -73,9 +74,9 @@ public class Command_darthcraft extends DarthCraftCommand {
                 plugin.trollMode.loadSettings();
                 plugin.chatFilter.loadSettings();
                 plugin.forceIp.loadSettings();
+                plugin.likeSigns.loadSettings();
 
-
-                msg("Finished reloading config.");
+                msg("Finished reloading " + plugin.pluginName + " v" + plugin.pluginVersion + "." + plugin.pluginBuildNumber);
                 return true;
             }
 

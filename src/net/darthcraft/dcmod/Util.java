@@ -25,7 +25,7 @@ public class Util {
         adminAction(sender.getName(), action, ChatColor.RED);
     }
 
-    public void sendMessage(CommandSender sender, String message) {
+    public void msg(CommandSender sender, String message) {
         sender.sendMessage(ChatColor.YELLOW + message);
 
     }

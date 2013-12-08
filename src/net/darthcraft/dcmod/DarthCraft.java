@@ -9,6 +9,7 @@ import net.darthcraft.dcmod.addons.AdminChat;
 import net.darthcraft.dcmod.addons.BanManager;
 import net.darthcraft.dcmod.addons.ChatFilter;
 import net.darthcraft.dcmod.addons.ForceIp;
+import net.darthcraft.dcmod.addons.LikeSigns;
 import net.darthcraft.dcmod.addons.PlayerManager;
 import net.darthcraft.dcmod.addons.TrollMode;
 import net.darthcraft.dcmod.commands.DarthCraftCommand;
@@ -16,12 +17,14 @@ import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.darthcraft.dcmod.addons.MetricsPlotter;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
+import net.darthcraft.dcmod.listener.BlockListener;
 import net.pravian.bukkitlib.implementation.PluginLogger;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,6 +43,7 @@ public class DarthCraft extends JavaPlugin {
     //
     public YamlConfig mainConfig;
     public YamlConfig bansConfig;
+    public YamlConfig likersConfig;
     //
     public Util util;
     public PluginLogger logger;
@@ -51,6 +55,7 @@ public class DarthCraft extends JavaPlugin {
     public TrollMode trollMode;
     public ForceIp forceIp;
     public MetricsPlotter metricsPlotter;
+    public LikeSigns likeSigns;
 
     @Override
     public void onLoad() {
@@ -65,6 +70,7 @@ public class DarthCraft extends JavaPlugin {
         // Configs
         mainConfig = new YamlConfig(plugin, "config.yml", true);
         bansConfig = new YamlConfig(plugin, "bans.yml", true);
+        likersConfig = new YamlConfig(plugin, "likers.yml", true);
 
         // Utilities
         logger = new PluginLogger(plugin);
@@ -78,6 +84,7 @@ public class DarthCraft extends JavaPlugin {
         trollMode = new TrollMode(plugin);
         forceIp = new ForceIp(plugin);
         metricsPlotter = new MetricsPlotter(plugin);
+        likeSigns = new LikeSigns(plugin);
 
         // Plugin build-number and build-date
         try {
@@ -114,11 +121,12 @@ public class DarthCraft extends JavaPlugin {
             return;
         }
 
-        // Load bans
+        // Load other configs
         bansConfig.load();
+        likersConfig.load();
 
         // Parse old BanPlus ban files
-        ConfigConverter converter = ConfigConverter.getInstance(plugin);
+        final ConfigConverter converter = ConfigConverter.getInstance(plugin);
         converter.parseBanPlusConfig();
 
         // Cache items from config files
@@ -126,11 +134,12 @@ public class DarthCraft extends JavaPlugin {
         trollMode.loadSettings();
         chatFilter.loadSettings();
         forceIp.loadSettings();
-
+        likeSigns.loadSettings();
 
         // Register events
-        PluginManager pm = plugin.getServer().getPluginManager();
+        final PluginManager pm = plugin.getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(plugin), plugin);
+        pm.registerEvents(new BlockListener(plugin), plugin);
 
         // Start the metrics
         metricsPlotter.start();

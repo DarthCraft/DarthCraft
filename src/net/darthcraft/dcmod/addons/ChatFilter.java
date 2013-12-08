@@ -67,8 +67,8 @@ public class ChatFilter extends DarthCraftAddon {
         if (info.isMuted()) {
             event.setCancelled(true);
             logger.info(player.getName() + " tried to speak, but is muted");
-            util.sendMessage(player, ChatColor.RED + "You try to open your mouth but words won't come out.");
-            util.sendMessage(player, ChatColor.RED + "(You're muted)");
+            util.msg(player, ChatColor.RED + "You try to open your mouth but words won't come out.");
+            util.msg(player, ChatColor.RED + "(You're muted)");
             return;
         }
 
