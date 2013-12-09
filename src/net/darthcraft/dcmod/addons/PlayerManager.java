@@ -260,8 +260,12 @@ public class PlayerManager extends DarthCraftAddon {
             this.inAdminChat = inAdminChat;
         }
 
-        public boolean isBusy() { return busy; }
+        public boolean isBusy() {
+            return busy;
+        }
 
-        public void setBusy(boolean busy) { this.busy = busy; }
+        public void setBusy(boolean busy) {
+            this.busy = busy;
+        }
     }
 }
