@@ -17,12 +17,13 @@ public class PlayerListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         plugin.trollMode.onPlayerChat(event);
-        plugin.chatFilter.onPlayerChat(event);
         plugin.adminChat.onPlayerChat(event);
         plugin.adminBusy.onPlayerChat(event);
+        // Make sure this is last to only censor the main chat
+        plugin.chatFilter.onPlayerChat(event);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

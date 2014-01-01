@@ -61,6 +61,8 @@ public class ChatFilter extends DarthCraftAddon {
 
     // Events
     public void onPlayerChat(AsyncPlayerChatEvent event) {
+        if (event.isCancelled())
+            return;
         final Player player = event.getPlayer();
         final PlayerInfo info = plugin.playerManager.getInfo(player);
 
