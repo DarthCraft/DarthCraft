@@ -20,10 +20,10 @@ public class PlayerListener implements Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
     public void onPlayerChat(final AsyncPlayerChatEvent event) {
-        plugin.chatFilter.onPlayerChat(event);
         plugin.trollMode.onPlayerChat(event);
         plugin.adminChat.onPlayerChat(event);
         plugin.adminBusy.onPlayerChat(event);
+        plugin.chatFilter.onPlayerChat(event);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

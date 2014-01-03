@@ -21,7 +21,6 @@ public class AdminBusy extends DarthCraftAddon {
         info.setBusy(!info.isBusy());
 
         util.msg(player, ChatColor.AQUA + "Toggled busy status o" + (info.isBusy() ? "n" : "ff"));
-        server.broadcastMessage(ChatColor.AQUA + "");
     }
 
     public void onPlayerChat(AsyncPlayerChatEvent event) {

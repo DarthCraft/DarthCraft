@@ -265,19 +265,19 @@ public class PlayerManager extends DarthCraftAddon {
         public void setBusy(boolean busy) {
             this.busy = busy;
         }
-        
+
         public int getVotes() {
             return votes;
         }
-        
+
         public void setVotes(int votes) {
             this.votes = votes;
         }
-        
+
         public Date getLastVote() {
             return lastVote;
         }
-        
+
         public void setLastVote(Date lastVote) {
             this.lastVote = lastVote;
         }

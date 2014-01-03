@@ -103,7 +103,7 @@ public class MetricsPlotter extends DarthCraftAddon {
                     return admins;
                 }
             });
-            
+
             metrics.start();
 
         } catch (IOException e) {
