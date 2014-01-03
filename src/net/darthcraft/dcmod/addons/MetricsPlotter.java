@@ -74,7 +74,7 @@ public class MetricsPlotter extends DarthCraftAddon {
                 @Override
                 public int getValue() {
                     try {
-                        return new File(plugin.getDataFolder() + "/players").listFiles().length;
+                        return server.getOfflinePlayers().length;
                     } catch (NullPointerException e) {
                         return 0;
                     }
@@ -103,15 +103,7 @@ public class MetricsPlotter extends DarthCraftAddon {
                     return admins;
                 }
             });
-
-            // Total amount of players to have joined the server
-            players.addPlotter(new Metrics.Plotter("Total") {
-                @Override
-                public int getValue() {
-                    return plugin.getServer().getOfflinePlayers().length;
-                }
-            });
-
+            
             metrics.start();
 
         } catch (IOException e) {

@@ -1,6 +1,7 @@
 name: DarthCraft
 version: 2.0
 description: Custom plugin for DarthCraft
+softdepend: [Votifier]
 authors: [DarthSalamon]
 main: net.darthcraft.dcmod.DarthCraft
 commands:

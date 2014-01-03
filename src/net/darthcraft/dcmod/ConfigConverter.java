@@ -15,7 +15,7 @@ public class ConfigConverter {
     }
 
     public void parseBanPlusConfig() {
-        final File configFile = new File(FileUtils.getPluginsFolder(), "BanPlus\\bans.yml");
+        final File configFile = new File(FileUtils.getPluginsFolder(), "BanPlus/bans.yml");
         if (!configFile.exists()) {
             return;
         }

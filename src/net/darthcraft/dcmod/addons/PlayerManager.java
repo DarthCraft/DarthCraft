@@ -7,13 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.Util;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.DateUtils;
 import net.pravian.bukkitlib.util.IpUtils;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.event.player.PlayerLoginEvent;
-import org.bukkit.event.player.PlayerLoginEvent.Result;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerManager extends DarthCraftAddon {
@@ -24,15 +22,12 @@ public class PlayerManager extends DarthCraftAddon {
         super(plugin);
     }
 
-    public void onUncancelledPlayerLogin(PlayerLoginEvent event) {
-        if (event.getResult() != Result.ALLOWED) {
-            return;
-        }
+    public void onUncancelledPlayerJoin(PlayerJoinEvent event) {
 
         final Date date = new Date();
-        final String ip = IpUtils.getIp(event);
+        final String ip = IpUtils.getIp(event.getPlayer());
 
-        PlayerInfo info = new PlayerInfo(plugin, event.getPlayer().getName());
+        final PlayerInfo info = new PlayerInfo(plugin, event.getPlayer().getName());
 
         if (info.exists()) {
             info.load();
@@ -47,6 +42,8 @@ public class PlayerManager extends DarthCraftAddon {
             info.setFirstLogin(date);
             info.setLastLogin(date);
             info.setLogins(1);
+            info.setVotes(0);
+            info.setLastVote(null);
 
             logger.info("Added new player: " + event.getPlayer().getName());
         }
@@ -55,27 +52,25 @@ public class PlayerManager extends DarthCraftAddon {
     }
 
     public void onPlayerQuit(PlayerQuitEvent event) {
-        PlayerInfo info = getInfo(event.getPlayer());
+        final PlayerInfo info = getInfo(event.getPlayer());
         info.save();
         infoMap.remove(event.getPlayer().getName());
     }
 
     public final PlayerInfo getInfo(OfflinePlayer player) {
-        return getInfo(player.getName());
-    }
-
-    @Deprecated
-    public final PlayerInfo getInfo(String name) {
-        if (name == null || name.equals("")) {
+        if (player == null) {
             return null;
         }
 
-        PlayerInfo info = infoMap.get(name);
+        PlayerInfo info = infoMap.get(player.getName());
 
         if (info == null) {
-            info = new PlayerInfo(plugin, name);
+            info = new PlayerInfo(plugin, player.getName());
             info.load();
-            infoMap.put(name, info);
+
+            if (player.isOnline()) {
+                infoMap.put(player.getName(), info);
+            }
         }
 
         return info;
@@ -107,7 +102,6 @@ public class PlayerManager extends DarthCraftAddon {
     public static class PlayerInfo {
 
         private DarthCraft plugin;
-        private Util util;
         //
         // Saved items 
         private String name;
@@ -117,6 +111,8 @@ public class PlayerManager extends DarthCraftAddon {
         private int logins;
         private Date firstLogin;
         private Date lastLogin;
+        private int votes;
+        private Date lastVote;
         //
         // Unsaved items
         private boolean inAdminChat = false;
@@ -126,12 +122,10 @@ public class PlayerManager extends DarthCraftAddon {
         public PlayerInfo(DarthCraft plugin, String name) {
             this.name = name;
             this.plugin = plugin;
-            this.util = plugin.util;
         }
 
         public PlayerInfo(DarthCraft plugin) {
             this.plugin = plugin;
-            this.util = plugin.util;
         }
 
         // ----- METHODS -----
@@ -149,6 +143,8 @@ public class PlayerManager extends DarthCraftAddon {
             config.set("logins", logins);
             config.set("firstlogin", DateUtils.parseDate(firstLogin));
             config.set("lastlogin", DateUtils.parseDate(lastLogin));
+            config.set("votes", votes);
+            config.set("lastvote", lastVote);
             config.save();
         }
 
@@ -158,7 +154,7 @@ public class PlayerManager extends DarthCraftAddon {
                 return;
             }
 
-            YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", name + ".yml"), false);
+            final YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", name + ".yml"), false);
             config.load();
 
             firstIp = config.getString("firstip");
@@ -167,6 +163,8 @@ public class PlayerManager extends DarthCraftAddon {
             logins = config.getInt("logins");
             firstLogin = DateUtils.parseString(config.getString("firstlogin"));
             lastLogin = DateUtils.parseString(config.getString("lastlogin"));
+            votes = config.getInt("votes");
+            lastVote = DateUtils.parseString("lastvote");
         }
 
         public boolean exists() {
@@ -266,6 +264,22 @@ public class PlayerManager extends DarthCraftAddon {
 
         public void setBusy(boolean busy) {
             this.busy = busy;
+        }
+        
+        public int getVotes() {
+            return votes;
+        }
+        
+        public void setVotes(int votes) {
+            this.votes = votes;
+        }
+        
+        public Date getLastVote() {
+            return lastVote;
+        }
+        
+        public void setLastVote(Date lastVote) {
+            this.lastVote = lastVote;
         }
     }
 }

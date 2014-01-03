@@ -12,13 +12,13 @@ import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
 import net.darthcraft.dcmod.listener.BlockListener;
+import net.darthcraft.dcmod.listener.CustomListener;
 import net.pravian.bukkitlib.implementation.PluginLogger;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -51,6 +51,7 @@ public class DarthCraft extends JavaPlugin {
     public MetricsPlotter metricsPlotter;
     public LikeSigns likeSigns;
     public AdminBusy adminBusy;
+    public BanWarner banWarner;
 
     @Override
     public void onLoad() {
@@ -81,6 +82,7 @@ public class DarthCraft extends JavaPlugin {
         metricsPlotter = new MetricsPlotter(plugin);
         likeSigns = new LikeSigns(plugin);
         adminBusy = new AdminBusy(plugin);
+        banWarner = new BanWarner(plugin);
 
         // Plugin build-number and build-date
         try {
@@ -136,6 +138,7 @@ public class DarthCraft extends JavaPlugin {
         final PluginManager pm = plugin.getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(plugin), plugin);
         pm.registerEvents(new BlockListener(plugin), plugin);
+        pm.registerEvents(new CustomListener(plugin), plugin);
 
         // Start the metrics
         metricsPlotter.start();
@@ -152,7 +155,7 @@ public class DarthCraft extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        DarthCraftCommand dispatcher;
+        final DarthCraftCommand dispatcher;
 
         // Load and initialize class
         try {

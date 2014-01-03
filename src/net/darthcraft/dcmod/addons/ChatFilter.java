@@ -9,7 +9,6 @@ import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.PlayerManager.PlayerInfo;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -72,7 +71,7 @@ public class ChatFilter extends DarthCraftAddon {
             return;
         }
 
-        String message = " " + event.getMessage().trim();
+        String message = " " + ChatColor.stripColor(event.getMessage().trim());
         String pMessage = message;
         pMessage = pMessage.replace('*', 'u');
         pMessage = pMessage.replace('@', 'a');

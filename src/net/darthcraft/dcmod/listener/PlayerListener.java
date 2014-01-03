@@ -6,6 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -18,9 +19,9 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
-        plugin.trollMode.onPlayerChat(event);
+    public void onPlayerChat(final AsyncPlayerChatEvent event) {
         plugin.chatFilter.onPlayerChat(event);
+        plugin.trollMode.onPlayerChat(event);
         plugin.adminChat.onPlayerChat(event);
         plugin.adminBusy.onPlayerChat(event);
     }
@@ -36,9 +37,10 @@ public class PlayerListener implements Listener {
         plugin.banManager.onPlayerLogin(event);
     }
 
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onUncancelledPlayerLogin(PlayerLoginEvent event) {
-        plugin.playerManager.onUncancelledPlayerLogin(event);
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onUncancelledPlayerJoin(PlayerJoinEvent event) {
+        plugin.playerManager.onUncancelledPlayerJoin(event);
+        plugin.banWarner.onUncancelledPlayerJoin(event);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
