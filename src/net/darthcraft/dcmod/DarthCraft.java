@@ -13,7 +13,7 @@ import net.pravian.bukkitlib.config.YamlConfig;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
 import net.darthcraft.dcmod.listener.BlockListener;
 import net.darthcraft.dcmod.listener.CustomListener;
-import net.pravian.bukkitlib.implementation.PluginLogger;
+import net.pravian.bukkitlib.implementation.BukkitLogger;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -40,7 +40,7 @@ public class DarthCraft extends JavaPlugin {
     public YamlConfig likersConfig;
     //
     public Util util;
-    public PluginLogger logger;
+    public BukkitLogger logger;
     //
     public PlayerManager playerManager;
     public BanManager banManager;
@@ -69,7 +69,7 @@ public class DarthCraft extends JavaPlugin {
         likersConfig = new YamlConfig(plugin, "likers.yml", true);
 
         // Utilities
-        logger = new PluginLogger(plugin);
+        logger = new BukkitLogger(plugin);
         util = new Util(plugin);
 
         // Addons

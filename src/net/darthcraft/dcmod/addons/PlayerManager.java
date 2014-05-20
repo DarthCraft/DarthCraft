@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import net.darthcraft.dcmod.DarthCraft;
 import net.pravian.bukkitlib.config.YamlConfig;
-import net.pravian.bukkitlib.util.DateUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.IpUtils;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -141,8 +141,8 @@ public class PlayerManager extends DarthCraftAddon {
             config.set("lastip", lastIp);
             config.set("ips", ips);
             config.set("logins", logins);
-            config.set("firstlogin", DateUtils.parseDate(firstLogin));
-            config.set("lastlogin", DateUtils.parseDate(lastLogin));
+            config.set("firstlogin", TimeUtils.parseDate(firstLogin));
+            config.set("lastlogin", TimeUtils.parseDate(lastLogin));
             config.set("votes", votes);
             config.set("lastvote", lastVote);
             config.save();
@@ -161,10 +161,10 @@ public class PlayerManager extends DarthCraftAddon {
             lastIp = config.getString("lastip");
             ips = config.getStringList("ips");
             logins = config.getInt("logins");
-            firstLogin = DateUtils.parseString(config.getString("firstlogin"));
-            lastLogin = DateUtils.parseString(config.getString("lastlogin"));
+            firstLogin = TimeUtils.parseString(config.getString("firstlogin"));
+            lastLogin = TimeUtils.parseString(config.getString("lastlogin"));
             votes = config.getInt("votes");
-            lastVote = DateUtils.parseString("lastvote");
+            lastVote = TimeUtils.parseString("lastvote");
         }
 
         public boolean exists() {

@@ -52,7 +52,7 @@ public class ChatFilter extends DarthCraftAddon {
             if (replacement.contains(";")) {
                 replacements.add(ChatUtils.colorize(replacement));
             } else {
-                plugin.logger.warning("Chat: Replacement " + replacement + " isn't valid!");
+                logger.warning("Chat: Replacement " + replacement + " isn't valid!");
             }
         }
 

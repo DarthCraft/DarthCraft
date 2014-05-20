@@ -8,7 +8,7 @@ import net.darthcraft.dcmod.Ban.BanType;
 import net.darthcraft.dcmod.DarthCraft;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.IpUtils;
-import net.pravian.bukkitlib.util.DateUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -41,7 +41,7 @@ public class BanManager extends DarthCraftAddon {
                     ban.setName(player.toLowerCase());
                     ban.setBy(cs.getString("by"));
                     ban.setReason(cs.getString("reason"));
-                    ban.setExpiryDate(DateUtils.parseString(cs.getString("expires")));
+                    ban.setExpiryDate(TimeUtils.parseString(cs.getString("expires")));
                     ban.addIps(cs.getStringList("ips"));
 
                     bans.add(ban);
@@ -66,7 +66,7 @@ public class BanManager extends DarthCraftAddon {
                     ban.addIp(IpUtils.fromEscapedString(ip));
                     ban.setBy(cs.getString("by"));
                     ban.setReason(cs.getString("reason"));
-                    ban.setExpiryDate(DateUtils.parseString(cs.getString("expires")));
+                    ban.setExpiryDate(TimeUtils.parseString(cs.getString("expires")));
 
                     bans.add(ban);
 
@@ -144,7 +144,6 @@ public class BanManager extends DarthCraftAddon {
             }
 
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, matchingBan.getKickMessage());
-
 
         } catch (Exception ex) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GOLD

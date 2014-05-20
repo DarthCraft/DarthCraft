@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import net.pravian.bukkitlib.config.YamlConfig;
-import net.pravian.bukkitlib.util.DateUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.IpUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -142,7 +142,7 @@ public class Ban {
         return ChatColor.RED
                 + "Your " + (type == BanType.IP ? "IP-Address" : "username") + " is banned from this server.\n"
                 + "Reason: " + reason + "\n"
-                + "Expires: " + DateUtils.parseDate(expiry) + "\n"
+                + "Expires: " + TimeUtils.parseDate(expiry) + "\n"
                 + "Banned by: " + by;
     }
 
@@ -170,7 +170,7 @@ public class Ban {
 
             cs.set("by", by);
             cs.set("reason", reason);
-            cs.set("expires", DateUtils.parseDate(expiry));
+            cs.set("expires", TimeUtils.parseDate(expiry));
             cs.set("ips", ips);
 
         } else if (type == BanType.IP) {
@@ -184,7 +184,7 @@ public class Ban {
 
             cs.set("by", by);
             cs.set("reason", reason);
-            cs.set("expires", DateUtils.parseDate(expiry));
+            cs.set("expires", TimeUtils.parseDate(expiry));
         }
         config.save();
     }

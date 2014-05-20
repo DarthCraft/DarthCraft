@@ -5,7 +5,7 @@ import net.darthcraft.dcmod.Ban;
 import net.darthcraft.dcmod.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.pravian.bukkitlib.command.SourceType;
-import net.pravian.bukkitlib.util.DateUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.OfflinePlayer;
@@ -40,14 +40,14 @@ public class Command_tempban extends DarthCraftCommand {
             }
         }
 
-        final Date until = DateUtils.parseDateOffset(args[1]);
+        final Date until = TimeUtils.parseDateOffset(args[1]);
         if (until == null) {
             return warn("Incorrect expiry date.");
         }
 
         final String reason = StringUtils.join(args, " ", 2, args.length);
 
-        util.adminAction(sender, "Banning " + player.getName() + " for " + reason + " until " + DateUtils.parseDate(until));
+        util.adminAction(sender, "Banning " + player.getName() + " for " + reason + " until " + TimeUtils.parseDate(until));
 
         final Ban ban = new Ban();
         ban.setType(BanType.PLAYER);

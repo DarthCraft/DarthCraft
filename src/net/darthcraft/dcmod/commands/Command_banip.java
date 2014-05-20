@@ -7,7 +7,7 @@ import net.pravian.bukkitlib.command.SourceType;
 import net.darthcraft.dcmod.Ban;
 import net.darthcraft.dcmod.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
-import net.pravian.bukkitlib.util.DateUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.IpUtils;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
@@ -115,7 +115,7 @@ public class Command_banip extends DarthCraftCommand {
                 player.kickPlayer(ChatColor.RED
                         + "Banned!\n"
                         + "Reason: " + reason + "\n"
-                        + "Expires: " + DateUtils.parseDate(null) + "\n"
+                        + "Expires: " + TimeUtils.parseDate(null) + "\n"
                         + "Banned by: " + sender.getName());
             }
         }
