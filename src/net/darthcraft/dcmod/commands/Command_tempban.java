@@ -52,6 +52,7 @@ public class Command_tempban extends DarthCraftCommand {
         final Ban ban = new Ban();
         ban.setType(BanType.UUID);
         ban.setName(player.getName());
+        ban.setUuid(player.getUniqueId());
         ban.setReason(reason);
         ban.setBy(sender.getName());
         ban.setExpiryDate(until);

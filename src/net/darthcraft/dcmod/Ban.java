@@ -31,7 +31,7 @@ public class Ban {
     //
     private BanType type = null;
     private String name = null;
-    private String UUID = null;
+    private UUID uuid = null;
     private String reason = null;
     private String by = null;
     private Date expiry = null;
@@ -53,8 +53,8 @@ public class Ban {
         this.name = name.toLowerCase();
     }
 
-    public void setUUID() {
-        this.UUID = UUID;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {
