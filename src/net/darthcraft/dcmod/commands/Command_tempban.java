@@ -50,7 +50,7 @@ public class Command_tempban extends DarthCraftCommand {
         util.adminAction(sender, "Banning " + player.getName() + " for " + reason + " until " + TimeUtils.parseDate(until));
 
         final Ban ban = new Ban();
-        ban.setType(BanType.PLAYER);
+        ban.setType(BanType.UUID);
         ban.setName(player.getName());
         ban.setReason(reason);
         ban.setBy(sender.getName());

@@ -47,8 +47,9 @@ public class Command_ban extends DarthCraftCommand {
         util.adminAction(sender, "Banning " + player.getName() + " for " + reason);
 
         Ban ban = new Ban();
-        ban.setType(BanType.PLAYER);
+        ban.setType(BanType.UUID);
         ban.setName(player.getName());
+        ban.setUUID();
         ban.setBy(sender.getName());
         ban.setReason(reason);
         ban.setExpiryDate(null);

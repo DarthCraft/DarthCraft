@@ -41,7 +41,7 @@ public class MetricsPlotter extends DarthCraftAddon {
                     int value = 0;
 
                     for (Ban ban : plugin.banManager.getBans()) {
-                        if (ban.getType() == Ban.BanType.PLAYER) {
+                        if (ban.getType() == Ban.BanType.UUID) {
                             value++;
                         }
                     }

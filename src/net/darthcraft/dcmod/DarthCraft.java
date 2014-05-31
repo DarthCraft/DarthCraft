@@ -67,6 +67,7 @@ public class DarthCraft extends JavaPlugin {
         mainConfig = new YamlConfig(plugin, "config.yml", true);
         bansConfig = new YamlConfig(plugin, "bans.yml", true);
         likersConfig = new YamlConfig(plugin, "likers.yml", true);
+        
 
         // Utilities
         logger = new BukkitLogger(plugin);
