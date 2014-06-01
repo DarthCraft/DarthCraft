@@ -37,7 +37,7 @@ public class ConfigConverter {
                     final ConfigurationSection cs = config.getConfigurationSection("players." + banName);
                     final Ban ban = new Ban();
 
-                    ban.setType(BanType.PLAYER);
+                    ban.setType(BanType.UUID);
                     ban.setName(banName);
                     ban.setReason(cs.getString("reason"));
                     ban.setBy(cs.getString("by"));

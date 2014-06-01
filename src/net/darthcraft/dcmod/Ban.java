@@ -3,18 +3,19 @@ package net.darthcraft.dcmod;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+import net.darthcraft.dcmod.Ban.BanType;
 import net.pravian.bukkitlib.config.YamlConfig;
-import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.IpUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.event.player.PlayerLoginEvent;
 
 public class Ban {
 
     public enum BanType {
 
-        PLAYER("Player-ban"), // Name-ban, but may have attached Ips
+        UUID("Player-ban"), // Name-ban, but may have attached Ips
         IP("IP-ban"); // IP-specific ban, unknown player
         private String type;
 
@@ -30,6 +31,7 @@ public class Ban {
     //
     private BanType type = null;
     private String name = null;
+    private UUID uuid = null;
     private String reason = null;
     private String by = null;
     private Date expiry = null;
@@ -49,6 +51,10 @@ public class Ban {
 
     public void setName(String name) {
         this.name = name.toLowerCase();
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {
@@ -130,7 +136,7 @@ public class Ban {
     }
 
     public String getTarget() {
-        if (type == BanType.PLAYER) {
+        if (type == BanType.UUID) {
             return name;
         } else if (type == BanType.IP) {
             return getIp();
@@ -140,7 +146,7 @@ public class Ban {
 
     public String getKickMessage() {
         return ChatColor.RED
-                + "Your " + (type == BanType.IP ? "IP-Address" : "username") + " is banned from this server.\n"
+                + "Your " + (type == BanType.IP ? "IP-Address" : "UUID") + " is banned from this server.\n"
                 + "Reason: " + reason + "\n"
                 + "Expires: " + TimeUtils.parseDate(expiry) + "\n"
                 + "Banned by: " + by;
@@ -159,8 +165,8 @@ public class Ban {
     }
 
     public void saveTo(YamlConfig config) {
-        if (type == BanType.PLAYER) {
-            final String path = "players." + name.toLowerCase();
+        if (type == BanType.UUID) {
+            final String path = "uuid." + uuid;
 
             if (!config.isConfigurationSection(path)) {
                 config.createSection(path);
@@ -168,6 +174,7 @@ public class Ban {
 
             final ConfigurationSection cs = config.getConfigurationSection(path);
 
+            cs.set("player", name.toLowerCase());
             cs.set("by", by);
             cs.set("reason", reason);
             cs.set("expires", TimeUtils.parseDate(expiry));
@@ -190,8 +197,8 @@ public class Ban {
     }
 
     public void deleteFrom(YamlConfig config) {
-        if (type == BanType.PLAYER) {
-            config.set("players." + name.toLowerCase(), null);
+        if (type == BanType.UUID) {
+            config.set("uuid." + uuid, null);
         } else if (type == BanType.IP) {
             config.set("ips." + IpUtils.toEscapedString(getIp()), null);
         }

@@ -2,9 +2,12 @@ package net.darthcraft.dcmod;
 
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
+import org.bukkit.Server;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -54,5 +57,40 @@ public class Util {
                 sendTo.sendMessage(message);
             }
         });
+    }
+    
+    public UUID playerToUUID(String player) {
+        UUID playerID = null;
+        try {
+            playerID = UUIDFetcher.getUUIDOf(player);
+        }
+        catch (Exception ex) {
+        }
+        return playerID;
+    }
+
+    public UUID playerToUUID(Player player) {
+        UUID playerID = null;
+        try {
+            playerID = UUIDFetcher.getUUIDOf(player.getName());
+        }
+        catch (Exception ex) {
+        }
+        return playerID;
+    }
+
+    public String UUIDToPlayer(UUID uuid) {
+        NameFetcher fetcher = new NameFetcher(Arrays.asList(uuid));
+        Map<UUID, String> response = null;
+
+        try {
+            response = fetcher.call();
+        }
+        catch (Exception e) {
+        }
+
+        String playerName = response.get(uuid);
+
+        return playerName;
     }
 }

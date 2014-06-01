@@ -37,7 +37,7 @@ public class BanManager extends DarthCraftAddon {
                     ConfigurationSection cs = bansconfig.getConfigurationSection("players." + player);
 
                     Ban ban = new Ban();
-                    ban.setType(BanType.PLAYER);
+                    ban.setType(BanType.UUID);
                     ban.setName(player.toLowerCase());
                     ban.setBy(cs.getString("by"));
                     ban.setReason(cs.getString("reason"));
@@ -192,7 +192,7 @@ public class BanManager extends DarthCraftAddon {
         if (ban.getType() == BanType.IP) {
             for (Ban currentBan : bans) {
 
-                if (ban.getType() == BanType.PLAYER) {
+                if (ban.getType() == BanType.UUID) {
                     return;
                 }
 
@@ -218,7 +218,7 @@ public class BanManager extends DarthCraftAddon {
             }
             currentBan.setExpiryDate(ban.getExpiryDate());
 
-            if (currentBan.getType() == BanType.PLAYER) {
+            if (currentBan.getType() == BanType.UUID) {
                 currentBan.setName(ban.getName());
             }
 
@@ -263,7 +263,7 @@ public class BanManager extends DarthCraftAddon {
         }
 
         for (Ban ban : bans) {
-            if (ban.getType() != BanType.PLAYER) {
+            if (ban.getType() != BanType.UUID) {
                 continue;
             }
 
@@ -278,7 +278,7 @@ public class BanManager extends DarthCraftAddon {
         name = name.toLowerCase().trim();
 
         for (Ban ban : bans) {
-            if (ban.getType() != BanType.PLAYER) {
+            if (ban.getType() != BanType.UUID) {
                 continue;
             }
 
@@ -288,7 +288,7 @@ public class BanManager extends DarthCraftAddon {
         }
 
         for (Ban ban : bans) {
-            if (ban.getType() != BanType.PLAYER) {
+            if (ban.getType() != BanType.UUID) {
                 continue;
             }
 

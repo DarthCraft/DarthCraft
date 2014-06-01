@@ -62,7 +62,7 @@ public class Command_unban extends DarthCraftCommand {
 
             // Player attached-Ip ban
             for (Ban currentBan : banManager.getBans()) {
-                if (currentBan.getType() != BanType.PLAYER) {
+                if (currentBan.getType() != BanType.UUID) {
                     continue;
                 }
 
