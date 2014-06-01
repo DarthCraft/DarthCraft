@@ -166,7 +166,7 @@ public class Ban {
 
     public void saveTo(YamlConfig config) {
         if (type == BanType.UUID) {
-            final String path = "uuid." + UUID;
+            final String path = "uuid." + uuid;
 
             if (!config.isConfigurationSection(path)) {
                 config.createSection(path);
@@ -198,7 +198,7 @@ public class Ban {
 
     public void deleteFrom(YamlConfig config) {
         if (type == BanType.UUID) {
-            config.set("uuid." + UUID, null);
+            config.set("uuid." + uuid, null);
         } else if (type == BanType.IP) {
             config.set("ips." + IpUtils.toEscapedString(getIp()), null);
         }
