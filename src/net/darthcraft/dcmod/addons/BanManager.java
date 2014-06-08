@@ -29,12 +29,12 @@ public class BanManager extends DarthCraftAddon {
     public void loadBans() {
 
         // Player bans
-        ConfigurationSection section = bansconfig.getConfigurationSection("players");
+        ConfigurationSection section = bansconfig.getConfigurationSection("UUID");
         if (section != null) {
             for (String player : section.getKeys(false)) {
 
                 try {
-                    ConfigurationSection cs = bansconfig.getConfigurationSection("players." + player);
+                    ConfigurationSection cs = bansconfig.getConfigurationSection("UUID." + player);
 
                     Ban ban = new Ban();
                     ban.setType(BanType.UUID);
