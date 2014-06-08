@@ -106,8 +106,9 @@ public class PlayerManager extends DarthCraftAddon {
         private DarthCraft plugin;
         //
         // Saved items 
-        private UUID uuid = null;
+        
         private String name;
+        private UUID uuid;
         private String firstIp;
         private String lastIp;
         private List<String> ips = new ArrayList<String>();
@@ -123,7 +124,8 @@ public class PlayerManager extends DarthCraftAddon {
         private boolean busy = false;
 
         public PlayerInfo(DarthCraft plugin, String name) {
-            this.name = name;
+            this.uuid = plugin.util.playerToUUID(name);
+            this.name = name;            
             this.plugin = plugin;
         }
 
