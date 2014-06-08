@@ -65,7 +65,7 @@ public class DarthCraft extends JavaPlugin {
 
         // Configs
         mainConfig = new YamlConfig(plugin, "config.yml", true);
-        bansConfig = new YamlConfig(plugin, "banned.yml", true);
+        bansConfig = new YamlConfig(plugin, "bans.yml", true);
         likersConfig = new YamlConfig(plugin, "likers.yml", true);
         
 
@@ -129,7 +129,7 @@ public class DarthCraft extends JavaPlugin {
         converter.parseBanPlusConfig();
         
         // Parse old DarthCraft ban files
-        final NewConfigConverter newconverter = NewConfigConverter.getInstance(plugin);
+        final UUIDConverter newconverter = UUIDConverter.getInstance(plugin);
         newconverter.parseOldDCBanConfig();
 
         // Cache items from config files

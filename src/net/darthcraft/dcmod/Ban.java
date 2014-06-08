@@ -19,7 +19,7 @@ public class Ban {
         IP("IP-ban"); // IP-specific ban, unknown player
         private String type;
 
-        BanType(String type) {
+        private BanType(String type) {
             this.type = type;
         }
 
@@ -40,6 +40,14 @@ public class Ban {
     public Ban() {
         ips = new ArrayList<String>();
     }
+    
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+    
+    public UUID getUuid() {
+        return uuid;
+    }
 
     public void setType(BanType type) {
         this.type = type;
@@ -51,10 +59,6 @@ public class Ban {
 
     public void setName(String name) {
         this.name = name.toLowerCase();
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
     }
 
     public String getName() {
@@ -166,7 +170,7 @@ public class Ban {
 
     public void saveTo(YamlConfig config) {
         if (type == BanType.UUID) {
-            final String path = "uuid." + uuid;
+            final String path = "uuid." + uuid.toString();
 
             if (!config.isConfigurationSection(path)) {
                 config.createSection(path);
@@ -198,7 +202,7 @@ public class Ban {
 
     public void deleteFrom(YamlConfig config) {
         if (type == BanType.UUID) {
-            config.set("uuid." + uuid, null);
+            config.set("uuid." + uuid.toString(), null);
         } else if (type == BanType.IP) {
             config.set("ips." + IpUtils.toEscapedString(getIp()), null);
         }

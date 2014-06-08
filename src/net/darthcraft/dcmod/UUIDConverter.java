@@ -4,13 +4,14 @@ import java.io.File;
 import net.darthcraft.dcmod.Ban.BanType;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.FileUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 
-public class NewConfigConverter {
+public class UUIDConverter {
 
     private final DarthCraft plugin;
 
-    private NewConfigConverter(DarthCraft plugin) {
+    private UUIDConverter(DarthCraft plugin) {
         this.plugin = plugin;
     }
 
@@ -30,20 +31,21 @@ public class NewConfigConverter {
         if (config.isConfigurationSection("players")) {
             for (String banName : config.getConfigurationSection("players").getKeys(false)) {
                 try {
-                    if (!config.isConfigurationSection("players" + banName)) {
-                        return; // Not a ban
+                    if (!config.isConfigurationSection("players." + banName)) {
+                        continue; // Not a ban
                     }
 
-                    final ConfigurationSection cs = config.getConfigurationSection("players" + banName);
+                    final ConfigurationSection cs = config.getConfigurationSection("players." + banName);
                     final Ban ban = new Ban();
 
-                    
                     ban.setType(BanType.UUID);
+                    ban.setUuid(Bukkit.getOfflinePlayer(banName).getUniqueId());
                     ban.setName(banName);
                     ban.setBy(cs.getString("by"));
                     ban.setReason(cs.getString("reason"));
                     ban.setExpiryDate(net.pravian.bukkitlib.util.TimeUtils.parseString(cs.getString("expires")));
                     ban.addIps(cs.getStringList("ips"));
+                    ban.saveTo(config);
                     players++;
 
                 } catch (Exception e) {
@@ -51,30 +53,16 @@ public class NewConfigConverter {
                     continue;
                 }
             }
+            config.set("players", null);
+            config.save();
         }
-
-        int ips = 0;
-        if (config.isSet("ips")) {
-            for (String ip : config.getStringList("ips")) {
-                final Ban ban = new Ban();
-
-                ban.setType(BanType.IP);
-                ban.addIp(ip);
-                ban.setReason("Unknown");
-                ban.setBy("Unknown");
-                ban.setExpiryDate(null);
-                ban.saveTo(plugin.bansConfig);
-                ips++;
-            }
-        }
-
 
         plugin.logger.info("Finished converting legacy bans");
-        plugin.logger.info("Converted " + players + " player- and " + ips + " ip-bans in total");
+        plugin.logger.info("Converted " + players + " player- and ");
 
     }
 
-    public static NewConfigConverter getInstance(DarthCraft plugin) {
-        return new NewConfigConverter(plugin);
+    public static UUIDConverter getInstance(DarthCraft plugin) {
+        return new UUIDConverter(plugin);
     }
 }

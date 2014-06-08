@@ -17,6 +17,8 @@ public class PlayerListener implements Listener {
     public PlayerListener(DarthCraft plugin) {
         this.plugin = plugin;
     }
+    
+    
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
     public void onPlayerChat(final AsyncPlayerChatEvent event) {
