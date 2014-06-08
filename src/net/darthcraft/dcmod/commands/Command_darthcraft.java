@@ -1,6 +1,5 @@
 package net.darthcraft.dcmod.commands;
 
-import net.darthcraft.dcmod.ConfigConverter;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.command.SourceType;
@@ -64,10 +63,6 @@ public class Command_darthcraft extends DarthCraftCommand {
                 // Load configs
                 plugin.bansConfig.load();
                 plugin.likersConfig.load();
-
-                // Parse old BanPlus ban files
-                final ConfigConverter converter = ConfigConverter.getInstance(plugin);
-                converter.parseBanPlusConfig();
 
                 // Cache items from config files
                 plugin.banManager.loadBans();
