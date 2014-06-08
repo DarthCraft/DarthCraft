@@ -6,10 +6,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import net.darthcraft.dcmod.DarthCraft;
 import net.pravian.bukkitlib.config.YamlConfig;
-import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.IpUtils;
+import net.pravian.bukkitlib.util.TimeUtils;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -104,7 +106,9 @@ public class PlayerManager extends DarthCraftAddon {
         private DarthCraft plugin;
         //
         // Saved items 
+        
         private String name;
+        private UUID uuid;
         private String firstIp;
         private String lastIp;
         private List<String> ips = new ArrayList<String>();
@@ -120,7 +124,8 @@ public class PlayerManager extends DarthCraftAddon {
         private boolean busy = false;
 
         public PlayerInfo(DarthCraft plugin, String name) {
-            this.name = name;
+            this.uuid = plugin.util.playerToUUID(name);
+            this.name = name;            
             this.plugin = plugin;
         }
 
@@ -130,13 +135,14 @@ public class PlayerManager extends DarthCraftAddon {
 
         // ----- METHODS -----
         public void save() {
-            if (name == null || name.equals("")) {
+            if (uuid == null || uuid.toString().equals("")) {
                 plugin.logger.severe("Could not save player! Player not defined.");
                 return;
             }
 
-            YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", name + ".yml"), false);
+            YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", uuid.toString() + ".yml"), false);
 
+            config.set("lastuser", name);
             config.set("firstip", firstIp);
             config.set("lastip", lastIp);
             config.set("ips", ips);
@@ -149,12 +155,12 @@ public class PlayerManager extends DarthCraftAddon {
         }
 
         public void load() {
-            if (this.name == null || this.name.equals("")) {
+            if (this.uuid == null || this.uuid.toString().equals("")) {
                 plugin.logger.severe("Could not load player! Player not defined.");
                 return;
             }
 
-            final YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", name + ".yml"), false);
+            final YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", uuid.toString() + ".yml"), false);
             config.load();
 
             firstIp = config.getString("firstip");
@@ -168,14 +174,22 @@ public class PlayerManager extends DarthCraftAddon {
         }
 
         public boolean exists() {
-            if (name == null || name.equals("")) {
+            if (uuid == null || uuid.toString().equals("")) {
                 plugin.logger.severe("Could not check if player exists! Player not defined.");
                 return false;
             }
-            return new File(plugin.getDataFolder() + "/players", name + ".yml").exists();
+            return new File(plugin.getDataFolder() + "/players", uuid.toString() + ".yml").exists();
         }
 
         // ----- ITEMS -----
+        public void setUuid(UUID uuid) {
+            this.uuid = uuid;
+        }
+
+        public UUID getUuid() {
+            return uuid;
+        }
+
         public String getName() {
             return name;
         }
