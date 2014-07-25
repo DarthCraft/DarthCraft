@@ -64,6 +64,7 @@ public class Command_setrank extends DarthCraftCommand {
 
         } else if (args[1].equalsIgnoreCase("admin")) {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " admin");
+            util.adminAction(sender, "Congratulations to " + player + " for achiving the rank of admin!");
             msg("Set " + player.getName() + "'s rank to 'admin'");
             return true;
 
@@ -80,6 +81,8 @@ public class Command_setrank extends DarthCraftCommand {
 
         if (args[1].equalsIgnoreCase("headadmin")) {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " headadmin");
+            player.setOp(true);
+            util.adminAction(sender, "Congratulations to " + player + " for achiving the rank of Head Admin!");
             msg("Set " + player.getName() + "'s rank to 'headadmin'");
             return true;
 
@@ -90,6 +93,8 @@ public class Command_setrank extends DarthCraftCommand {
 
         } else if (args[1].equalsIgnoreCase("host")) {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " host");
+            player.setOp(true);
+            util.adminAction(sender, "Congratulations to " + player + " for achiving the rank of host!");
             msg("Set " + player.getName() + "'s rank to 'host'");
             return true;
         } else if (args[1].equalsIgnoreCase("legacymember")) {
