@@ -20,11 +20,12 @@ public class Command_darthcraft extends DarthCraftCommand {
             msg(ChatColor.GOLD + "It is made possible by a long list of names of whom which developers, administrators and "
                     + "other staff who can't all be named.");
             msg(ChatColor.RED + "Special thanks to:");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Developer" + ChatColor.WHITE + ")");
+            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Exiled, Developer" + ChatColor.WHITE + ")");
+            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "Wild1145" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Developer" + ChatColor.WHITE + ")");
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "KickAssScott" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Game manager" + ChatColor.WHITE + ")");
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "pbgben" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Developer" + ChatColor.WHITE + ")");
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "JabbaTheJake" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "oscarandjo" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
+            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "boulos77" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
             return true;
         }
 
