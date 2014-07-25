@@ -1,6 +1,9 @@
 package net.darthcraft.dcmod.listener;
 
 import net.darthcraft.dcmod.DarthCraft;
+import net.darthcraft.dcmod.Util;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -49,4 +52,20 @@ public class PlayerListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         plugin.likeSigns.onPlayerInteractEvent(event);
     }
+    
+    // Player Tab colours.
+    @EventHandler(priority = EventPriority.HIGH)
+    public static void onPlayerJoinEvent(PlayerJoinEvent event)
+    {
+        Player player = event.getPlayer();
+        if (Util.HOSTS.contains(player.getName()))
+        {
+            player.setPlayerListName(ChatColor.DARK_PURPLE + player.getName());
+        }
+        if (Util.HEADADMINS.contains(player.getName()))
+        {
+            player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
+        }
+    }
+    
 }
