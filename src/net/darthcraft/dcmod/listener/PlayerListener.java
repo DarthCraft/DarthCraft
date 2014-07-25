@@ -67,7 +67,7 @@ public class PlayerListener implements Listener
         Player player = event.getPlayer();
         if (Util.HOSTS.contains(player.getName()) || Util.HEADADMINS.contains(player.getName()))
             {
-            player.setPlayerListName(ChatColor.DARK_PURPLE + player.getName());
+            player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
             }
 
         // This stuff MIGHT work, I however have never tried and have yet to test it, so it may not work :/
@@ -78,7 +78,7 @@ public class PlayerListener implements Listener
 
         else if (PermissionUtils.hasPermission(player, Permission.PREMIUM))
             {
-            player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
+            player.setPlayerListName(ChatColor.DARK_PURPLE + player.getName());
             }
 
         }
