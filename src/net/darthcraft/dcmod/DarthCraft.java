@@ -128,10 +128,6 @@ public class DarthCraft extends JavaPlugin {
         final UUIDConverter newconverter = UUIDConverter.getInstance(plugin);
         newconverter.parseOldDCBanConfig();
         
-        //Parse old Player Config
-        final PlayerConverter playerConverter = PlayerConverter.getInstance(plugin);
-        playerConverter.convert();
-        
         // Cache items from config files
         banManager.loadBans();
         trollMode.loadSettings();

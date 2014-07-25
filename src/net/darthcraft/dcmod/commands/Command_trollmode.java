@@ -11,6 +11,7 @@ public class Command_trollmode extends DarthCraftCommand {
 
     @Override
     public boolean run(CommandSender sender, Command cmd, String[] args) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        plugin.trollMode.toggleTrollMode();
+        return false;
     }
 }
