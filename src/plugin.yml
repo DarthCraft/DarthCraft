@@ -1,5 +1,5 @@
 name: DarthCraft
-version: 2.0
+version: 2.0.1
 description: Custom plugin for DarthCraft
 softdepend: [Votifier]
 authors: [DarthSalamon, Wild1145]
