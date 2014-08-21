@@ -111,20 +111,6 @@ public class Ban
         return ips != null && !ips.isEmpty();
         }
 
-    @Deprecated
-    public void setIps(List<String> ips)
-        {
-        this.ips.clear();
-        this.ips.addAll(ips);
-        }
-
-    @Deprecated
-    public void setIp(String ip)
-        {
-        this.ips.clear();
-        this.ips.add(ip.trim());
-        }
-
     public void addIp(String ip)
         {
         if (!ips.contains(ip.trim()))
@@ -223,7 +209,7 @@ public class Ban
             cs.set("by", by);
             cs.set("reason", reason);
             cs.set("expires", TimeUtils.parseDate(expiry));
-            cs.set("ips", ips);
+           // cs.set("ips", ips);
 
             }
         else if (type == BanType.IP)
