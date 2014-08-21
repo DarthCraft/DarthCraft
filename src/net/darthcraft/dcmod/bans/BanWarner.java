@@ -1,4 +1,4 @@
-package net.darthcraft.dcmod.player.bans;
+package net.darthcraft.dcmod.bans;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

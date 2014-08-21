@@ -1,8 +1,8 @@
 package net.darthcraft.dcmod.commands;
 
 import net.pravian.bukkitlib.command.SourceType;
-import net.darthcraft.dcmod.player.bans.Ban;
-import net.darthcraft.dcmod.player.bans.Ban.BanType;
+import net.darthcraft.dcmod.bans.Ban;
+import net.darthcraft.dcmod.bans.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;

@@ -2,7 +2,7 @@ package net.darthcraft.dcmod.addons;
 
 import java.io.File;
 import java.io.IOException;
-import net.darthcraft.dcmod.player.bans.Ban;
+import net.darthcraft.dcmod.bans.Ban;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.commands.Permissions;
 import org.bukkit.entity.Player;
