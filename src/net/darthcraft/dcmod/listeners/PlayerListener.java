@@ -1,4 +1,4 @@
-package net.darthcraft.dcmod.listener;
+package net.darthcraft.dcmod.listeners;
 
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.Util;

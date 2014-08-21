@@ -1,4 +1,4 @@
-package net.darthcraft.dcmod.listener;
+package net.darthcraft.dcmod.listeners;
 
 import com.vexsoftware.votifier.model.Vote;
 import com.vexsoftware.votifier.model.VotifierEvent;
