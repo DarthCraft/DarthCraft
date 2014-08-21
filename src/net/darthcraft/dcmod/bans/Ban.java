@@ -17,8 +17,9 @@ public class Ban
     public enum BanType
         {
 
-        UUID("Player-ban"), // Name-ban, but may have attached Ips
-        IP("IP-ban"); // IP-specific ban, unknown player
+        UUID("Player-ban"), // Name-ban only
+        IP("IP-ban"); // IP-specific ban
+
         private String type;
 
         private BanType(String type)
@@ -209,7 +210,7 @@ public class Ban
             cs.set("by", by);
             cs.set("reason", reason);
             cs.set("expires", TimeUtils.parseDate(expiry));
-           // cs.set("ips", ips);
+            // cs.set("ips", ips);
 
             }
         else if (type == BanType.IP)
