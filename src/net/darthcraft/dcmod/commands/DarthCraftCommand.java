@@ -1,7 +1,7 @@
 package net.darthcraft.dcmod.commands;
 
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.Util;
+import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.bans.BanManager;
 import net.darthcraft.dcmod.player.PlayerManager;
 import org.bukkit.ChatColor;
@@ -15,7 +15,7 @@ public abstract class DarthCraftCommand
     protected DarthCraft plugin;
     protected Server server;
     //
-    protected Util util;
+    protected DC_Utils util;
     protected PlayerManager playerManager;
     protected BanManager banManager;
     //

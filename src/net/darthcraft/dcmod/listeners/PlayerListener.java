@@ -1,7 +1,7 @@
 package net.darthcraft.dcmod.listeners;
 
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.Util;
+import net.darthcraft.dcmod.DC_Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -65,7 +65,7 @@ public class PlayerListener implements Listener
     public static void onPlayerJoinEvent(PlayerJoinEvent event)
         {
         Player player = event.getPlayer();
-        if (Util.HOSTS.contains(player.getName()) || Util.HEADADMINS.contains(player.getName()))
+        if (DC_Utils.HOSTS.contains(player.getName()) || DC_Utils.HEADADMINS.contains(player.getName()))
             {
             player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
             }

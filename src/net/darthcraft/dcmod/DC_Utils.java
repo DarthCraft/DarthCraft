@@ -14,7 +14,7 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Util
+public class DC_Utils
     {
 
     public static final List<String> HOSTS = Arrays.asList("pbgben", "DarthSalamon", "KickAssScott", "wild1145");
@@ -23,7 +23,7 @@ public class Util
     private final DarthCraft plugin;
     private final Server server;
 
-    public Util(DarthCraft plugin)
+    public DC_Utils(DarthCraft plugin)
         {
         this.plugin = plugin;
         this.server = plugin.getServer();

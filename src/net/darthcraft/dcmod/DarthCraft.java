@@ -47,7 +47,7 @@ public class DarthCraft extends JavaPlugin
     public YamlConfig bansConfig;
     public YamlConfig likersConfig;
     //
-    public Util util;
+    public DC_Utils util;
     public BukkitLogger logger;
     //
     public PlayerManager playerManager;
@@ -79,7 +79,7 @@ public class DarthCraft extends JavaPlugin
 
         // Utilities
         logger = new BukkitLogger(plugin);
-        util = new Util(plugin);
+        util = new DC_Utils(plugin);
 
         // Addons
         playerManager = new PlayerManager(plugin);
