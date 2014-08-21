@@ -13,34 +13,43 @@ import org.bukkit.entity.Player;
 
 @Source(SourceType.ANY)
 @Permissions(Permission.ADMIN)
-public class Command_ban extends DarthCraftCommand {
+public class Command_ban extends DarthCraftCommand
+    {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String[] args) {
-        if (args.length == 0) {
+    public boolean run(CommandSender sender, Command cmd, String[] args)
+        {
+        if (args.length == 0)
+            {
             return showUsage(cmd);
-        }
+            }
 
-        if (args.length < 2) {
+        if (args.length < 2)
+            {
             return warn("Please specify proper reason when banning a player.");
-        }
+            }
 
         final OfflinePlayer player = PlayerUtils.getOfflinePlayer(args[0]);
-        if (player == null) {
+        if (player == null)
+            {
             return warn("Player not found, or never joined the server.");
-        }
+            }
 
-        if (player.isOnline()) {
-            if (Permissions.PermissionUtils.hasPermission((Player) player, Permission.ADMIN)) {
-                if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN)) {
+        if (player.isOnline())
+            {
+            if (Permissions.PermissionUtils.hasPermission((Player) player, Permission.ADMIN))
+                {
+                if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN))
+                    {
                     return warn("You may not ban that player.");
+                    }
                 }
             }
-        }
 
-        if (banManager.getNameBan(player.getName()) != null) {
+        if (banManager.getNameBan(player.getName()) != null)
+            {
             return warn("That player is already banned.");
-        }
+            }
 
         final String reason = StringUtils.join(args, " ", 1, args.length);
 
@@ -56,10 +65,11 @@ public class Command_ban extends DarthCraftCommand {
 
         banManager.ban(ban);
 
-        if (player.isOnline()) {
+        if (player.isOnline())
+            {
             ((Player) player).kickPlayer(ban.getKickMessage());
-        }
+            }
 
         return true;
+        }
     }
-}

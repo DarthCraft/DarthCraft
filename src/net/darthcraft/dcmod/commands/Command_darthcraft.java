@@ -9,16 +9,19 @@ import org.bukkit.command.CommandSender;
 
 @Source(SourceType.ANY)
 @Permissions(Permission.ANYONE)
-public class Command_darthcraft extends DarthCraftCommand {
+public class Command_darthcraft extends DarthCraftCommand
+    {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String[] args) {
-        if (args.length == 0) {
+    public boolean run(CommandSender sender, Command cmd, String[] args)
+        {
+        if (args.length == 0)
+            {
             msg(ChatColor.GRAY + "-- " + ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GRAY + " --");
             msg(ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GOLD + " is a community-focussed,"
-                    + " non-PvP survival server.");
+                + " non-PvP survival server.");
             msg(ChatColor.GOLD + "It is made possible by a long list of names of whom which developers, administrators and "
-                    + "other staff who can't all be named.");
+                + "other staff who can't all be named.");
             msg(ChatColor.RED + "Special thanks to:");
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Exiled, Developer" + ChatColor.WHITE + ")");
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "Wild1145" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Developer" + ChatColor.WHITE + ")");
@@ -27,24 +30,28 @@ public class Command_darthcraft extends DarthCraftCommand {
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "JabbaTheJake" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
             msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "boulos77" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
             return true;
-        }
+            }
 
-        if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("plugin")) {
+        if (args.length == 1)
+            {
+            if (args[0].equalsIgnoreCase("plugin"))
+                {
                 msg(ChatColor.GOLD + plugin.pluginName + " for 'DarthCraft', a community-focussed non-PvP server.");
                 msg(ChatColor.GOLD + String.format("Version " + ChatColor.BLUE + "%s.%s" + ChatColor.BLUE + ", built %s.",
-                        plugin.pluginVersion,
-                        plugin.pluginBuildNumber,
-                        plugin.pluginBuildDate));
+                                                   plugin.pluginVersion,
+                                                   plugin.pluginBuildNumber,
+                                                   plugin.pluginBuildDate));
                 msg(ChatColor.GOLD + "Created by: " + plugin.pluginAuthors);
                 msg(ChatColor.GREEN + "Visit " + ChatColor.AQUA + "http://darthcraft.net/" + ChatColor.GREEN + " for more information.");
                 return true;
-            }
-
-            if (args[0].equalsIgnoreCase("reload")) {
-                if (!PermissionUtils.hasPermission(sender, Permission.HOST)) {
-                    return noPerms();
                 }
+
+            if (args[0].equalsIgnoreCase("reload"))
+                {
+                if (!PermissionUtils.hasPermission(sender, Permission.HOST))
+                    {
+                    return noPerms();
+                    }
 
                 util.adminAction(sender, "Reloading DarthCraft config");
 
@@ -55,11 +62,12 @@ public class Command_darthcraft extends DarthCraftCommand {
                 plugin.logger.debug("Debug-mode enabled!");
 
                 // Disable the plugin if the config defines so
-                if (!plugin.mainConfig.getBoolean("enabled", true)) {
+                if (!plugin.mainConfig.getBoolean("enabled", true))
+                    {
                     plugin.logger.warning("Disabling: defined in config");
                     plugin.getServer().getPluginManager().disablePlugin(plugin);
                     return true;
-                }
+                    }
 
                 // Load configs
                 plugin.bansConfig.load();
@@ -74,10 +82,10 @@ public class Command_darthcraft extends DarthCraftCommand {
 
                 msg("Finished reloading " + plugin.pluginName + " v" + plugin.pluginVersion + "." + plugin.pluginBuildNumber);
                 return true;
+                }
+
             }
 
-        }
-
         return showUsage(cmd);
+        }
     }
-}

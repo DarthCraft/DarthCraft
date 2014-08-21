@@ -8,38 +8,46 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class AdminChat extends DarthCraftAddon {
+public class AdminChat extends DarthCraftAddon
+    {
 
-    public AdminChat(DarthCraft plugin) {
+    public AdminChat(DarthCraft plugin)
+        {
         super(plugin);
-    }
+        }
 
-    public void toggleAdminChat(Player player) {
+    public void toggleAdminChat(Player player)
+        {
         PlayerInfo info = plugin.playerManager.getInfo(player);
 
         info.setInAdminChat(!info.isInAdminChat());
 
         player.sendMessage(ChatColor.AQUA + "Toggled Admin Chat o" + (info.isInAdminChat() ? "n" : "ff") + ".");
-    }
-
-    public void sendAdminMessage(String name, String msg) {
-
-        for (Player player : plugin.getServer().getOnlinePlayers()) {
-            if (PermissionUtils.hasPermission(player, Permission.ADMIN)) {
-                util.msg(player, ChatColor.WHITE + "<" + ChatColor.DARK_PURPLE + "ADMIN" + ChatColor.WHITE + "> "
-                        + ChatColor.DARK_RED + name + ChatColor.WHITE + ": " + ChatColor.AQUA + msg);
-            }
         }
+
+    public void sendAdminMessage(String name, String msg)
+        {
+
+        for (Player player : plugin.getServer().getOnlinePlayers())
+            {
+            if (PermissionUtils.hasPermission(player, Permission.ADMIN))
+                {
+                util.msg(player, ChatColor.WHITE + "<" + ChatColor.DARK_PURPLE + "ADMIN" + ChatColor.WHITE + "> "
+                                 + ChatColor.DARK_RED + name + ChatColor.WHITE + ": " + ChatColor.AQUA + msg);
+                }
+            }
         plugin.logger.info("<ADMIN> " + name + ": " + msg);
 
-    }
-
-    // events
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
-        if (plugin.playerManager.getInfo(event.getPlayer()).isInAdminChat()) {
-            sendAdminMessage(event.getPlayer().getName(), event.getMessage());
-            event.setCancelled(true);
         }
 
+    // events
+    public void onPlayerChat(AsyncPlayerChatEvent event)
+        {
+        if (plugin.playerManager.getInfo(event.getPlayer()).isInAdminChat())
+            {
+            sendAdminMessage(event.getPlayer().getName(), event.getMessage());
+            event.setCancelled(true);
+            }
+
+        }
     }
-}

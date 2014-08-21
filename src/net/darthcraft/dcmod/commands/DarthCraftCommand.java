@@ -9,7 +9,8 @@ import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public abstract class DarthCraftCommand {
+public abstract class DarthCraftCommand
+    {
 
     protected DarthCraft plugin;
     protected Server server;
@@ -20,50 +21,59 @@ public abstract class DarthCraftCommand {
     //
     private CommandSender commandSender;
 
-    public DarthCraftCommand() {
-    }
+    public DarthCraftCommand()
+        {
+        }
 
-    public void setPlugin(DarthCraft plugin) {
+    public void setPlugin(DarthCraft plugin)
+        {
         this.plugin = plugin;
         this.server = plugin.getServer();
         this.util = plugin.util;
         this.playerManager = plugin.playerManager;
         this.banManager = plugin.banManager;
-    }
+        }
 
-    public void setCommandSender(CommandSender sender) {
+    public void setCommandSender(CommandSender sender)
+        {
         this.commandSender = sender;
-    }
+        }
 
-    public boolean noPerms() {
+    public boolean noPerms()
+        {
         commandSender.sendMessage(ChatColor.RED + "You don't have access to that command");
         return true;
-    }
+        }
 
-    public boolean showUsage(Command command) {
+    public boolean showUsage(Command command)
+        {
         commandSender.sendMessage(ChatColor.YELLOW + "Usage: " + command.getUsage().replaceAll("<command>", command.getName()));
         return true;
-    }
+        }
 
-    public boolean consoleOnly() {
+    public boolean consoleOnly()
+        {
         warn("This command can only be executed from the console.");
         return true;
-    }
+        }
 
-    public boolean playerOnly() {
+    public boolean playerOnly()
+        {
         warn("This command can only be executed by players.");
         return true;
-    }
+        }
 
-    public boolean warn(String message) {
+    public boolean warn(String message)
+        {
         commandSender.sendMessage(ChatColor.YELLOW + message);
         return true;
-    }
+        }
 
-    public boolean msg(String message) {
+    public boolean msg(String message)
+        {
         commandSender.sendMessage(ChatColor.GRAY + message);
         return true;
-    }
+        }
 
     public abstract boolean run(CommandSender sender, Command cmd, String[] args);
-}
+    }

@@ -23,7 +23,8 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class DarthCraft extends JavaPlugin {
+public class DarthCraft extends JavaPlugin
+    {
 
     private DarthCraft plugin;
     //
@@ -54,7 +55,8 @@ public class DarthCraft extends JavaPlugin {
     public BanWarner banWarner;
 
     @Override
-    public void onLoad() {
+    public void onLoad()
+        {
         plugin = this;
 
         // Plugin info
@@ -67,7 +69,6 @@ public class DarthCraft extends JavaPlugin {
         mainConfig = new YamlConfig(plugin, "config.yml", true);
         bansConfig = new YamlConfig(plugin, "bans.yml", true);
         likersConfig = new YamlConfig(plugin, "likers.yml", true);
-        
 
         // Utilities
         logger = new BukkitLogger(plugin);
@@ -86,7 +87,8 @@ public class DarthCraft extends JavaPlugin {
         banWarner = new BanWarner(plugin);
 
         // Plugin build-number and build-date
-        try {
+        try
+            {
             final InputStream in = plugin.getResource("build.properties");
             final Properties build = new Properties();
 
@@ -95,16 +97,19 @@ public class DarthCraft extends JavaPlugin {
 
             pluginBuildNumber = build.getProperty("program.buildnumber");
             pluginBuildDate = build.getProperty("program.builddate");
-        } catch (Exception ex) {
+            }
+        catch (Exception ex)
+            {
             logger.severe("Could not load build information!");
             logger.severe(ex);
             pluginBuildNumber = "1";
             pluginBuildDate = (new SimpleDateFormat("dd/MM/yyyy hh:mm aa")).format(new Date());
+            }
         }
-    }
 
     @Override
-    public void onEnable() {
+    public void onEnable()
+        {
 
         // Load main config
         mainConfig.load();
@@ -114,20 +119,21 @@ public class DarthCraft extends JavaPlugin {
         logger.debug("Debug-mode enabled!"); // So smart ;D
 
         // Disable the plugin if the config defines so
-        if (!mainConfig.getBoolean("enabled", true)) {
+        if (!mainConfig.getBoolean("enabled", true))
+            {
             logger.warning("Disabling: defined in config");
             plugin.getServer().getPluginManager().disablePlugin(plugin);
             return;
-        }
+            }
 
         // Load other configs
         bansConfig.load();
         likersConfig.load();
-        
+
         // Parse old DarthCraft ban files
         final UUIDConverter newconverter = UUIDConverter.getInstance(plugin);
         newconverter.parseOldDCBanConfig();
-        
+
         // Cache items from config files
         banManager.loadBans();
         trollMode.loadSettings();
@@ -145,49 +151,61 @@ public class DarthCraft extends JavaPlugin {
         metricsPlotter.start();
 
         logger.info("Version " + pluginVersion + " by " + pluginAuthors + " is enabled");
-    }
+        }
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+        {
         plugin.getServer().getScheduler().cancelTasks(plugin);
         banManager.saveBans();
         logger.info("Version " + pluginVersion + " is disabled");
-    }
+        }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
+        {
         final DarthCraftCommand dispatcher;
 
         // Load and initialize class
-        try {
+        try
+            {
             ClassLoader classLoader = DarthCraft.class.getClassLoader();
             dispatcher = (DarthCraftCommand) classLoader.loadClass(String.format("%s.%s", DarthCraftCommand.class.getPackage().getName(), "Command_" + cmd.getName().toLowerCase())).newInstance();
 
             dispatcher.setPlugin(this);
             dispatcher.setCommandSender(sender);
-        } catch (Exception e) {
+            }
+        catch (Exception e)
+            {
             logger.severe("Command not loaded: " + cmd.getName());
             logger.severe(e);
             sender.sendMessage(ChatColor.RED + "Command Error: Command not loaded: " + cmd.getName());
             return true;
-        }
+            }
 
         // Check for permissions
-        try {
-            if (!SourceUtils.fromSource(sender, dispatcher.getClass(), plugin)) {
+        try
+            {
+            if (!SourceUtils.fromSource(sender, dispatcher.getClass(), plugin))
+                {
                 return (sender instanceof Player ? dispatcher.consoleOnly() : dispatcher.playerOnly());
-            }
+                }
 
-            if (PermissionUtils.hasPermission(sender, dispatcher.getClass(), plugin)) {
+            if (PermissionUtils.hasPermission(sender, dispatcher.getClass(), plugin))
+                {
                 return dispatcher.run(sender, cmd, args);
-            } else {
+                }
+            else
+                {
                 return dispatcher.noPerms();
+                }
             }
-        } catch (Exception e) {
+        catch (Exception e)
+            {
             logger.severe("Unknown command error: " + e.getMessage());
             logger.severe(e);
             sender.sendMessage(ChatColor.RED + "Command Error: " + e.getMessage());
             return true;
+            }
         }
     }
-}

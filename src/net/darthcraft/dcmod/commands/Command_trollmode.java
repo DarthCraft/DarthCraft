@@ -7,11 +7,13 @@ import org.bukkit.command.CommandSender;
 
 @Source(SourceType.CONSOLE)
 @Permissions(Permission.HEADADMIN)
-public class Command_trollmode extends DarthCraftCommand {
+public class Command_trollmode extends DarthCraftCommand
+    {
 
     @Override
-    public boolean run(CommandSender sender, Command cmd, String[] args) {
+    public boolean run(CommandSender sender, Command cmd, String[] args)
+        {
         plugin.trollMode.toggleTrollMode();
         return false;
+        }
     }
-}

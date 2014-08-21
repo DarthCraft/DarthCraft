@@ -16,28 +16,34 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerManager extends DarthCraftAddon {
+public class PlayerManager extends DarthCraftAddon
+    {
 
     public Map<String, PlayerInfo> infoMap = new HashMap<String, PlayerInfo>();
 
-    public PlayerManager(DarthCraft plugin) {
+    public PlayerManager(DarthCraft plugin)
+        {
         super(plugin);
-    }
+        }
 
-    public void onUncancelledPlayerJoin(PlayerJoinEvent event) {
+    public void onUncancelledPlayerJoin(PlayerJoinEvent event)
+        {
 
         final Date date = new Date();
         final String ip = IpUtils.getIp(event.getPlayer());
 
         final PlayerInfo info = new PlayerInfo(plugin, event.getPlayer().getName());
 
-        if (info.exists()) {
+        if (info.exists())
+            {
             info.load();
             info.setLastLogin(date);
             info.setLastIp(ip);
             info.addIp(ip);
             info.setLogins(info.getLogins() + 1);
-        } else {
+            }
+        else
+            {
             info.setFirstIp(ip);
             info.setLastIp(ip);
             info.addIp(ip);
@@ -48,65 +54,76 @@ public class PlayerManager extends DarthCraftAddon {
             info.setLastVote(null);
 
             logger.info("Added new player: " + event.getPlayer().getName());
-        }
+            }
 
         info.save();
-    }
+        }
 
-    public void onPlayerQuit(PlayerQuitEvent event) {
+    public void onPlayerQuit(PlayerQuitEvent event)
+        {
         final PlayerInfo info = getInfo(event.getPlayer());
         info.save();
         infoMap.remove(event.getPlayer().getName());
-    }
-
-    public final PlayerInfo getInfo(OfflinePlayer player) {
-        if (player == null) {
-            return null;
         }
+
+    public final PlayerInfo getInfo(OfflinePlayer player)
+        {
+        if (player == null)
+            {
+            return null;
+            }
 
         PlayerInfo info = infoMap.get(player.getName());
 
-        if (info == null) {
+        if (info == null)
+            {
             info = new PlayerInfo(plugin, player.getName());
             info.load();
 
-            if (player.isOnline()) {
+            if (player.isOnline())
+                {
                 infoMap.put(player.getName(), info);
+                }
             }
-        }
 
         return info;
-    }
+        }
 
-    public String getPlayerNameByIp(String ip) {
+    public String getPlayerNameByIp(String ip)
+        {
         final File dir = new File(plugin.getDataFolder() + "/players");
         YamlConfig config;
         ip = ip.trim();
 
         // First round: just for last ips
-        for (File file : dir.listFiles()) {
+        for (File file : dir.listFiles())
+            {
             config = new YamlConfig(plugin, file, false);
-            if (ip.equals(config.getString("lastip"))) {
+            if (ip.equals(config.getString("lastip")))
+                {
                 return file.getName().replace(".yml", "");
+                }
             }
-        }
 
         // Second round: all ips
-        for (File file : dir.listFiles()) {
+        for (File file : dir.listFiles())
+            {
             config = new YamlConfig(plugin, file, false);
-            if (config.getStringList("ips").contains(ip)) {
+            if (config.getStringList("ips").contains(ip))
+                {
                 return file.getName().replace(".yml", "");
+                }
             }
-        }
         return null;
-    }
+        }
 
-    public static class PlayerInfo {
+    public static class PlayerInfo
+        {
 
         private DarthCraft plugin;
         //
         // Saved items 
-        
+
         private String name;
         private UUID uuid;
         private String firstIp;
@@ -123,22 +140,26 @@ public class PlayerManager extends DarthCraftAddon {
         private boolean muted = false;
         private boolean busy = false;
 
-        public PlayerInfo(DarthCraft plugin, String name) {
+        public PlayerInfo(DarthCraft plugin, String name)
+            {
             this.uuid = plugin.util.playerToUUID(name);
-            this.name = name;            
+            this.name = name;
             this.plugin = plugin;
-        }
+            }
 
-        public PlayerInfo(DarthCraft plugin) {
+        public PlayerInfo(DarthCraft plugin)
+            {
             this.plugin = plugin;
-        }
+            }
 
         // ----- METHODS -----
-        public void save() {
-            if (uuid == null || uuid.toString().equals("")) {
+        public void save()
+            {
+            if (uuid == null || uuid.toString().equals(""))
+                {
                 plugin.logger.severe("Could not save player! Player not defined.");
                 return;
-            }
+                }
 
             YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", uuid.toString() + ".yml"), false);
 
@@ -152,13 +173,15 @@ public class PlayerManager extends DarthCraftAddon {
             config.set("votes", votes);
             config.set("lastvote", lastVote);
             config.save();
-        }
+            }
 
-        public void load() {
-            if (this.uuid == null || this.uuid.toString().equals("")) {
+        public void load()
+            {
+            if (this.uuid == null || this.uuid.toString().equals(""))
+                {
                 plugin.logger.severe("Could not load player! Player not defined.");
                 return;
-            }
+                }
 
             final YamlConfig config = new YamlConfig(plugin, new File(plugin.getDataFolder() + "/players", uuid.toString() + ".yml"), false);
             config.load();
@@ -171,129 +194,160 @@ public class PlayerManager extends DarthCraftAddon {
             lastLogin = TimeUtils.parseString(config.getString("lastlogin"));
             votes = config.getInt("votes");
             lastVote = TimeUtils.parseString("lastvote");
-        }
+            }
 
-        public boolean exists() {
-            if (uuid == null || uuid.toString().equals("")) {
+        public boolean exists()
+            {
+            if (uuid == null || uuid.toString().equals(""))
+                {
                 plugin.logger.severe("Could not check if player exists! Player not defined.");
                 return false;
-            }
+                }
             return new File(plugin.getDataFolder() + "/players", uuid.toString() + ".yml").exists();
-        }
+            }
 
         // ----- ITEMS -----
-        public void setUuid(UUID uuid) {
+        public void setUuid(UUID uuid)
+            {
             this.uuid = uuid;
-        }
+            }
 
-        public UUID getUuid() {
+        public UUID getUuid()
+            {
             return uuid;
-        }
+            }
 
-        public String getName() {
+        public String getName()
+            {
             return name;
-        }
+            }
 
-        public void setName(String name) {
+        public void setName(String name)
+            {
             this.name = name;
-        }
+            }
 
-        public String getFirstIp() {
+        public String getFirstIp()
+            {
             return this.firstIp;
-        }
+            }
 
-        public void setFirstIp(String ip) {
+        public void setFirstIp(String ip)
+            {
             this.firstIp = ip;
-        }
+            }
 
-        public String getLastIp() {
+        public String getLastIp()
+            {
             return this.lastIp;
-        }
+            }
 
-        public void setLastIp(String lastIp) {
+        public void setLastIp(String lastIp)
+            {
             this.lastIp = lastIp;
-        }
+            }
 
-        public List<String> getIps() {
+        public List<String> getIps()
+            {
             return this.ips;
-        }
+            }
 
-        public void setIps(List<String> ips) {
+        public void setIps(List<String> ips)
+            {
             this.ips = ips;
-        }
+            }
 
-        public void addIp(String ip) {
-            if (!this.ips.contains(ip)) {
+        public void addIp(String ip)
+            {
+            if (!this.ips.contains(ip))
+                {
                 this.ips.add(ip);
+                }
+            }
+
+        public int getLogins()
+            {
+            return logins;
+            }
+
+        public void setLogins(int logins)
+            {
+            this.logins = logins;
+            }
+
+        public int addLogin()
+            {
+            return ++this.logins;
+            }
+
+        public Date getFirstLogin()
+            {
+            return firstLogin;
+            }
+
+        public void setFirstLogin(Date login)
+            {
+            this.firstLogin = login;
+            }
+
+        public Date getLastLogin()
+            {
+            return lastLogin;
+            }
+
+        public void setLastLogin(Date login)
+            {
+            this.lastLogin = login;
+            }
+
+        public boolean isMuted()
+            {
+            return muted;
+            }
+
+        public void setMuted(boolean muted)
+            {
+            this.muted = muted;
+            }
+
+        public boolean isInAdminChat()
+            {
+            return inAdminChat;
+            }
+
+        public void setInAdminChat(boolean inAdminChat)
+            {
+            this.inAdminChat = inAdminChat;
+            }
+
+        public boolean isBusy()
+            {
+            return busy;
+            }
+
+        public void setBusy(boolean busy)
+            {
+            this.busy = busy;
+            }
+
+        public int getVotes()
+            {
+            return votes;
+            }
+
+        public void setVotes(int votes)
+            {
+            this.votes = votes;
+            }
+
+        public Date getLastVote()
+            {
+            return lastVote;
+            }
+
+        public void setLastVote(Date lastVote)
+            {
+            this.lastVote = lastVote;
             }
         }
-
-        public int getLogins() {
-            return logins;
-        }
-
-        public void setLogins(int logins) {
-            this.logins = logins;
-        }
-
-        public int addLogin() {
-            return ++this.logins;
-        }
-
-        public Date getFirstLogin() {
-            return firstLogin;
-        }
-
-        public void setFirstLogin(Date login) {
-            this.firstLogin = login;
-        }
-
-        public Date getLastLogin() {
-            return lastLogin;
-        }
-
-        public void setLastLogin(Date login) {
-            this.lastLogin = login;
-        }
-
-        public boolean isMuted() {
-            return muted;
-        }
-
-        public void setMuted(boolean muted) {
-            this.muted = muted;
-        }
-
-        public boolean isInAdminChat() {
-            return inAdminChat;
-        }
-
-        public void setInAdminChat(boolean inAdminChat) {
-            this.inAdminChat = inAdminChat;
-        }
-
-        public boolean isBusy() {
-            return busy;
-        }
-
-        public void setBusy(boolean busy) {
-            this.busy = busy;
-        }
-
-        public int getVotes() {
-            return votes;
-        }
-
-        public void setVotes(int votes) {
-            this.votes = votes;
-        }
-
-        public Date getLastVote() {
-            return lastVote;
-        }
-
-        public void setLastVote(Date lastVote) {
-            this.lastVote = lastVote;
-        }
     }
-}
