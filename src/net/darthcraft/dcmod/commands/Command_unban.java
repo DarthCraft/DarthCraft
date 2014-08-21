@@ -2,8 +2,8 @@ package net.darthcraft.dcmod.commands;
 
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
-import net.darthcraft.dcmod.Ban;
-import net.darthcraft.dcmod.Ban.BanType;
+import net.darthcraft.dcmod.player.bans.Ban;
+import net.darthcraft.dcmod.player.bans.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.pravian.bukkitlib.util.IpUtils;
 import org.bukkit.OfflinePlayer;

@@ -1,7 +1,9 @@
-package net.darthcraft.dcmod;
+package net.darthcraft.dcmod.player;
 
 import java.io.File;
-import net.darthcraft.dcmod.Ban.BanType;
+import net.darthcraft.dcmod.player.bans.Ban;
+import net.darthcraft.dcmod.player.bans.Ban.BanType;
+import net.darthcraft.dcmod.DarthCraft;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.FileUtils;
 import org.bukkit.Bukkit;

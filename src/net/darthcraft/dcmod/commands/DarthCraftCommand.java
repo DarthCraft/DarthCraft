@@ -2,8 +2,8 @@ package net.darthcraft.dcmod.commands;
 
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.Util;
-import net.darthcraft.dcmod.addons.BanManager;
-import net.darthcraft.dcmod.addons.PlayerManager;
+import net.darthcraft.dcmod.player.bans.BanManager;
+import net.darthcraft.dcmod.player.PlayerManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.Command;

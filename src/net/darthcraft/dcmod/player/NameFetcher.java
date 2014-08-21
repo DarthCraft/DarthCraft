@@ -1,7 +1,7 @@
 /*
  Name Fetcher made by evilmidget38: http://forums.bukkit.org/threads/player-name-uuid-fetcher.250926/
  */
-package net.darthcraft.dcmod;
+package net.darthcraft.dcmod.player;
 
 import com.google.common.collect.ImmutableList;
 import java.io.InputStreamReader;

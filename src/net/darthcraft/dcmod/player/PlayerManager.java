@@ -1,4 +1,4 @@
-package net.darthcraft.dcmod.addons;
+package net.darthcraft.dcmod.player;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import net.darthcraft.dcmod.DarthCraft;
+import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.IpUtils;
 import net.pravian.bukkitlib.util.TimeUtils;

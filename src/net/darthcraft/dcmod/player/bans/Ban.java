@@ -1,10 +1,10 @@
-package net.darthcraft.dcmod;
+package net.darthcraft.dcmod.player.bans;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import net.darthcraft.dcmod.Ban.BanType;
+import net.darthcraft.dcmod.player.bans.Ban.BanType;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.IpUtils;
 import net.pravian.bukkitlib.util.TimeUtils;

@@ -4,7 +4,7 @@ import com.vexsoftware.votifier.model.Vote;
 import com.vexsoftware.votifier.model.VotifierEvent;
 import java.util.Date;
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.addons.PlayerManager.PlayerInfo;
+import net.darthcraft.dcmod.player.PlayerManager.PlayerInfo;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

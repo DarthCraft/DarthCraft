@@ -1,5 +1,7 @@
 package net.darthcraft.dcmod;
 
+import net.darthcraft.dcmod.player.UUIDFetcher;
+import net.darthcraft.dcmod.player.NameFetcher;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;

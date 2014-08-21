@@ -2,7 +2,7 @@ package net.darthcraft.dcmod.commands;
 
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
-import net.darthcraft.dcmod.addons.PlayerManager.PlayerInfo;
+import net.darthcraft.dcmod.player.PlayerManager.PlayerInfo;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import org.bukkit.command.Command;
