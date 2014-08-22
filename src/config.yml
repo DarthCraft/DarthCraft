@@ -15,6 +15,16 @@ forceip:
   hostname: play.darthcraft.net
   port: 25565
   kickmessage: Please connect to play.darthcraft.net to play.
+  
+# MySQL - Currently in development. If you do not need to use it, please dont enable, it will cause you errors! 
+MySQL:
+  mysqlenabled: false
+  mysqlhostname: server.mysql.server
+  mysqlport: 3306
+  mysqldatabase: database1
+  mysqlusername: user
+  mysqlpassword: password123
+  
 
 chat:
   

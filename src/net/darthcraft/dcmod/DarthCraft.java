@@ -29,6 +29,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import me.husky.mysql.MySQL;
 
 public class DarthCraft extends JavaPlugin
     {
@@ -60,6 +61,14 @@ public class DarthCraft extends JavaPlugin
     public LikeSigns likeSigns;
     public AdminBusy adminBusy;
     public BanWarner banWarner;
+    //
+    public static MySQL mySQL;
+    public String mysqlport;
+    public boolean mysqlenabled;
+    public String mysqlhostname;
+    public String mysqlpassword;
+    public String mysqldatabase;
+    public String mysqlusername;
 
     @Override
     public void onLoad()
@@ -153,6 +162,16 @@ public class DarthCraft extends JavaPlugin
         pm.registerEvents(new PlayerListener(plugin), plugin);
         pm.registerEvents(new BlockListener(plugin), plugin);
         pm.registerEvents(new CustomListener(plugin), plugin);
+
+        if (mysqlenabled)
+            {
+            mySQL = new MySQL(plugin, this.mysqlhostname = plugin.mainConfig.getString("forceip.hostname"), this.mysqlport = plugin.mainConfig.getString("forceip.port"), this.mysqldatabase = plugin.mainConfig.getString("forceip.hostname"), this.mysqlusername = plugin.mainConfig.getString("forceip.hostname"), this.mysqlpassword = plugin.mainConfig.getString("forceip.hostname"));
+            logger.info("Success - MySQL connection has been established");
+            }
+        else
+            {
+            logger.warning("MySQL has not been started. Please chcek your config to ensure you have enabled it");
+            }
 
         // Start the metrics
         metricsPlotter.start();
