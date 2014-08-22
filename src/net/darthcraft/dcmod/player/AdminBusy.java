@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.player;
 
+import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.darthcraft.dcmod.commands.Permissions;
@@ -27,6 +28,25 @@ public class AdminBusy extends DarthCraftAddon
 
         util.msg(player, ChatColor.AQUA + "You have toggled busy status o" + (info.isBusy() ? "n" : "ff"));
         util.adminAction(player, ChatColor.AQUA + "Toggled busy status o" + (info.isBusy() ? "n" : "ff"));
+        
+        if (DC_Utils.HOSTS.contains(player.getName()) || DC_Utils.HEADADMINS.contains(player.getName()))
+            {
+           // player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
+            player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.LIGHT_PURPLE + player.getName()));
+            }
+
+        // This stuff MIGHT work, I however have never tried and have yet to test it, so it may not work :/
+        else if (PermissionUtils.hasPermission(player, Permissions.Permission.ADMIN))
+            {
+          //  player.setPlayerListName(ChatColor.RED + player.getName());
+            player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.RED + player.getName()));
+            }
+
+        else if (PermissionUtils.hasPermission(player, Permissions.Permission.PREMIUM))
+            {
+           // player.setPlayerListName(ChatColor.DARK_PURPLE + player.getName());
+            player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.DARK_PURPLE + player.getName()));
+            }
         }
 
     public void onPlayerChat(AsyncPlayerChatEvent event)
