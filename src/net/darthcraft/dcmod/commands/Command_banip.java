@@ -147,8 +147,7 @@ public class Command_banip extends DarthCraftCommand
                                   + "Banned by: " + sender.getName());
                 }
             }
-        
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-M hh:mm");
         String Time = sdf.format(new Date());
         // Changed to Unix Time Frame. 
