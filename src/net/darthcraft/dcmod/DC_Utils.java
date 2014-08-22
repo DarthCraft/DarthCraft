@@ -1,18 +1,23 @@
 package net.darthcraft.dcmod;
 
-import net.darthcraft.dcmod.player.UUIDFetcher;
-import net.darthcraft.dcmod.player.NameFetcher;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import static net.darthcraft.dcmod.DarthCraft.mySQL;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
+import net.darthcraft.dcmod.player.NameFetcher;
+import net.darthcraft.dcmod.player.UUIDFetcher;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DC_Utils
     {
@@ -119,5 +124,20 @@ public class DC_Utils
         String playerName = response.get(uuid);
 
         return playerName;
+        }
+
+    public static void updateDatabase(String SQLquery) throws SQLException
+        {
+        Connection c = mySQL.openConnection();
+        Statement statement = c.createStatement();
+        statement.executeUpdate(SQLquery);
+        }
+
+    public void getValueFromDB(String SQLquery) throws SQLException
+        {
+        Connection c = mySQL.openConnection();
+        Statement statement = c.createStatement();
+        ResultSet res = statement.executeQuery(SQLquery);
+        res.next();
         }
     }

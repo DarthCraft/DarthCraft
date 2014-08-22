@@ -1,9 +1,13 @@
 package net.darthcraft.dcmod.commands;
 
-import net.pravian.bukkitlib.command.SourceType;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.bans.Ban;
 import net.darthcraft.dcmod.bans.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
+import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.OfflinePlayer;
@@ -68,6 +72,22 @@ public class Command_ban extends DarthCraftCommand
         if (player.isOnline())
             {
             ((Player) player).kickPlayer(ban.getKickMessage());
+            }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M hh:mm");
+        String Time = sdf.format(new Date());
+        // Changed to Unix Time Frame. 
+
+        long unixTime = System.currentTimeMillis() / 1000L;
+
+        try
+            {
+            DC_Utils.updateDatabase("INSERT INTO bans (Name, UUID, BanBy, Reason, Expires, Time) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '" + sender.getName() + "', '" + reason + "','" + Time + "');");
+
+            }
+        catch (SQLException ex)
+            {
+            sender.sendMessage("Error submitting report to Database. Please consult a developer ASAP");
             }
 
         return true;

@@ -1,8 +1,12 @@
 package net.darthcraft.dcmod.commands;
 
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import net.darthcraft.dcmod.DC_Utils;
 import net.pravian.bukkitlib.command.SourceType;
 import net.darthcraft.dcmod.bans.Ban;
 import net.darthcraft.dcmod.bans.Ban.BanType;
@@ -142,6 +146,23 @@ public class Command_banip extends DarthCraftCommand
                                   + "Expires: " + TimeUtils.parseDate(null) + "\n"
                                   + "Banned by: " + sender.getName());
                 }
+            }
+        
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M hh:mm");
+        String Time = sdf.format(new Date());
+        // Changed to Unix Time Frame. 
+
+        long unixTime = System.currentTimeMillis() / 1000L;
+
+        try
+            {
+            DC_Utils.updateDatabase("INSERT INTO bans (IP, BanBy, Reason, Expires, Time) VALUES ('" + ips + "', '" + sender.getName() + "', '" + reason + "','" + Time + "');");
+
+            }
+        catch (SQLException ex)
+            {
+            sender.sendMessage("Error submitting report to Database. Please consult a developer ASAP");
             }
 
         return true;
