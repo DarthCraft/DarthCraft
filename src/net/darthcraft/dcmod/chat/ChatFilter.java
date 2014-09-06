@@ -96,7 +96,7 @@ public class ChatFilter extends DarthCraftAddon
         pMessage = pMessage.replace(" I ", " i ");
 
         // Prevent swearing where applicable
-        if (antiSwearEnabled && !PermissionUtils.hasPermission(player, Permission.HOST))
+        if (antiSwearEnabled && !PermissionUtils.hasPermission(player, Permission.HEADADMIN) || !PermissionUtils.hasPermission(player, Permission.HOST))
             {
 
             for (String swear : swearwords)
@@ -113,7 +113,7 @@ public class ChatFilter extends DarthCraftAddon
             }
 
         // De-caps, de-exclamationmark and de-questionmark 
-        if (antiCapsEnabled && !PermissionUtils.hasPermission(player, Permission.HEADADMIN))
+        if (antiCapsEnabled && !PermissionUtils.hasPermission(player, Permission.HEADADMIN) || !PermissionUtils.hasPermission(player, Permission.HOST))
             {
 
             int caps = 0;
