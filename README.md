@@ -6,3 +6,5 @@ This plugin was started by DarthSalamon who coded the original plugin. Wild1145 
 
 We welcome any contributions to this plugin. Before doing so we would ask that you see the [CONTRIBUTING.md](CONTRIBUTING.md) if you are interested in developing this plugin any further.
 
+This plugin is licenced under the GNU GPL V3. We will be attaching a licence to the project its self for easy reference soon.
+
