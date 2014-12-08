@@ -47,6 +47,7 @@ public class DarthCraft extends JavaPlugin
     public YamlConfig mainConfig;
     public YamlConfig bansConfig;
     public YamlConfig likersConfig;
+    public YamlConfig topicsConfig;
     //
     public DC_Utils util;
     public BukkitLogger logger;
@@ -61,6 +62,7 @@ public class DarthCraft extends JavaPlugin
     public LikeSigns likeSigns;
     public AdminBusy adminBusy;
     public BanWarner banWarner;
+    public TopicGenerator topicGenerator;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -85,6 +87,7 @@ public class DarthCraft extends JavaPlugin
         mainConfig = new YamlConfig(plugin, "config.yml", true);
         bansConfig = new YamlConfig(plugin, "bans.yml", true);
         likersConfig = new YamlConfig(plugin, "likers.yml", true);
+        topicsConfig = new YamlConfig(plugin, "topics.yml", true);
 
         // Utilities
         logger = new BukkitLogger(plugin);
@@ -101,6 +104,7 @@ public class DarthCraft extends JavaPlugin
         likeSigns = new LikeSigns(plugin);
         adminBusy = new AdminBusy(plugin);
         banWarner = new BanWarner(plugin);
+        topicGenerator = new TopicGenerator(plugin);
 
         // Plugin build-number and build-date
         try
@@ -129,6 +133,8 @@ public class DarthCraft extends JavaPlugin
 
         // Load main config
         mainConfig.load();
+        
+      
 
         // Debug-mode
         logger.setDebugMode(mainConfig.getBoolean("debug"));
@@ -145,6 +151,7 @@ public class DarthCraft extends JavaPlugin
         // Load other configs
         bansConfig.load();
         likersConfig.load();
+        topicsConfig.load();
 
         // Parse old DarthCraft ban files
         final UUIDConverter newconverter = UUIDConverter.getInstance(plugin);
