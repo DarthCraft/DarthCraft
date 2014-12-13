@@ -48,3 +48,6 @@ commands:
   topic:
     description: Generates a random topic of discussion from the configuration file
     usage: /<command>
+  warn:
+    description: Warns a player and issues appropriate infraction points
+    usage: /<command> <player> <amount> <reason>

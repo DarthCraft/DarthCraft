@@ -53,6 +53,7 @@ public class PlayerManager extends DarthCraftAddon
             info.setLogins(1);
             info.setVotes(0);
             info.setLastVote(null);
+            info.setWarnings(0);
 
             logger.info("Added new player: " + event.getPlayer().getName());
             }
@@ -135,6 +136,7 @@ public class PlayerManager extends DarthCraftAddon
         private Date lastLogin;
         private int votes;
         private Date lastVote;
+        private int warnings;
         //
         // Unsaved items
         private boolean inAdminChat = false;
@@ -173,6 +175,7 @@ public class PlayerManager extends DarthCraftAddon
             config.set("lastlogin", TimeUtils.parseDate(lastLogin));
             config.set("votes", votes);
             config.set("lastvote", lastVote);
+            config.set("warnings", warnings);
             config.save();
             }
 
@@ -195,6 +198,7 @@ public class PlayerManager extends DarthCraftAddon
             lastLogin = TimeUtils.parseString(config.getString("lastlogin"));
             votes = config.getInt("votes");
             lastVote = TimeUtils.parseString("lastvote");
+            warnings = config.getInt("warnings");
             }
 
         public boolean exists()
@@ -274,6 +278,16 @@ public class PlayerManager extends DarthCraftAddon
         public void setLogins(int logins)
             {
             this.logins = logins;
+            }
+
+        public int getWarnings()
+            {
+            return warnings;
+            }
+
+        public void setWarnings(int warnings)
+            {
+            this.warnings = warnings;
             }
 
         public int addLogin()

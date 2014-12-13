@@ -104,7 +104,6 @@ public class DarthCraft extends JavaPlugin
         likeSigns = new LikeSigns(plugin);
         adminBusy = new AdminBusy(plugin);
         banWarner = new BanWarner(plugin);
-        
 
         // Plugin build-number and build-date
         try
@@ -133,8 +132,6 @@ public class DarthCraft extends JavaPlugin
 
         // Load main config
         mainConfig.load();
-        
-      
 
         // Debug-mode
         logger.setDebugMode(mainConfig.getBoolean("debug"));
