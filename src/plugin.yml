@@ -45,3 +45,6 @@ commands:
   busy:
     description: Toggles busy status
     usage: /<command>
+  topic:
+    description: Generates a random topic of discussion from the configuration file
+    usage: /<command>

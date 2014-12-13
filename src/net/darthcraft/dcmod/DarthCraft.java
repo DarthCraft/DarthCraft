@@ -104,7 +104,7 @@ public class DarthCraft extends JavaPlugin
         likeSigns = new LikeSigns(plugin);
         adminBusy = new AdminBusy(plugin);
         banWarner = new BanWarner(plugin);
-        topicGenerator = new TopicGenerator(plugin);
+        
 
         // Plugin build-number and build-date
         try
@@ -152,6 +152,7 @@ public class DarthCraft extends JavaPlugin
         bansConfig.load();
         likersConfig.load();
         topicsConfig.load();
+        topicGenerator = new TopicGenerator(plugin);
 
         // Parse old DarthCraft ban files
         final UUIDConverter newconverter = UUIDConverter.getInstance(plugin);
