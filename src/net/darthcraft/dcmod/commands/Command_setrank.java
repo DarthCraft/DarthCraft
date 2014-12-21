@@ -42,14 +42,7 @@ public class Command_setrank extends DarthCraftCommand
             return true;
             }
 
-        if (args[1].equalsIgnoreCase("guest"))
-            {
-            server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " guest");
-            msg("Set " + player.getName() + "'s rank to 'guest'");
-            return true;
-
-            }
-        else if (args[1].equalsIgnoreCase("member"))
+        if (args[1].equalsIgnoreCase("member"))
             {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " member");
             msg("Set " + player.getName() + "'s rank to 'member'");
@@ -117,7 +110,7 @@ public class Command_setrank extends DarthCraftCommand
             {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " host");
             player.setOp(true);
-            util.adminAction(sender, "Congratulations to " + player + " for achiving the rank of host!");
+            util.adminAction(sender, "Congratulations to " + player.getName() + " for achiving the rank of host!");
             msg("Set " + player.getName() + "'s rank to 'host'");
             return true;
             }

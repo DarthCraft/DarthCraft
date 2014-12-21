@@ -49,7 +49,7 @@ public class Command_report extends DarthCraftCommand
 
         for (Player admins : Bukkit.getOnlinePlayers())
             {
-            if (Permissions.PermissionUtils.hasPermission((Player) player, Permission.ADMIN) || Permissions.PermissionUtils.hasPermission((Player) player, Permission.HEADADMIN) || Permissions.PermissionUtils.hasPermission((Player) player, Permission.HOST))
+            if (Permissions.PermissionUtils.hasPermission((Player) admins, Permission.ADMIN) || Permissions.PermissionUtils.hasPermission((Player) admins, Permission.HEADADMIN) || Permissions.PermissionUtils.hasPermission((Player) admins, Permission.HOST))
                 {
                 admins.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &a" + sender.getName() + " &4has reported &a" + Reported + " - " + player.getAddress().getAddress().getHostAddress() + " &4 for &2" + report_reason + "&4."));
 
