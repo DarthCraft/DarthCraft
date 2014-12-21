@@ -1,5 +1,5 @@
 name: DarthCraft
-version: 2.1.1
+version: 2.2
 description: Custom plugin for DarthCraft
 softdepend: [Votifier]
 authors: [DarthSalamon, Wild1145]
@@ -54,3 +54,6 @@ commands:
   invade:
     description: A pointless command to mess with Jake
     usage: /<command> <player>
+  report:
+    description: Allows you to report a player for what ever reason to the in game staff. 
+    usage: /<command> <player> <reason>

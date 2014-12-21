@@ -70,6 +70,16 @@ public class DC_Utils
         return ChatColor.GRAY;
         }
 
+    public static String decolorize(String string)
+        {
+        return string.replaceAll("\\u00A7(?=[0-9a-fk-or])", "&");
+        }
+
+    public static String colorize(String string)
+        {
+        return ChatColor.translateAlternateColorCodes('&', string);
+        }
+
     public void sendSyncMessage(final CommandSender sendTo, final String message)
         {
         Bukkit.getScheduler().runTask(plugin, new Runnable()
