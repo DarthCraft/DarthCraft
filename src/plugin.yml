@@ -51,3 +51,6 @@ commands:
   warn:
     description: Warns a player and issues appropriate infraction points
     usage: /<command> <player> <amount> <reason>
+  invade:
+    description: A pointless command to mess with Jake
+    usage: /<command> <player>
