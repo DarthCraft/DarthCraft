@@ -60,3 +60,9 @@ commands:
   christmas:
     description: Merry Christmas from the mad developer!
     usage: /<command>
+  delwarn:
+    description: Allows a head admin or host to remove warning points if appropriate. 
+    usage: /<command> <player> <amount> <reason>
+  getwarnings:
+    description: Allows a head admin or host to remove warning points if appropriate. 
+    usage: /<command> [player] 

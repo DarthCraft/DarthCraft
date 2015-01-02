@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.darthcraft.dcmod.player.PlayerManager;
 import org.apache.commons.lang.NumberUtils;
+import org.bukkit.ChatColor;
+import net.darthcraft.dcmod.DC_Utils;
 
 @Source(SourceType.ANY)
 @Permissions(Permissions.Permission.ADMIN)
@@ -50,17 +52,39 @@ public class Command_warn extends DarthCraftCommand
 
         final String reason = StringUtils.join(args, " ", 2, args.length);
 
-        util.adminAction(sender, "Has issues a warning for " + player.getName() + " for " + reason + " with " + amount + " of points");
+        if (amount > 10 && !Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
+            {
+            sender.sendMessage(ChatColor.DARK_RED + "You are unable to issue greater than 10 points. Please contact a host or higher if you feel it appropriate to issue this amount. ");
+            return false;
+            }
+        else if (amount < 0)
+            {
+            sender.sendMessage(ChatColor.DARK_RED + "To remove warning points you will need to contact a head admin or host.");
+            return false;
+            }
+        else
+            {
+            
+            if ("wild1145".equals(player.getName()))
+                {
+                sender.sendMessage(ChatColor.DARK_RED + "Ha, Nice Try. Wild has thought this one through and has prevented evil.");
+                util.adminAction(sender, "Has attempted to warn the almighty wild. It failed misrably.");
+                return false;
+                }
 
-        int curwarning = info.getWarnings();
-        info.setWarnings(curwarning + amount);
-        int newwarning = info.getWarnings();
+            util.adminAction(sender, "Has issues a warning for " + player.getName() + " with the reason " + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " worth " + amount + " warning points");
 
-        info.save();
+            int curwarning = info.getWarnings();
+            info.setWarnings(curwarning + amount);
+            int newwarning = info.getWarnings();
+            info.addReason(reason + "  -  (" + amount + ")");
 
-        sender.sendMessage(player.getName() + "'s new warnings are: " + newwarning);
+            info.save();
 
-        return true;
+            sender.sendMessage(ChatColor.DARK_GRAY + player.getName() + "'s new warnings are: " + newwarning);
+
+            return true;
+            }
 
         }
 

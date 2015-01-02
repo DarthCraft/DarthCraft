@@ -20,7 +20,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class PlayerManager extends DarthCraftAddon
     {
 
-    public Map<String, PlayerInfo> infoMap = new HashMap<String, PlayerInfo>();
+    public Map<String, PlayerInfo> infoMap = new HashMap<>();
 
     public PlayerManager(DarthCraft plugin)
         {
@@ -130,13 +130,15 @@ public class PlayerManager extends DarthCraftAddon
         private UUID uuid;
         private String firstIp;
         private String lastIp;
-        private List<String> ips = new ArrayList<String>();
+        private List<String> ips = new ArrayList<>();
         private int logins;
         private Date firstLogin;
         private Date lastLogin;
         private int votes;
         private Date lastVote;
         private int warnings;
+        private List<String> warningreasons = new ArrayList<>();
+        private List<String> warningwaivereasons = new ArrayList<>();
         //
         // Unsaved items
         private boolean inAdminChat = false;
@@ -176,6 +178,8 @@ public class PlayerManager extends DarthCraftAddon
             config.set("votes", votes);
             config.set("lastvote", lastVote);
             config.set("warnings", warnings);
+            config.set("reasons", warningreasons);
+            config.set("waivereasons", warningwaivereasons);
             config.save();
             }
 
@@ -199,6 +203,8 @@ public class PlayerManager extends DarthCraftAddon
             votes = config.getInt("votes");
             lastVote = TimeUtils.parseString("lastvote");
             warnings = config.getInt("warnings");
+            warningreasons = config.getStringList("reasons");
+            warningwaivereasons = config.getStringList("waivereasons");
             }
 
         public boolean exists()
@@ -268,6 +274,26 @@ public class PlayerManager extends DarthCraftAddon
                 {
                 this.ips.add(ip);
                 }
+            }
+
+        public List<String> getReasons()
+            {
+            return this.warningreasons;
+            }
+
+        public void addReason(String reason)
+            {
+            this.warningreasons.add(reason);
+            }
+        
+        public List<String> getWaiveReasons()
+            {
+            return this.warningwaivereasons;
+            }
+
+        public void addWaiveReason(String reason)
+            {
+            this.warningwaivereasons.add(reason);
             }
 
         public int getLogins()
