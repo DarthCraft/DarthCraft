@@ -57,3 +57,6 @@ commands:
   report:
     description: Allows you to report a player for what ever reason to the in game staff. 
     usage: /<command> <player> <reason>
+  christmas:
+    description: Merry Christmas from the mad developer!
+    usage: /<command>

@@ -43,8 +43,16 @@ public class PlayerListener implements Listener
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerLogin(PlayerLoginEvent event)
         {
+        Player player = event.getPlayer();
+        
         plugin.forceIp.onPlayerLogin(event);
         plugin.banManager.onPlayerLogin(event);
+
+        // Hard Coded Perm-Ban
+        if (player.getUniqueId().toString().equals("76093c08-4054-4a54-95c5-961bcfa768c6"))
+            {
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.RED + "FlamedBulletLuke, May I congratulate you on being the first person to be hard-coded into the DarthCraftMod's permban system. I hope you think carefully before threatening this server.");
+            }
         }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

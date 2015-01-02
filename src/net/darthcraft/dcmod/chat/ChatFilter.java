@@ -32,9 +32,9 @@ public class ChatFilter extends DarthCraftAddon
     public ChatFilter(DarthCraft plugin)
         {
         super(plugin);
-        this.warnings = new HashMap<String, Integer>();
-        this.swearwords = new ArrayList<String>();
-        this.replacements = new ArrayList<String>();
+        this.warnings = new HashMap<>();
+        this.swearwords = new ArrayList<>();
+        this.replacements = new ArrayList<>();
         }
 
     public void loadSettings()
