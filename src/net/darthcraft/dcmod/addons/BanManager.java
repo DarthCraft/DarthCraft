@@ -1,12 +1,13 @@
-package net.darthcraft.dcmod.bans;
+package net.darthcraft.dcmod.addons;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import net.darthcraft.dcmod.bans.Ban;
-import net.darthcraft.dcmod.bans.Ban.BanType;
+import net.darthcraft.dcmod.player.Ban;
+import net.darthcraft.dcmod.player.Ban.BanType;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.DarthCraftAddon;
+import net.darthcraft.dcmod.player.Ban;
 import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.util.IpUtils;
 import net.pravian.bukkitlib.util.TimeUtils;

@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import net.darthcraft.dcmod.player.PlayerManager;
 import org.apache.commons.lang.NumberUtils;
 import org.bukkit.ChatColor;
-import net.darthcraft.dcmod.DC_Utils;
 
 @Source(SourceType.ANY)
 @Permissions(Permissions.Permission.ADMIN)

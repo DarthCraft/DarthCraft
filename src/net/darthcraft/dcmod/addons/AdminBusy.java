@@ -1,10 +1,11 @@
-package net.darthcraft.dcmod.player;
+package net.darthcraft.dcmod.addons;
 
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.darthcraft.dcmod.commands.Permissions;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
+import net.darthcraft.dcmod.player.PlayerManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;

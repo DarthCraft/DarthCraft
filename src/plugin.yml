@@ -1,5 +1,5 @@
 name: DarthCraft
-version: 2.2
+version: 2.3
 description: Custom plugin for DarthCraft
 softdepend: [Votifier]
 authors: [DarthSalamon, Wild1145]
@@ -64,5 +64,11 @@ commands:
     description: Allows a head admin or host to remove warning points if appropriate. 
     usage: /<command> <player> <amount> <reason>
   getwarnings:
-    description: Allows a head admin or host to remove warning points if appropriate. 
+    description: Allows a player to get their own warning points and reasons, or a admin to see a players warning points and reasons.
     usage: /<command> [player] 
+  setlogin:
+    description: Allows a player to set their own login message
+    usage: /<command> <message>
+  dellogin:
+    description: Allows a player to remove their own login message, or for a admin to remove someone elses.
+    usage: /<command> [Player]

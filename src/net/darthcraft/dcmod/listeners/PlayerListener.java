@@ -44,7 +44,7 @@ public class PlayerListener implements Listener
     public void onPlayerLogin(PlayerLoginEvent event)
         {
         Player player = event.getPlayer();
-        
+
         plugin.forceIp.onPlayerLogin(event);
         plugin.banManager.onPlayerLogin(event);
 
@@ -60,6 +60,7 @@ public class PlayerListener implements Listener
         {
         plugin.playerManager.onUncancelledPlayerJoin(event);
         plugin.banWarner.onUncancelledPlayerJoin(event);
+        plugin.loginTitles.onUncancelledPlayerJoin(event);
         }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -78,7 +79,6 @@ public class PlayerListener implements Listener
             player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
             }
 
-        // This stuff MIGHT work, I however have never tried and have yet to test it, so it may not work :/
         else if (PermissionUtils.hasPermission(player, Permission.ADMIN))
             {
             player.setPlayerListName(ChatColor.RED + player.getName());

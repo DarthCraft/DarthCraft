@@ -2,9 +2,10 @@ package net.darthcraft.dcmod;
 
 import net.darthcraft.dcmod.chat.ChatFilter;
 import net.darthcraft.dcmod.chat.AdminChat;
-import net.darthcraft.dcmod.player.AdminBusy;
-import net.darthcraft.dcmod.bans.BanWarner;
-import net.darthcraft.dcmod.bans.BanManager;
+import net.darthcraft.dcmod.addons.AdminBusy;
+import net.darthcraft.dcmod.addons.BanWarner;
+import net.darthcraft.dcmod.addons.BanManager;
+import net.darthcraft.dcmod.addons.LoginTitles;
 import net.darthcraft.dcmod.player.UUIDConverter;
 import net.darthcraft.dcmod.player.PlayerManager;
 import net.darthcraft.dcmod.addons.*;
@@ -63,6 +64,7 @@ public class DarthCraft extends JavaPlugin
     public AdminBusy adminBusy;
     public BanWarner banWarner;
     public TopicGenerator topicGenerator;
+    public LoginTitles loginTitles;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -104,6 +106,7 @@ public class DarthCraft extends JavaPlugin
         likeSigns = new LikeSigns(plugin);
         adminBusy = new AdminBusy(plugin);
         banWarner = new BanWarner(plugin);
+        loginTitles = new LoginTitles(plugin);
 
         // Plugin build-number and build-date
         try

@@ -137,6 +137,7 @@ public class PlayerManager extends DarthCraftAddon
         private int votes;
         private Date lastVote;
         private int warnings;
+        private String logintitle;
         private List<String> warningreasons = new ArrayList<>();
         private List<String> warningwaivereasons = new ArrayList<>();
         //
@@ -178,6 +179,7 @@ public class PlayerManager extends DarthCraftAddon
             config.set("votes", votes);
             config.set("lastvote", lastVote);
             config.set("warnings", warnings);
+            config.set("logintitle", logintitle);
             config.set("reasons", warningreasons);
             config.set("waivereasons", warningwaivereasons);
             config.save();
@@ -203,6 +205,7 @@ public class PlayerManager extends DarthCraftAddon
             votes = config.getInt("votes");
             lastVote = TimeUtils.parseString("lastvote");
             warnings = config.getInt("warnings");
+            logintitle = config.getString("logintitle");
             warningreasons = config.getStringList("reasons");
             warningwaivereasons = config.getStringList("waivereasons");
             }
@@ -248,6 +251,16 @@ public class PlayerManager extends DarthCraftAddon
             this.firstIp = ip;
             }
 
+        public String getLoginMessage()
+            {
+            return this.logintitle;
+            }
+
+        public void setLoginMessage(String loginmessage)
+            {
+            this.logintitle = loginmessage;
+            }
+
         public String getLastIp()
             {
             return this.lastIp;
@@ -285,7 +298,7 @@ public class PlayerManager extends DarthCraftAddon
             {
             this.warningreasons.add(reason);
             }
-        
+
         public List<String> getWaiveReasons()
             {
             return this.warningwaivereasons;
