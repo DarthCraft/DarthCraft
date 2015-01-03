@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @Source(SourceType.ANY)
-@Permissions(Permissions.Permission.ADMIN)
+@Permissions(Permissions.Permission.ANYONE)
 public class Command_getwarnings extends DarthCraftCommand
     {
 
