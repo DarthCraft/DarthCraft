@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod;
 
+import java.io.IOException;
 import net.darthcraft.dcmod.chat.ChatFilter;
 import net.darthcraft.dcmod.chat.AdminChat;
 import net.darthcraft.dcmod.addons.AdminBusy;
@@ -14,7 +15,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-
+import java.util.logging.Level;
 import net.darthcraft.dcmod.commands.DarthCraftCommand;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.config.YamlConfig;
@@ -120,7 +121,7 @@ public class DarthCraft extends JavaPlugin
             pluginBuildNumber = build.getProperty("program.buildnumber");
             pluginBuildDate = build.getProperty("program.builddate");
             }
-        catch (Exception ex)
+        catch (IOException ex)
             {
             logger.severe("Could not load build information!");
             logger.severe(ex);
@@ -184,7 +185,7 @@ public class DarthCraft extends JavaPlugin
         // Start the metrics
         metricsPlotter.start();
 
-        logger.info("Version " + pluginVersion + " by " + pluginAuthors + " is enabled");
+        logger.log(Level.INFO, "Version {0} by {1} is enabled", new Object[]{pluginVersion, pluginAuthors});
         }
 
     @Override
@@ -192,7 +193,7 @@ public class DarthCraft extends JavaPlugin
         {
         plugin.getServer().getScheduler().cancelTasks(plugin);
         banManager.saveBans();
-        logger.info("Version " + pluginVersion + " is disabled");
+        logger.log(Level.INFO, "Version {0} is disabled", pluginVersion);
         }
 
     @Override
@@ -209,9 +210,9 @@ public class DarthCraft extends JavaPlugin
             dispatcher.setPlugin(this);
             dispatcher.setCommandSender(sender);
             }
-        catch (Exception e)
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException e)
             {
-            logger.severe("Command not loaded: " + cmd.getName());
+            logger.log(Level.SEVERE, "Command not loaded: {0}", cmd.getName());
             logger.severe(e);
             sender.sendMessage(ChatColor.RED + "Command Error: Command not loaded: " + cmd.getName());
             return true;
@@ -236,7 +237,7 @@ public class DarthCraft extends JavaPlugin
             }
         catch (Exception e)
             {
-            logger.severe("Unknown command error: " + e.getMessage());
+            logger.log(Level.SEVERE, "Unknown command error: {0}", e.getMessage());
             logger.severe(e);
             sender.sendMessage(ChatColor.RED + "Command Error: " + e.getMessage());
             return true;

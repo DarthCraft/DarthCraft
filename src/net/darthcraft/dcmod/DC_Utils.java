@@ -44,6 +44,7 @@ public class DC_Utils
         adminAction(sender.getName(), action, ChatColor.RED);
         }
 
+    @Deprecated
     public void msg(CommandSender sender, String message)
         {
         sender.sendMessage(ChatColor.YELLOW + message);

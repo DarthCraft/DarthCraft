@@ -68,7 +68,7 @@ public abstract class DarthCraftCommand
         commandSender.sendMessage(ChatColor.YELLOW + message);
         return true;
         }
-
+    @Deprecated
     public boolean msg(String message)
         {
         commandSender.sendMessage(ChatColor.GRAY + message);

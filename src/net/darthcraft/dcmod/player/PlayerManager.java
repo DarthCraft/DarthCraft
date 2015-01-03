@@ -221,66 +221,139 @@ public class PlayerManager extends DarthCraftAddon
             }
 
         // ----- ITEMS -----
+        /**
+         * The setUuid methood allows you to set the UUID of a player on the
+         * server.
+         *
+         * @param uuid
+         */
         public void setUuid(UUID uuid)
             {
             this.uuid = uuid;
             }
 
+        /**
+         * This will return the current players UUID that has been resolved from
+         * within the plugin.
+         *
+         * @return uuid
+         */
         public UUID getUuid()
             {
             return uuid;
             }
 
+        /**
+         * This will return the name of the player's information file you are
+         * currently accessing.
+         *
+         * @return name
+         */
         public String getName()
             {
             return name;
             }
 
+        /**
+         * This allows you to set the username of the players data file that you
+         * are currently accessing.
+         *
+         * @param name
+         */
         public void setName(String name)
             {
             this.name = name;
             }
 
+        /**
+         * This will return the first IP that the player has ever joined the
+         * server on.
+         *
+         * @return ip
+         */
         public String getFirstIp()
             {
             return this.firstIp;
             }
 
+        /**
+         * This will set the first IP from when the player first joined the
+         * server.
+         *
+         * @param ip
+         */
         public void setFirstIp(String ip)
             {
             this.firstIp = ip;
             }
 
+        /**
+         * This will get the stored login title for the player.
+         *
+         * @return logintitle
+         */
         public String getLoginMessage()
             {
             return this.logintitle;
             }
 
+        /**
+         * This will set the current login message for the player.
+         *
+         * @param loginmessage
+         */
         public void setLoginMessage(String loginmessage)
             {
             this.logintitle = loginmessage;
             }
 
+        /**
+         * This will return the last IP that the player joined the server on
+         *
+         * @return ip
+         */
         public String getLastIp()
             {
             return this.lastIp;
             }
 
+        /**
+         * This allows you to set the last IP that the player joined the server
+         * on.
+         *
+         * @param lastIp
+         */
         public void setLastIp(String lastIp)
             {
             this.lastIp = lastIp;
             }
 
+        /**
+         * This will return the list of IP's that the player has ever joined on.
+         *
+         * @return ips
+         */
         public List<String> getIps()
             {
             return this.ips;
             }
 
+        /**
+         * This will set the list of IP's that the player has ever joined on.
+         *
+         * @param ips
+         */
         public void setIps(List<String> ips)
             {
             this.ips = ips;
             }
 
+        /**
+         * This will check if the requested IP is already added and if it is not
+         * will add it to the list of IP's.
+         *
+         * @param ip
+         */
         public void addIp(String ip)
             {
             if (!this.ips.contains(ip))
@@ -289,116 +362,227 @@ public class PlayerManager extends DarthCraftAddon
                 }
             }
 
+        /**
+         * This will get the reasons that the player has received warnings.
+         *
+         * @return warningreasons
+         */
         public List<String> getReasons()
             {
             return this.warningreasons;
             }
 
+        /**
+         * This will add a reason to the list of warning reasons.
+         *
+         * @param reason
+         */
         public void addReason(String reason)
             {
             this.warningreasons.add(reason);
             }
 
+        /**
+         * This will get a list of reasons that the warnings have been waived.
+         *
+         * @return warningwaivereasons
+         */
         public List<String> getWaiveReasons()
             {
             return this.warningwaivereasons;
             }
 
+        /**
+         * This will add a reason to the waived warning list.
+         *
+         * @param reason
+         */
         public void addWaiveReason(String reason)
             {
             this.warningwaivereasons.add(reason);
             }
 
+        /**
+         * This will get the amount of logins that the player has had to the
+         * server.
+         *
+         * @return logins
+         */
         public int getLogins()
             {
             return logins;
             }
 
+        /**
+         * This will set the amount of logins that the player has had to the
+         * server.
+         *
+         * @param logins
+         */
         public void setLogins(int logins)
             {
             this.logins = logins;
             }
 
+        /**
+         * This gets the warning points that the player has.
+         *
+         * @return
+         */
         public int getWarnings()
             {
             return warnings;
             }
 
+        /**
+         * This sets the amount of warning points that the player currently has.
+         *
+         * @param warnings
+         */
         public void setWarnings(int warnings)
             {
             this.warnings = warnings;
             }
 
+        /**
+         * This will add a login to the login counter.
+         *
+         * @return logins
+         */
         public int addLogin()
             {
             return ++this.logins;
             }
 
+        /**
+         * This will get the first login date to the server
+         *
+         * @return firstLogin
+         */
         public Date getFirstLogin()
             {
             return firstLogin;
             }
 
+        /**
+         * This will set the first login date to the server.
+         *
+         * @param login
+         */
         public void setFirstLogin(Date login)
             {
             this.firstLogin = login;
             }
 
+        /**
+         * This will get the last login date of the player.
+         *
+         * @return lastLogin
+         */
         public Date getLastLogin()
             {
             return lastLogin;
             }
 
+        /**
+         * This will set the last login date that the player joined the server.
+         *
+         * @param login
+         */
         public void setLastLogin(Date login)
             {
             this.lastLogin = login;
             }
 
+        /**
+         * This will return if the player is or is not muted.
+         *
+         * @return muted
+         */
         public boolean isMuted()
             {
             return muted;
             }
 
+        /**
+         * This will set the player to either muted or not muted.
+         *
+         * @param muted
+         */
         public void setMuted(boolean muted)
             {
             this.muted = muted;
             }
 
+        /**
+         * This will check if the player is currently in admin chat or not
+         *
+         * @return inAdminChat
+         */
         public boolean isInAdminChat()
             {
             return inAdminChat;
             }
 
+        /**
+         * This will set if the player is in admin chat or not.
+         *
+         * @param inAdminChat
+         */
         public void setInAdminChat(boolean inAdminChat)
             {
             this.inAdminChat = inAdminChat;
             }
 
+        /**
+         * This will check if the player has busy status on or off.
+         * @return busy
+         */
         public boolean isBusy()
             {
             return busy;
             }
 
+        /**
+         * This will set the busy status of a player. 
+         * @param busy 
+         */
         public void setBusy(boolean busy)
             {
             this.busy = busy;
             }
 
+        /**
+         * This will get the number of votes that the player has cast. 
+         * @return votes
+         */
         public int getVotes()
             {
             return votes;
             }
 
+        /** 
+         * This will set the number of votes that the player has cast.
+         * @param votes 
+         */
         public void setVotes(int votes)
             {
             this.votes = votes;
             }
-
+        
+        /**
+         * This will get the date of the last vote that the player cast.
+         * @return lastVote
+         */
         public Date getLastVote()
             {
             return lastVote;
             }
 
+        /**
+         * This will set the date of the last vote that the player cast.
+         * @param lastVote 
+         */
         public void setLastVote(Date lastVote)
             {
             this.lastVote = lastVote;

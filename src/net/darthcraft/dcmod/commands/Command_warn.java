@@ -77,12 +77,14 @@ public class Command_warn extends DarthCraftCommand
             info.setWarnings(curwarning + amount);
             int newwarning = info.getWarnings();
             info.addReason(reason + "  -  (" + amount + ")");
-
+           
             info.save();
 
             sender.sendMessage(ChatColor.DARK_GRAY + player.getName() + "'s new warnings are: " + newwarning);
 
             return true;
+            
+            
             }
 
         }

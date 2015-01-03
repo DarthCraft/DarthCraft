@@ -17,18 +17,18 @@ public class Command_darthcraft extends DarthCraftCommand
         {
         if (args.length == 0)
             {
-            msg(ChatColor.GRAY + "-- " + ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GRAY + " --");
-            msg(ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GOLD + " is a community-focussed,"
+            sender.sendMessage(ChatColor.GRAY + "-- " + ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GRAY + " --");
+            sender.sendMessage(ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GOLD + " is a community-focussed,"
                 + " non-PvP survival server.");
-            msg(ChatColor.GOLD + "It is made possible by a long list of names of whom which developers, administrators and "
-                + "other staff who can't all be named.");
-            msg(ChatColor.RED + "Special thanks to:");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Exiled, Developer" + ChatColor.WHITE + ")");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "Wild1145" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Developer" + ChatColor.WHITE + ")");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "KickAssScott" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Game manager" + ChatColor.WHITE + ")");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "pbgben" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Developer" + ChatColor.WHITE + ")");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "JabbaTheJake" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
-            msg(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "boulos77" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.GOLD + "It is made possible by a long list of names of whom which developers, administrators and "
+                + "other staff who can't all be named.");            
+            sender.sendMessage(ChatColor.RED + "Special thanks to:");
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "pbgben" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Owner, Host, Developer" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "Wild1145" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Lead Developer" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "KickAssScott" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Game manager" + ChatColor.WHITE + ")");            
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Exiled, Developer" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "JabbaTheJake" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "boulos77" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
             return true;
             }
 
@@ -36,13 +36,13 @@ public class Command_darthcraft extends DarthCraftCommand
             {
             if (args[0].equalsIgnoreCase("plugin"))
                 {
-                msg(ChatColor.GOLD + plugin.pluginName + " for 'DarthCraft', a community-focussed non-PvP server.");
-                msg(ChatColor.GOLD + String.format("Version " + ChatColor.BLUE + "%s.%s" + ChatColor.BLUE + ", built %s.",
+                sender.sendMessage(ChatColor.GOLD + plugin.pluginName + " for 'DarthCraft', a community-focussed non-PvP server.");
+                sender.sendMessage(ChatColor.GOLD + String.format("Version " + ChatColor.BLUE + "%s.%s" + ChatColor.BLUE + ", built %s.",
                                                    plugin.pluginVersion,
                                                    plugin.pluginBuildNumber,
                                                    plugin.pluginBuildDate));
-                msg(ChatColor.GOLD + "Created by: " + plugin.pluginAuthors);
-                msg(ChatColor.GREEN + "Visit " + ChatColor.AQUA + "http://darthcraft.net/" + ChatColor.GREEN + " for more information.");
+                sender.sendMessage(ChatColor.GOLD + "Created by: " + plugin.pluginAuthors);
+                sender.sendMessage(ChatColor.GREEN + "Visit " + ChatColor.AQUA + "http://darthcraft.net/" + ChatColor.GREEN + " for more information.");
                 return true;
                 }
 
@@ -80,7 +80,7 @@ public class Command_darthcraft extends DarthCraftCommand
                 plugin.forceIp.loadSettings();
                 plugin.likeSigns.loadSettings();
 
-                msg("Finished reloading " + plugin.pluginName + " v" + plugin.pluginVersion + "." + plugin.pluginBuildNumber);
+                sender.sendMessage("Finished reloading " + plugin.pluginName + " v" + plugin.pluginVersion + "." + plugin.pluginBuildNumber);
                 return true;
                 }
 
