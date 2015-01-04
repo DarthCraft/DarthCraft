@@ -43,7 +43,7 @@ public class Command_stfu extends DarthCraftCommand
             return warn("That player is already muted.");
             }
 
-        util.adminAction(sender, "Muting " + player.getName());
+        util.adminAction(sender, "Telling " + player.getName() + " to STFU");
         info.setMuted(true);
         return true;
         }
