@@ -1,28 +1,30 @@
 package net.darthcraft.dcmod;
 
 import java.io.IOException;
-import net.darthcraft.dcmod.chat.ChatFilter;
-import net.darthcraft.dcmod.chat.AdminChat;
-import net.darthcraft.dcmod.addons.AdminBusy;
-import net.darthcraft.dcmod.addons.BanWarner;
-import net.darthcraft.dcmod.addons.BanManager;
-import net.darthcraft.dcmod.addons.LoginTitles;
-import net.darthcraft.dcmod.player.UUIDConverter;
-import net.darthcraft.dcmod.player.PlayerManager;
-import net.darthcraft.dcmod.addons.*;
-import net.darthcraft.dcmod.listeners.PlayerListener;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
+import me.husky.mysql.MySQL;
+import net.darthcraft.dcmod.addons.*;
+import net.darthcraft.dcmod.addons.AdminBusy;
+import net.darthcraft.dcmod.addons.BanManager;
+import net.darthcraft.dcmod.addons.BanWarner;
+import net.darthcraft.dcmod.addons.LoginTitles;
+import net.darthcraft.dcmod.chat.AdminChat;
+import net.darthcraft.dcmod.chat.ChatFilter;
 import net.darthcraft.dcmod.commands.DarthCraftCommand;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
-import net.pravian.bukkitlib.config.YamlConfig;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
 import net.darthcraft.dcmod.listeners.BlockListener;
 import net.darthcraft.dcmod.listeners.CustomListener;
+import net.darthcraft.dcmod.listeners.PlayerListener;
+import net.darthcraft.dcmod.player.PlayerManager;
+import net.darthcraft.dcmod.player.UUIDConverter;
+import net.pravian.bukkitlib.config.YamlConfig;
 import net.pravian.bukkitlib.implementation.BukkitLogger;
+import net.pravian.bukkitlib.implementation.BukkitPlugin;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -30,11 +32,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
-import me.husky.mysql.MySQL;
 
-public class DarthCraft extends JavaPlugin
-    {
+public class DarthCraft extends BukkitPlugin {
 
     private DarthCraft plugin;
     //
@@ -76,8 +75,7 @@ public class DarthCraft extends JavaPlugin
     public String mysqlusername;
 
     @Override
-    public void onLoad()
-        {
+    public void onLoad() {
         plugin = this;
 
         // Plugin info
@@ -110,8 +108,7 @@ public class DarthCraft extends JavaPlugin
         loginTitles = new LoginTitles(plugin);
 
         // Plugin build-number and build-date
-        try
-            {
+        try {
             final InputStream in = plugin.getResource("build.properties");
             final Properties build = new Properties();
 
@@ -120,19 +117,16 @@ public class DarthCraft extends JavaPlugin
 
             pluginBuildNumber = build.getProperty("program.buildnumber");
             pluginBuildDate = build.getProperty("program.builddate");
-            }
-        catch (IOException ex)
-            {
+        } catch (IOException ex) {
             logger.severe("Could not load build information!");
             logger.severe(ex);
             pluginBuildNumber = "1";
             pluginBuildDate = (new SimpleDateFormat("dd/MM/yyyy hh:mm aa")).format(new Date());
-            }
         }
+    }
 
     @Override
-    public void onEnable()
-        {
+    public void onEnable() {
 
         // Load main config
         mainConfig.load();
@@ -142,12 +136,11 @@ public class DarthCraft extends JavaPlugin
         logger.debug("Debug-mode enabled!"); // So smart ;D
 
         // Disable the plugin if the config defines so
-        if (!mainConfig.getBoolean("enabled", true))
-            {
+        if (!mainConfig.getBoolean("enabled", true)) {
             logger.warning("Disabling: defined in config");
             plugin.getServer().getPluginManager().disablePlugin(plugin);
             return;
-            }
+        }
 
         // Load other configs
         bansConfig.load();
@@ -172,76 +165,61 @@ public class DarthCraft extends JavaPlugin
         pm.registerEvents(new BlockListener(plugin), plugin);
         pm.registerEvents(new CustomListener(plugin), plugin);
 
-        if (mysqlenabled)
-            {
+        if (mysqlenabled) {
             mySQL = new MySQL(plugin, this.mysqlhostname = plugin.mainConfig.getString("forceip.hostname"), this.mysqlport = plugin.mainConfig.getString("forceip.port"), this.mysqldatabase = plugin.mainConfig.getString("forceip.hostname"), this.mysqlusername = plugin.mainConfig.getString("forceip.hostname"), this.mysqlpassword = plugin.mainConfig.getString("forceip.hostname"));
             logger.info("Success - MySQL connection has been established");
-            }
-        else
-            {
+        } else {
             logger.warning("MySQL has not been started. Please chcek your config to ensure you have enabled it");
-            }
+        }
 
         // Start the metrics
         metricsPlotter.start();
 
         logger.log(Level.INFO, "Version {0} by {1} is enabled", new Object[]{pluginVersion, pluginAuthors});
-        }
+    }
 
     @Override
-    public void onDisable()
-        {
+    public void onDisable() {
         plugin.getServer().getScheduler().cancelTasks(plugin);
         banManager.saveBans();
         logger.log(Level.INFO, "Version {0} is disabled", pluginVersion);
-        }
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
-        {
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         final DarthCraftCommand dispatcher;
 
         // Load and initialize class
-        try
-            {
+        try {
             ClassLoader classLoader = DarthCraft.class.getClassLoader();
             dispatcher = (DarthCraftCommand) classLoader.loadClass(String.format("%s.%s", DarthCraftCommand.class.getPackage().getName(), "Command_" + cmd.getName().toLowerCase())).newInstance();
 
             dispatcher.setPlugin(this);
             dispatcher.setCommandSender(sender);
-            }
-        catch (ClassNotFoundException | InstantiationException | IllegalAccessException e)
-            {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             logger.log(Level.SEVERE, "Command not loaded: {0}", cmd.getName());
             logger.severe(e);
             sender.sendMessage(ChatColor.RED + "Command Error: Command not loaded: " + cmd.getName());
             return true;
-            }
+        }
 
         // Check for permissions
-        try
-            {
-            if (!SourceUtils.fromSource(sender, dispatcher.getClass(), plugin))
-                {
+        try {
+            if (!SourceUtils.fromSource(sender, dispatcher.getClass(), plugin)) {
                 return (sender instanceof Player ? dispatcher.consoleOnly() : dispatcher.playerOnly());
-                }
-
-            if (PermissionUtils.hasPermission(sender, dispatcher.getClass(), plugin))
-                {
-                return dispatcher.run(sender, cmd, args);
-                }
-            else
-                {
-                return dispatcher.noPerms();
-                }
             }
-        catch (Exception e)
-            {
+
+            if (PermissionUtils.hasPermission(sender, dispatcher.getClass(), plugin)) {
+                return dispatcher.run(sender, cmd, args);
+            } else {
+                return dispatcher.noPerms();
+            }
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Unknown command error: {0}", e.getMessage());
             logger.severe(e);
             sender.sendMessage(ChatColor.RED + "Command Error: " + e.getMessage());
             return true;
-            }
         }
-
     }
+
+}
