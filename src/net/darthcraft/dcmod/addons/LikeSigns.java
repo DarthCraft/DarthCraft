@@ -2,6 +2,7 @@ package net.darthcraft.dcmod.addons;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import net.darthcraft.dcmod.DarthCraft;
 import net.pravian.bukkitlib.serializable.SerializableBlockLocation;
 import org.bukkit.ChatColor;
@@ -23,8 +24,8 @@ public class LikeSigns extends DarthCraftAddon
     public LikeSigns(DarthCraft plugin)
         {
         super(plugin);
-        this.signs = new ArrayList<Location>();
-        this.likers = new ArrayList<String>();
+        this.signs = new ArrayList<>();
+        this.likers = new ArrayList<>();
         }
 
     public void loadSettings()
@@ -37,7 +38,7 @@ public class LikeSigns extends DarthCraftAddon
             final SerializableBlockLocation location = new SerializableBlockLocation(sign);
             if (location.deserialize() == null)
                 {
-                logger.warning("Could not load LikeSign; Invalid sign: " + sign);
+                logger.log(Level.WARNING, "Could not load LikeSign; Invalid sign: {0}", sign);
                 continue;
                 }
 
@@ -50,13 +51,13 @@ public class LikeSigns extends DarthCraftAddon
 
     public void saveSettings()
         {
-        final List<String> signLocations = new ArrayList<String>();
+        final List<String> signLocations = new ArrayList<>();
         for (Location sign : signs)
             {
             final SerializableBlockLocation location = new SerializableBlockLocation(sign);
             if (location.serialize() == null)
                 {
-                logger.warning("Could not save LikeSign; Invalid sign: " + sign);
+                logger.log(Level.WARNING, "Could not save LikeSign; Invalid sign: {0}", sign);
                 continue;
                 }
             signLocations.add(location.serialize());

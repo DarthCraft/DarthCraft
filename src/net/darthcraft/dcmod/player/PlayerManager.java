@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Level;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.pravian.bukkitlib.config.YamlConfig;
@@ -54,8 +54,9 @@ public class PlayerManager extends DarthCraftAddon
             info.setVotes(0);
             info.setLastVote(null);
             info.setWarnings(0);
+            info.setWarningLevel(0);
 
-            logger.info("Added new player: " + event.getPlayer().getName());
+            logger.log(Level.INFO, "Added new player: {0}", event.getPlayer().getName());
             }
 
         info.save();
@@ -122,8 +123,8 @@ public class PlayerManager extends DarthCraftAddon
     public static class PlayerInfo
         {
 
-        private DarthCraft plugin;
-        //
+        private final DarthCraft plugin;
+        
         // Saved items 
 
         private String name;
@@ -137,6 +138,7 @@ public class PlayerManager extends DarthCraftAddon
         private int votes;
         private Date lastVote;
         private int warnings;
+        private int warninglevel;
         private String logintitle;
         private List<String> warningreasons = new ArrayList<>();
         private List<String> warningwaivereasons = new ArrayList<>();
@@ -179,6 +181,7 @@ public class PlayerManager extends DarthCraftAddon
             config.set("votes", votes);
             config.set("lastvote", lastVote);
             config.set("warnings", warnings);
+            config.set("warninglevel", warninglevel);
             config.set("logintitle", logintitle);
             config.set("reasons", warningreasons);
             config.set("waivereasons", warningwaivereasons);
@@ -205,6 +208,7 @@ public class PlayerManager extends DarthCraftAddon
             votes = config.getInt("votes");
             lastVote = TimeUtils.parseString("lastvote");
             warnings = config.getInt("warnings");
+            warninglevel = config.getInt("warninglevel");
             logintitle = config.getString("logintitle");
             warningreasons = config.getStringList("reasons");
             warningwaivereasons = config.getStringList("waivereasons");
@@ -442,6 +446,26 @@ public class PlayerManager extends DarthCraftAddon
         public void setWarnings(int warnings)
             {
             this.warnings = warnings;
+            }
+        
+        /**
+         * This will get the warning level of the player. 
+         *
+         * @return warninglevel
+         */
+        public int getWarningLevel()
+            {
+            return warninglevel;
+            }
+
+        /**
+         * This sets the amount of warning level that the player currently has.
+         *
+         * @param warninglevel
+         */
+        public void setWarningLevel(int warninglevel)
+            {
+            this.warninglevel = warninglevel;
             }
 
         /**

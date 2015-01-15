@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import net.darthcraft.dcmod.player.PlayerManager;
 import org.apache.commons.lang.NumberUtils;
 import org.bukkit.ChatColor;
+import net.darthcraft.dcmod.addons.WarningSystem;
+
 
 @Source(SourceType.ANY)
 @Permissions(Permissions.Permission.ADMIN)
@@ -30,9 +32,10 @@ public class Command_warn extends DarthCraftCommand
             return warn("Please specify proper reason and amount of warning points when issuing a warning.");
             }
 
-        final OfflinePlayer player = PlayerUtils.getOfflinePlayer(args[0]);
+        final Player player = PlayerUtils.getPlayer(args[0]);
         final int amount = NumberUtils.stringToInt(args[1]);
         final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
+        
         if (player == null)
             {
             return warn("Player not found, or never joined the server.");
@@ -81,6 +84,8 @@ public class Command_warn extends DarthCraftCommand
             info.save();
 
             sender.sendMessage(ChatColor.DARK_GRAY + player.getName() + "'s new warnings are: " + newwarning);
+            
+            plugin.warningSystem.warningCheck(player);
 
             return true;
             

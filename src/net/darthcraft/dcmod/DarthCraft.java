@@ -65,6 +65,7 @@ public class DarthCraft extends BukkitPlugin {
     public BanWarner banWarner;
     public TopicGenerator topicGenerator;
     public LoginTitles loginTitles;
+    public WarningSystem warningSystem;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -106,6 +107,7 @@ public class DarthCraft extends BukkitPlugin {
         adminBusy = new AdminBusy(plugin);
         banWarner = new BanWarner(plugin);
         loginTitles = new LoginTitles(plugin);
+        warningSystem = new WarningSystem(plugin);
 
         // Plugin build-number and build-date
         try {
