@@ -12,16 +12,16 @@ import org.bukkit.entity.Player;
 @Source(SourceType.PLAYER)
 @Permissions(Permission.ANYONE)
 public class Command_dellogin extends DarthCraftCommand
-    {
+{
 
     @Override
     public boolean run(CommandSender sender, Command cmd, String[] args)
-        {
+    {
 
         if (args.length == 1)
-            {
+        {
             if (Permissions.PermissionUtils.hasPermission((Player) sender, Permissions.Permission.ADMIN))
-                {
+            {
                 Player player = PlayerUtils.getPlayer(args[0]);
 
                 final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
@@ -29,12 +29,12 @@ public class Command_dellogin extends DarthCraftCommand
                 info.setLoginMessage(null);
 
                 return true;
-                }
-            return false;
             }
+            return false;
+        }
 
         else
-            {
+        {
 
             final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo((Player) sender);
 
@@ -42,7 +42,7 @@ public class Command_dellogin extends DarthCraftCommand
 
             sender.sendMessage(ChatColor.DARK_GREEN + "You have successfuly reset your login message. You will no longer have one when you join the server.");
             return true;
-            }
         }
-
     }
+
+}

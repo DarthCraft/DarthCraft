@@ -13,11 +13,11 @@ import org.bukkit.entity.Player;
 @Source(SourceType.PLAYER)
 @Permissions(Permission.HOST)
 public class Command_invade extends DarthCraftCommand
-    {
+{
 
     @Override
     public boolean run(CommandSender sender, Command cmd, String[] args)
-        {
+    {
         Player player = PlayerUtils.getPlayer(args[0]);
 
         player.setPlayerListName(ChatColor.DARK_RED + player.getName());
@@ -34,5 +34,5 @@ public class Command_invade extends DarthCraftCommand
 
         return false;
 
-        }
     }
+}

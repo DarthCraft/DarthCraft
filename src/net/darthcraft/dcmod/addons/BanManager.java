@@ -177,8 +177,8 @@ public class BanManager extends DarthCraftAddon
         catch (IllegalArgumentException | IllegalStateException ex)
         {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GOLD
-                    + "Sorry! " + ChatColor.AQUA + "There was a problem checking if you were banned.\n"
-                    + "Please report this issue at http://darthcraft.net/forums");
+                                                               + "Sorry! " + ChatColor.AQUA + "There was a problem checking if you were banned.\n"
+                                                               + "Please report this issue at http://darthcraft.net/forums");
             logger.log(Level.SEVERE, "Problem checking ban status for {0}", name);
             logger.severe(ex);
         }

@@ -59,7 +59,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 25 && info.getWarnings() < 30)
         {
             if (info.getWarningLevel() != 3)
@@ -73,7 +73,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 30 && info.getWarnings() < 50)
         {
             if (info.getWarningLevel() != 4)
@@ -100,7 +100,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 70 && info.getWarnings() < 100)
         {
             if (info.getWarningLevel() != 5)
@@ -114,7 +114,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 100 && info.getWarnings() < 120)
         {
             if (info.getWarningLevel() != 6)
@@ -128,7 +128,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 120 && info.getWarnings() < 150)
         {
             if (info.getWarningLevel() != 6)
@@ -142,7 +142,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 150 && info.getWarnings() < 180)
         {
             if (info.getWarningLevel() != 7)
@@ -156,7 +156,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() >= 180 && info.getWarnings() < 200)
         {
             if (info.getWarningLevel() != 8)
@@ -170,7 +170,7 @@ public class WarningSystem extends DarthCraftAddon
                 logger.debug(player.getName() + " has been warned however has already been appropriatly sanctioned for this warning.");
             }
         }
-        
+
         if (info.getWarnings() <= 200)
         {
             if (info.getWarningLevel() != 9)
