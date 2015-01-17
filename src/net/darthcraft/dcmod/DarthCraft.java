@@ -67,6 +67,8 @@ public class DarthCraft extends BukkitPlugin
     public TopicGenerator topicGenerator;
     public LoginTitles loginTitles;
     public WarningSystem warningSystem;
+    public TabColors tabColors;
+    public PermBan permBan;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -110,6 +112,8 @@ public class DarthCraft extends BukkitPlugin
         banWarner = new BanWarner(plugin);
         loginTitles = new LoginTitles(plugin);
         warningSystem = new WarningSystem(plugin);
+        tabColors = new TabColors(plugin);
+        permBan = new PermBan(plugin);
 
         // Plugin build-number and build-date
         try
