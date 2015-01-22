@@ -106,7 +106,7 @@ public class MetricsPlotter extends DarthCraftAddon
                 @Override
                 public int getValue()
                 {
-                    return plugin.getServer().getOnlinePlayers().length;
+                    return plugin.getServer().getOnlinePlayers().size();
                 }
             });
 

@@ -1,16 +1,13 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.player.PlayerManager;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import net.darthcraft.dcmod.player.PlayerManager;
-import org.apache.commons.lang.NumberUtils;
-import org.bukkit.ChatColor;
-import net.darthcraft.dcmod.addons.WarningSystem;
 
 @Source(SourceType.ANY)
 @Permissions(Permissions.Permission.ADMIN)
@@ -32,7 +29,7 @@ public class Command_warn extends DarthCraftCommand
         }
 
         final Player player = PlayerUtils.getPlayer(args[0]);
-        final int amount = NumberUtils.stringToInt(args[1]);
+        final int amount = Integer.parseInt(args[1]);
         final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
 
         if (player == null)

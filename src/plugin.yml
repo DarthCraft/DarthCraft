@@ -1,5 +1,5 @@
 name: DarthCraft
-version: 2.3.2
+version: 2.4
 description: Custom plugin for DarthCraft
 softdepend: [Votifier]
 authors: [DarthSalamon, Wild1145]
@@ -75,3 +75,6 @@ commands:
   stfu:
     description: Mutes a player but not being quite so polite. 
     usage: /<command> <player>
+  sharexp:
+      description: Allows you to share XP with another player.
+      usage: /<command> <player> <amount>
