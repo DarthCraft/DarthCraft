@@ -59,12 +59,19 @@ public class Command_delwarn extends DarthCraftCommand
                 return false;
             }
 
-            util.adminAction(sender, "Has waived a warning for " + player.getName() + " with the reason " + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " worth " + amount + " warnining points");
-
             int curwarning = info.getWarnings();
-            info.setWarnings(curwarning - amount);
-            int newwarning = info.getWarnings();
+            int newwarning = curwarning - amount;
+            
+            if (newwarning > 0)
+            {
+                sender.sendMessage(ChatColor.DARK_RED + "STOOOOOOP - The player will end up with LESS than 0 warning points. This is going to cause the world to implode as we know it and wild to come and slap you somewhat.");
+                return false;
+            }
+            info.setWarnings(newwarning);
             info.addWaiveReason(reason + "  -  (" + amount + ")");
+            
+            
+            util.adminAction(sender, "Has waived a warning for " + player.getName() + " with the reason " + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " worth " + amount + " warning points");
 
             info.save();
 

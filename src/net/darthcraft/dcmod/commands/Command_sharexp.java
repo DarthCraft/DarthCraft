@@ -21,12 +21,12 @@ public class Command_sharexp extends DarthCraftCommand
         final Player player = PlayerUtils.getPlayer(args[0]);
         final Player sender_p = (Player) sender;
 
-        /* if (sender_p == player)
+         if (sender_p == player)
          {
          sender_p.sendMessage(ChatColor.DARK_RED + "It appears either you are just being silly, or forgot your own name. Please select a person to share with OTHER than yourself. ");
          return showUsage(cmd);
          }
-         */
+         
         if (args.length >= 2)
         {
 
