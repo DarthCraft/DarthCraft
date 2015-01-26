@@ -62,4 +62,9 @@ public class PlayerListener implements Listener
     {
         plugin.tabColors.onPlayerJoinEvent(event);
     }
+    @EventHandler
+    public void onPlayerUseItem(PlayerInteractEvent event)
+    {
+        plugin.abductionHammer.onPlayerUseItem(event);
+    }
 }

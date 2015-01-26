@@ -18,12 +18,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class DC_Utils
 {
 
     public static final List<String> HOSTS = Arrays.asList("pbgben", "DarthSalamon", "KickAssScott", "wild1145");
     public static final List<String> HEADADMINS = Arrays.asList("JabbaTheJake", "boulos77");
+    public static ArrayList<String> DOOMHAMMERS = new ArrayList<>();
 
     private final DarthCraft plugin;
     private final Server server;
@@ -49,6 +55,17 @@ public class DC_Utils
     {
         sender.sendMessage(ChatColor.YELLOW + message);
 
+    }
+    
+    public static ItemStack getDoomHammer()
+    {
+        ItemStack banhammer = new ItemStack(Material.GOLD_AXE, 1);
+        banhammer.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
+        ItemMeta banhammermeta = banhammer.getItemMeta();
+        banhammermeta.setLore(Arrays.asList(ChatColor.BLUE + "Unleash the power of...", ChatColor.YELLOW + "Abducting Players!"));
+        banhammermeta.setDisplayName(ChatColor.RED + "Stealer!");
+        banhammer.setItemMeta(banhammermeta);
+        return banhammer;
     }
 
     public ChatColor getChatColor(Player player)

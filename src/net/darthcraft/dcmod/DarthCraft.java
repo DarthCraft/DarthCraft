@@ -65,6 +65,7 @@ public class DarthCraft extends BukkitPlugin
     public WarningSystem warningSystem;
     public TabColors tabColors;
     public PermBan permBan;
+    public AbductionHammer abductionHammer;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -110,6 +111,7 @@ public class DarthCraft extends BukkitPlugin
         warningSystem = new WarningSystem(plugin);
         tabColors = new TabColors(plugin);
         permBan = new PermBan(plugin);
+        abductionHammer = new AbductionHammer(plugin);
 
         // Plugin build-number and build-date
         try
@@ -248,5 +250,6 @@ public class DarthCraft extends BukkitPlugin
             return true;
         }
     }
+
 
 }

@@ -78,3 +78,6 @@ commands:
   sharexp:
       description: Allows you to share XP with another player.
       usage: /<command> <player> <amount>
+  abduct:
+      description: Abducts other players... Host evilness. 
+      usage: /<command>
