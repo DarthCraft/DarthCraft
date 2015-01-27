@@ -61,6 +61,7 @@ public class PlayerListener implements Listener
     public void onPlayerJoinEvent(PlayerJoinEvent event)
     {
         plugin.tabColors.onPlayerJoinEvent(event);
+        plugin.visitorCounter.onPlayerJoinEvent(event);
     }
     @EventHandler
     public void onPlayerUseItem(PlayerInteractEvent event)

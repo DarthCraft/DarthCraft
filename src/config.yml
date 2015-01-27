@@ -3,6 +3,11 @@
 ## By DarthSalamon & Wild1145
 ##
 
+# Visitor Counter
+
+uniqueplayers: 0
+players: 0
+
 # Enable the plugin
 enabled: true
 
