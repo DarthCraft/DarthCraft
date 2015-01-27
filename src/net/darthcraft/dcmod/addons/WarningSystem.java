@@ -32,11 +32,11 @@ public class WarningSystem extends DarthCraftAddon
         }
 
         // The actual warning system thingie.
-        if (info.getWarnings() > 0 && info.getWarnings() < 15)
+        if (info.getWarnings() > 5 && info.getWarnings() < 10)
         {
             if (info.getWarningLevel() != 1)
             {
-                player.kickPlayer("You have been kicked for reaching 7 or more warning points. Please be more careful when playing here on DarthCraft.");
+                player.kickPlayer("You have been kicked for reaching 10 or more warning points. Please be more careful when playing here on DarthCraft.");
                 info.setWarningLevel(1);
                 logger.debug(player.getName() + " has been warned and has hit the first infraction level of a kick.");
             }
