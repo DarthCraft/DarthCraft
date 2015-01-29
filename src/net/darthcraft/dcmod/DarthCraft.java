@@ -67,6 +67,7 @@ public class DarthCraft extends BukkitPlugin
     public PermBan permBan;
     public AbductionHammer abductionHammer;
     public VisitorCounter visitorCounter;
+    public PlayerSource playerSource;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -114,6 +115,7 @@ public class DarthCraft extends BukkitPlugin
         permBan = new PermBan(plugin);
         abductionHammer = new AbductionHammer(plugin);
         visitorCounter = new VisitorCounter(plugin);
+        playerSource = new PlayerSource(plugin);
 
         // Plugin build-number and build-date
         try
@@ -188,12 +190,15 @@ public class DarthCraft extends BukkitPlugin
             logger.warning("MySQL has not been started. Please chcek your config to ensure you have enabled it");
         }
 
+        //Lets download the Database and see if this shit actually works...
+        plugin.playerSource.downloadDatabase();
+
         // Start the metrics
         metricsPlotter.start();
 
         logger.log(Level.INFO, "Version {0} by {1} is enabled", new Object[]
-           {
-               pluginVersion, pluginAuthors
+        {
+            pluginVersion, pluginAuthors
         });
     }
 
@@ -252,6 +257,5 @@ public class DarthCraft extends BukkitPlugin
             return true;
         }
     }
-
 
 }
