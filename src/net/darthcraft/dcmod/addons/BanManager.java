@@ -3,6 +3,7 @@ package net.darthcraft.dcmod.addons;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.player.Ban.BanType;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.player.Ban;
@@ -55,7 +56,7 @@ public class BanManager extends DarthCraftAddon
                 }
                 catch (Exception e)
                 {
-                    logger.log(Level.WARNING, "Could not load player ban: {0}!", player);
+                    logger.log(Level.WARNING, DC_Messages.CANNOT_LOAD_BANS, player);
                 }
 
             }
@@ -92,7 +93,7 @@ public class BanManager extends DarthCraftAddon
 
         removeExpired();
 
-        logger.log(Level.INFO, "Loaded {0} bans", bans.size());
+        logger.log(Level.INFO, DC_Messages.LOADED + DC_Messages.BANS_MESSAGE, bans.size());
     }
 
     public void saveBans()
@@ -107,7 +108,7 @@ public class BanManager extends DarthCraftAddon
             ban.saveTo(bansconfig);
         }
 
-        logger.log(Level.INFO, "Saved {0} bans", bans.size());
+        logger.log(Level.INFO, DC_Messages.SAVED + DC_Messages.BANS_MESSAGE, bans.size());
     }
 
     public List<Ban> getBans()
@@ -177,9 +178,9 @@ public class BanManager extends DarthCraftAddon
         catch (IllegalArgumentException | IllegalStateException ex)
         {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GOLD
-                                                               + "Sorry! " + ChatColor.AQUA + "There was a problem checking if you were banned.\n"
-                                                               + "Please report this issue at http://darthcraft.net/forums");
-            logger.log(Level.SEVERE, "Problem checking ban status for {0}", name);
+                                                               + DC_Messages.BAN_GET_ERROR
+                                                               + DC_Messages.APPEALAT_MESSAGE + " " + plugin.mainConfig.getString("website"));
+            logger.log(Level.SEVERE, DC_Messages.CANNOT_CHECK_BANS, name);
             logger.severe(ex);
         }
     }
@@ -198,7 +199,7 @@ public class BanManager extends DarthCraftAddon
 
         for (Ban ban : toUnban)
         {
-            plugin.logger.log(Level.INFO, "Removing expired ban: {0}", ban.getTarget());
+            plugin.logger.log(Level.INFO, DC_Messages.REMOVE_OLD_BANS, ban.getTarget());
             unban(ban);
         }
     }
@@ -207,7 +208,7 @@ public class BanManager extends DarthCraftAddon
     {
         if (isBanned(ban))
         {
-            logger.log(Level.WARNING, "Not banning {0}: already banned!", ban.getTarget());
+            logger.log(Level.WARNING, DC_Messages.PLAYER_ALREADY_BANNED, ban.getTarget());
             return;
         }
 
@@ -219,7 +220,7 @@ public class BanManager extends DarthCraftAddon
     {
         if (!isBanned(ban))
         {
-            logger.log(Level.WARNING, "Not unbanning {0}: not banned!", ban.getTarget());
+            logger.log(Level.WARNING, DC_Messages.BM_PLAYER_NOT_BANNED, ban.getTarget());
             return;
         }
 

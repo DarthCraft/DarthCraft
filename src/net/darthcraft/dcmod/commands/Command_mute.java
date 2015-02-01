@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import net.darthcraft.dcmod.player.PlayerManager.PlayerInfo;
@@ -25,14 +26,14 @@ public class Command_mute extends DarthCraftCommand
         Player player = PlayerUtils.getPlayer(args[0]);
         if (player == null)
         {
-            return warn("Player not found!");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (PermissionUtils.hasPermission(player, Permission.ADMIN))
         {
             if (!PermissionUtils.hasPermission(sender, Permission.HEADADMIN))
             {
-                return warn("You may not mute that player.");
+                return warn(DC_Messages.CANNOT_WARN_PLAYER);
             }
         }
 
@@ -40,10 +41,10 @@ public class Command_mute extends DarthCraftCommand
 
         if (info.isMuted())
         {
-            return warn("That player is already muted.");
+            return warn(DC_Messages.ALREADY_MUTED);
         }
 
-        util.adminAction(sender, "Muting " + player.getName());
+        util.adminAction(sender, DC_Messages.MUTING + player.getName());
         info.setMuted(true);
         return true;
     }

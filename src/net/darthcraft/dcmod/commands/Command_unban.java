@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import net.darthcraft.dcmod.player.Ban;
@@ -38,7 +39,7 @@ public class Command_unban extends DarthCraftCommand
             player = PlayerUtils.getOfflinePlayer(args[0], false);
             if (player == null)
             {
-                return warn("That player isn't banned.");
+                return warn(DC_Messages.PLAYER_NOT_BANNED);
             }
 
             ip = playerManager.getInfo(player).getLastIp();
@@ -90,7 +91,7 @@ public class Command_unban extends DarthCraftCommand
 
         if (!nameUnbanned && !ipUnbanned)
         {
-            return warn(byIp ? "That IP isn't banned." : "That player isn't banned.");
+            return warn(byIp ? DC_Messages.IP_NOT_BANNED : DC_Messages.PLAYER_NOT_BANNED);
         }
 
         util.adminAction(sender, "Unbanning " + (!nameUnbanned

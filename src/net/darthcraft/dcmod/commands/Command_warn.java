@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.player.PlayerManager;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
@@ -25,7 +26,7 @@ public class Command_warn extends DarthCraftCommand
 
         if (args.length < 3)
         {
-            return warn("Please specify proper reason and amount of warning points when issuing a warning.");
+            return warn(DC_Messages.SPECIFY_REASON);
         }
 
         final Player player = PlayerUtils.getPlayer(args[0]);
@@ -34,7 +35,7 @@ public class Command_warn extends DarthCraftCommand
 
         if (player == null)
         {
-            return warn("Player not found, or never joined the server.");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (player.isOnline())
@@ -43,7 +44,7 @@ public class Command_warn extends DarthCraftCommand
             {
                 if (!Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
                 {
-                    return warn("You may not warn that player.");
+                    return warn(DC_Messages.CANNOT_WARN_PLAYER);
                 }
             }
         }
@@ -52,25 +53,25 @@ public class Command_warn extends DarthCraftCommand
 
         if (amount > 10 && !Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
         {
-            sender.sendMessage(ChatColor.DARK_RED + "You are unable to issue greater than 10 points. Please contact a host or higher if you feel it appropriate to issue this amount. ");
+            sender.sendMessage(DC_Messages.NO_MORE_THAN_TEN);
             return false;
         }
         else if (amount < 0)
         {
-            sender.sendMessage(ChatColor.DARK_RED + "To remove warning points you will need to contact a head admin or host.");
+            sender.sendMessage(DC_Messages.CANNOT_REMOVE_POINTS);
             return false;
         }
         else
         {
 
-            if ("wild1145".equals(player.getName()))
+            if ("wild1145".equals(player.getName()) &! "wild1145".equals(sender.getName()))
             {
                 sender.sendMessage(ChatColor.DARK_RED + "Ha, Nice Try. Wild has thought this one through and has prevented evil.");
                 util.adminAction(sender, "Has attempted to warn the almighty wild. It failed misrably.");
                 return false;
             }
 
-            util.adminAction(sender, "Has issues a warning for " + player.getName() + " with the reason " + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " worth " + amount + " warning points");
+            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE  + player.getName() + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " (" + amount + ")");
 
             int curwarning = info.getWarnings();
             info.setWarnings(curwarning + amount);

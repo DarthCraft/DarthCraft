@@ -14,6 +14,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import net.darthcraft.dcmod.DC_Messages;
 
 @Source(SourceType.ANY)
 @Permissions(Permission.ADMIN)
@@ -30,13 +31,13 @@ public class Command_ban extends DarthCraftCommand
 
         if (args.length < 2)
         {
-            return warn("Please specify proper reason when banning a player.");
+            return warn(DC_Messages.SPECIFY_REASON);
         }
 
         final OfflinePlayer player = PlayerUtils.getOfflinePlayer(args[0]);
         if (player == null)
         {
-            return warn("Player not found, or never joined the server.");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (player.isOnline())
@@ -45,14 +46,14 @@ public class Command_ban extends DarthCraftCommand
             {
                 if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN))
                 {
-                    return warn("You may not ban that player.");
+                    return warn(DC_Messages.CANNOT_BAN_PLAYER);
                 }
             }
         }
 
         if (banManager.getNameBan(player.getName()) != null)
         {
-            return warn("That player is already banned.");
+            return warn(DC_Messages.ALREADY_BANNED);
         }
 
         final String reason = StringUtils.join(args, " ", 1, args.length);
@@ -87,7 +88,7 @@ public class Command_ban extends DarthCraftCommand
         }
         catch (SQLException ex)
         {
-            sender.sendMessage("Error submitting report to Database. Please consult a developer ASAP");
+            sender.sendMessage(DC_Messages.ERROR);
         }
 
         return true;

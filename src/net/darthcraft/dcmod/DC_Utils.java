@@ -62,7 +62,7 @@ public class DC_Utils
         ItemStack banhammer = new ItemStack(Material.GOLD_AXE, 1);
         banhammer.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
         ItemMeta banhammermeta = banhammer.getItemMeta();
-        banhammermeta.setLore(Arrays.asList(ChatColor.BLUE + "Unleash the power of...", ChatColor.YELLOW + "Abducting Players!"));
+        banhammermeta.setLore(Arrays.asList(DC_Messages.ABDUCT_HAMMER));
         banhammermeta.setDisplayName(ChatColor.RED + "Stealer!");
         banhammer.setItemMeta(banhammermeta);
         return banhammer;

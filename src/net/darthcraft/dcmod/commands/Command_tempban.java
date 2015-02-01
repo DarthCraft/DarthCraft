@@ -1,6 +1,7 @@
 package net.darthcraft.dcmod.commands;
 
 import java.util.Date;
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.player.Ban;
 import net.darthcraft.dcmod.player.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
@@ -28,13 +29,13 @@ public class Command_tempban extends DarthCraftCommand
 
         if (args.length < 3)
         {
-            return warn("Please specify proper reason when banning a player.");
+            return warn(DC_Messages.SPECIFY_REASON);
         }
 
         final OfflinePlayer player = PlayerUtils.getOfflinePlayer(args[0]);
         if (player == null)
         {
-            return warn("Player not found, or never joined the server.");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (player.isOnline())
@@ -43,7 +44,7 @@ public class Command_tempban extends DarthCraftCommand
             {
                 if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN))
                 {
-                    return warn("You may not ban that player.");
+                    return warn(DC_Messages.CANNOT_BAN_PLAYER);
                 }
             }
         }
@@ -51,7 +52,7 @@ public class Command_tempban extends DarthCraftCommand
         final Date until = TimeUtils.parseDateOffset(args[1]);
         if (until == null)
         {
-            return warn("Incorrect expiry date.");
+            return warn(DC_Messages.INVALID_DATE);
         }
 
         final String reason = StringUtils.join(args, " ", 2, args.length);

@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.addons.BanManager;
@@ -41,7 +42,7 @@ public abstract class DarthCraftCommand
 
     public boolean noPerms()
     {
-        commandSender.sendMessage(ChatColor.RED + "You don't have access to that command");
+        commandSender.sendMessage(DC_Messages.NO_PREMS);
         return true;
     }
 
@@ -53,13 +54,13 @@ public abstract class DarthCraftCommand
 
     public boolean consoleOnly()
     {
-        warn("This command can only be executed from the console.");
+        warn(DC_Messages.CONSOLE_ONLY);
         return true;
     }
 
     public boolean playerOnly()
     {
-        warn("This command can only be executed by players.");
+        warn(DC_Messages.PLAYER_ONLY);
         return true;
     }
 

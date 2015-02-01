@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.player.PlayerManager;
@@ -29,8 +30,7 @@ public class Command_setlogin extends DarthCraftCommand
 
         info.setLoginMessage(title);
 
-        sender.sendMessage(DC_Utils.colorize(ChatColor.DARK_AQUA + "Your login message has been set to: " + sender.getName() + " is " + ChatColor.RESET + title));
-        sender.sendMessage(ChatColor.DARK_RED + "If you wish to change this, please make the changes BEFORE your next login.");
+        sender.sendMessage(DC_Utils.colorize(ChatColor.DARK_AQUA + DC_Messages.MESSAGE_SET + title));
         return true;
     }
 

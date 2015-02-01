@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
@@ -25,7 +26,7 @@ public class Command_delwarn extends DarthCraftCommand
 
         if (args.length < 3)
         {
-            return warn("Please specify proper reason and amount of warning points when waiving a warning.");
+            return warn(DC_Messages.SPECIFY_REASON);
         }
 
         final OfflinePlayer player = PlayerUtils.getOfflinePlayer(args[0]);
@@ -33,13 +34,13 @@ public class Command_delwarn extends DarthCraftCommand
         final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
         if (player == null)
         {
-            return warn("Player not found, or never joined the server.");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (!player.isOnline())
         {
 
-            return warn("You may not warn that player.");
+            return warn(DC_Messages.CANNOT_WARN_PLAYER);
 
         }
 
@@ -55,7 +56,7 @@ public class Command_delwarn extends DarthCraftCommand
 
             if (info.getWarnings() == 0)
             {
-                sender.sendMessage(ChatColor.DARK_RED + "How about no... This player already has no warning points so your going to break shit.");
+                sender.sendMessage(DC_Messages.WORLD_IMPLODE);
                 return false;
             }
 
@@ -64,7 +65,7 @@ public class Command_delwarn extends DarthCraftCommand
             
             if (newwarning > 0)
             {
-                sender.sendMessage(ChatColor.DARK_RED + "STOOOOOOP - The player will end up with LESS than 0 warning points. This is going to cause the world to implode as we know it and wild to come and slap you somewhat.");
+                sender.sendMessage(DC_Messages.WORLD_IMPLODE);
                 return false;
             }
             info.setWarnings(newwarning);

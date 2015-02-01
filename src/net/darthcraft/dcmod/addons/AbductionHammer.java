@@ -10,7 +10,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -67,21 +66,24 @@ public class AbductionHammer extends DarthCraftAddon
                 }.runTaskLater(plugin, 20L * 2L);
 
             }
-            else if (e instanceof LivingEntity)
+            else
             {
-                final LivingEntity le = (LivingEntity) e;
-                le.setVelocity(le.getVelocity().add(new Vector(0, 3, 0)));
-                new BukkitRunnable()
+                if (e instanceof LivingEntity)
                 {
-                    @Override
-                    public void run()
+                    final LivingEntity le = (LivingEntity) e;
+                    le.setVelocity(le.getVelocity().add(new Vector(0, 3, 0)));
+                    new BukkitRunnable()
                     {
-                        le.getWorld().createExplosion(le.getLocation().getX(), le.getLocation().getY(), le.getLocation().getZ(), 5f, false, false);
-                        le.getWorld().strikeLightningEffect(le.getLocation());
-                        le.setHealth(0d);
-                    }
-                }.runTaskLater(plugin, 20L * 2L);
+                        @Override
+                        public void run()
+                        {
+                            le.getWorld().createExplosion(le.getLocation().getX(), le.getLocation().getY(), le.getLocation().getZ(), 5f, false, false);
+                            le.getWorld().strikeLightningEffect(le.getLocation());
+                            le.setHealth(0d);
+                        }
+                    }.runTaskLater(plugin, 20L * 2L);
 
+                }
             }
             event.setCancelled(true);
         }

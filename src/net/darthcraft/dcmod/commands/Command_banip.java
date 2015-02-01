@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DC_Utils;
 import net.pravian.bukkitlib.command.SourceType;
 import net.darthcraft.dcmod.player.Ban;
@@ -42,13 +43,13 @@ public class Command_banip extends DarthCraftCommand
 
         if (args.length < 2)
         {
-            return warn("Please specify proper reason when banning a player.");
+            return warn(DC_Messages.SPECIFY_REASON);
         }
 
         final OfflinePlayer target = PlayerUtils.getOfflinePlayer(args[0]);
         if (target == null || !target.hasPlayedBefore())
         {
-            return warn("Player not found, or never joined the server.");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (target.isOnline())
@@ -57,12 +58,12 @@ public class Command_banip extends DarthCraftCommand
             {
                 if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN))
                 {
-                    return warn("You may not ban that player.");
+                    return warn(DC_Messages.CANNOT_BAN_PLAYER);
                 }
             }
         }
 
-        final List<String> ips = new ArrayList<String>();
+        final List<String> ips = new ArrayList<>();
         if (all)
         {
             for (String ip : playerManager.getInfo(target).getIps())
@@ -75,7 +76,7 @@ public class Command_banip extends DarthCraftCommand
             ips.add(playerManager.getInfo(target).getLastIp());
         }
 
-        final List<String> bannedIps = new ArrayList<String>();
+        final List<String> bannedIps = new ArrayList<>();
         final String reason = StringUtils.join(args, " ", 1, args.length);
 
         Ban ban = banManager.getNameBan(target.getName());
@@ -106,7 +107,7 @@ public class Command_banip extends DarthCraftCommand
         {
             if (args.length < (all ? 3 : 2))
             {
-                return warn("Please specify proper reason when banning a player.");
+                return warn(DC_Messages.SPECIFY_REASON);
             }
 
             for (String ip : ips)
@@ -161,7 +162,7 @@ public class Command_banip extends DarthCraftCommand
         }
         catch (SQLException ex)
         {
-            sender.sendMessage("Error submitting report to Database. Please consult a developer ASAP");
+            sender.sendMessage(DC_Messages.ERROR);
         }
 
         return true;

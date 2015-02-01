@@ -1,8 +1,8 @@
 package net.darthcraft.dcmod.addons;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.darthcraft.dcmod.commands.Permissions;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.darthcraft.dcmod.player.PlayerManager;
@@ -27,8 +27,16 @@ public class AdminBusy extends DarthCraftAddon
 
         info.setBusy(!info.isBusy());
 
-        util.msg(player, ChatColor.AQUA + "You have toggled busy status o" + (info.isBusy() ? "n" : "ff"));
-        util.adminAction(player, ChatColor.AQUA + "Toggled busy status o" + (info.isBusy() ? "n" : "ff"));
+        if (info.isBusy())
+        {
+            player.sendMessage(DC_Messages.BUSY_ON);
+            util.adminAction(player, ChatColor.AQUA + DC_Messages.BUSY_ON);
+        }
+        else
+        {
+            player.sendMessage(DC_Messages.BUSY_OFF);
+            util.adminAction(player, ChatColor.AQUA + DC_Messages.BUSY_OFF);
+        }
 
         if (DC_Utils.HOSTS.contains(player.getName()) || DC_Utils.HEADADMINS.contains(player.getName()))
         {
@@ -36,16 +44,22 @@ public class AdminBusy extends DarthCraftAddon
             player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.LIGHT_PURPLE + player.getName()));
         }
 
-        else if (PermissionUtils.hasPermission(player, Permissions.Permission.ADMIN))
+        else
         {
-            //  player.setPlayerListName(ChatColor.RED + player.getName());
-            player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.RED + player.getName()));
-        }
+            if (PermissionUtils.hasPermission(player, Permissions.Permission.ADMIN))
+            {
+                //  player.setPlayerListName(ChatColor.RED + player.getName());
+                player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.RED + player.getName()));
+            }
 
-        else if (PermissionUtils.hasPermission(player, Permissions.Permission.PREMIUM))
-        {
-            // player.setPlayerListName(ChatColor.DARK_PURPLE + player.getName());
-            player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.DARK_PURPLE + player.getName()));
+            else
+            {
+                if (PermissionUtils.hasPermission(player, Permissions.Permission.PREMIUM))
+                {
+                    // player.setPlayerListName(ChatColor.DARK_PURPLE + player.getName());
+                    player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.DARK_PURPLE + player.getName()));
+                }
+            }
         }
     }
 
@@ -72,7 +86,7 @@ public class AdminBusy extends DarthCraftAddon
 
             if (plugin.playerManager.getInfo(player).isBusy())
             {
-                plugin.util.sendSyncMessage(event.getPlayer(), ChatColor.RED + player.getName() + " is busy right now, try again later");
+                plugin.util.sendSyncMessage(event.getPlayer(), ChatColor.RED + player.getName() + DC_Messages.CURRENTLY_BUSY);
             }
         }
     }

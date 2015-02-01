@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import org.apache.commons.lang.StringUtils;
@@ -24,7 +25,7 @@ public class Command_o extends DarthCraftCommand
 
         if (!(sender instanceof Player))
         {
-            return warn("Only in-game players can toggle adminchat.");
+            return warn(DC_Messages.IGN_ONLY);
         }
 
         plugin.adminChat.toggleAdminChat((Player) sender);

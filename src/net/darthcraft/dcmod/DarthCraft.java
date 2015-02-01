@@ -120,18 +120,19 @@ public class DarthCraft extends BukkitPlugin
         // Plugin build-number and build-date
         try
         {
-            final InputStream in = plugin.getResource("build.properties");
-            final Properties build = new Properties();
-
-            build.load(in);
-            in.close();
+            final Properties build;
+            try (InputStream in = plugin.getResource("build.properties"))
+            {
+                build = new Properties();
+                build.load(in);
+            }
 
             pluginBuildNumber = build.getProperty("program.buildnumber");
             pluginBuildDate = build.getProperty("program.builddate");
         }
         catch (IOException ex)
         {
-            logger.severe("Could not load build information!");
+            logger.severe(DC_Messages.CANNOT_LOAD_BUILD_INFO);
             logger.severe(ex);
             pluginBuildNumber = "1";
             pluginBuildDate = (new SimpleDateFormat("dd/MM/yyyy hh:mm aa")).format(new Date());
@@ -147,12 +148,12 @@ public class DarthCraft extends BukkitPlugin
 
         // Debug-mode
         logger.setDebugMode(mainConfig.getBoolean("debug"));
-        logger.debug("Debug-mode enabled!"); // So smart ;D
+        logger.debug(DC_Messages.DEBUG_ENABLED); // So smart ;D
 
         // Disable the plugin if the config defines so
         if (!mainConfig.getBoolean("enabled", true))
         {
-            logger.warning("Disabling: defined in config");
+            logger.warning(DC_Messages.PLUGIN_DISABLED);
             plugin.getServer().getPluginManager().disablePlugin(plugin);
             return;
         }
@@ -183,11 +184,11 @@ public class DarthCraft extends BukkitPlugin
         if (mysqlenabled)
         {
             mySQL = new MySQL(plugin, this.mysqlhostname = plugin.mainConfig.getString("forceip.hostname"), this.mysqlport = plugin.mainConfig.getString("forceip.port"), this.mysqldatabase = plugin.mainConfig.getString("forceip.hostname"), this.mysqlusername = plugin.mainConfig.getString("forceip.hostname"), this.mysqlpassword = plugin.mainConfig.getString("forceip.hostname"));
-            logger.info("Success - MySQL connection has been established");
+            logger.info(DC_Messages.MYSQL_ENABLED);
         }
         else
         {
-            logger.warning("MySQL has not been started. Please chcek your config to ensure you have enabled it");
+            logger.warning(DC_Messages.MYSQL_NOT_ENABLED);
         }
 
         //Lets download the Database and see if this shit actually works...
@@ -196,7 +197,7 @@ public class DarthCraft extends BukkitPlugin
         // Start the metrics
         metricsPlotter.start();
 
-        logger.log(Level.INFO, "Version {0} by {1} is enabled", new Object[]
+        logger.log(Level.INFO, DC_Messages.PLUGIN_ENABLED, new Object[]
         {
             pluginVersion, pluginAuthors
         });
@@ -207,7 +208,7 @@ public class DarthCraft extends BukkitPlugin
     {
         plugin.getServer().getScheduler().cancelTasks(plugin);
         banManager.saveBans();
-        logger.log(Level.INFO, "Version {0} is disabled", pluginVersion);
+        logger.log(Level.INFO, DC_Messages.PLUGIN_DISABLED, pluginVersion);
     }
 
     @Override
@@ -226,9 +227,9 @@ public class DarthCraft extends BukkitPlugin
         }
         catch (ClassNotFoundException | InstantiationException | IllegalAccessException e)
         {
-            logger.log(Level.SEVERE, "Command not loaded: {0}", cmd.getName());
+            logger.log(Level.SEVERE, DC_Messages.COMMAND_NOT_LOADED_LOG, cmd.getName());
             logger.severe(e);
-            sender.sendMessage(ChatColor.RED + "Command Error: Command not loaded: " + cmd.getName());
+            sender.sendMessage(DC_Messages.COMMAND_NOT_LOADED + cmd.getName());
             return true;
         }
 
@@ -251,9 +252,9 @@ public class DarthCraft extends BukkitPlugin
         }
         catch (Exception e)
         {
-            logger.log(Level.SEVERE, "Unknown command error: {0}", e.getMessage());
+            logger.log(Level.SEVERE, DC_Messages.UNKOWN_COMMAND_ERROR, e.getMessage());
             logger.severe(e);
-            sender.sendMessage(ChatColor.RED + "Command Error: " + e.getMessage());
+            sender.sendMessage(ChatColor.RED + DC_Messages.COMMAND_ERROR + e.getMessage());
             return true;
         }
     }

@@ -2,6 +2,7 @@ package net.darthcraft.dcmod.commands;
 
 import java.util.Iterator;
 import java.util.List;
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.player.PlayerManager;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
@@ -25,8 +26,8 @@ public class Command_getwarnings extends DarthCraftCommand
 
             final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo((OfflinePlayer) sender);
 
-            sender.sendMessage(ChatColor.DARK_AQUA + "You currently have a total of " + info.getWarnings() + " linked to your account.");
-            sender.sendMessage(ChatColor.DARK_AQUA + "The reasons for these warnings are as follow:");
+            sender.sendMessage(DC_Messages.WARNING_REASONS + info.getWarnings());
+            sender.sendMessage(DC_Messages.WARNINGS_AS_FOLLOWS);
 
             List<String> someList = info.getReasons();
 
@@ -35,7 +36,7 @@ public class Command_getwarnings extends DarthCraftCommand
                 sender.sendMessage(ChatColor.DARK_AQUA + item);
             }
 
-            sender.sendMessage(ChatColor.DARK_AQUA + "The reasons for these waived warnings are as follow:");
+            sender.sendMessage(DC_Messages.WAIVE_WARNINGS_REASONS);
 
             List<String> waivesomeList = info.getWaiveReasons();
 
@@ -54,8 +55,8 @@ public class Command_getwarnings extends DarthCraftCommand
 
             if (sender == player || (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.ADMIN)))
             {
-                sender.sendMessage(ChatColor.DARK_AQUA + player.getName() + " currently has a total of " + info.getWarnings() + " linked to your account.");
-                sender.sendMessage(ChatColor.DARK_AQUA + "The reasons for these warnings are as follow:");
+                sender.sendMessage(ChatColor.DARK_AQUA + player.getName() + DC_Messages.OTHER_WARNING_AMOUNT + info.getWarnings());
+                sender.sendMessage(DC_Messages.WARNINGS_AS_FOLLOWS);
 
                 List<String> someList = info.getReasons();
 
@@ -64,7 +65,7 @@ public class Command_getwarnings extends DarthCraftCommand
                     sender.sendMessage(ChatColor.DARK_AQUA + item);
                 }
 
-                sender.sendMessage(ChatColor.DARK_AQUA + "The reasons for these waived warnings are as follow:");
+                sender.sendMessage(DC_Messages.WAIVE_WARNINGS_REASONS);
 
                 List<String> waivesomeList = info.getWaiveReasons();
 
@@ -77,7 +78,7 @@ public class Command_getwarnings extends DarthCraftCommand
             }
             else
             {
-                sender.sendMessage(ChatColor.DARK_RED + "Sorry, this feature can only be used to check your own warning reasons");
+                sender.sendMessage(DC_Messages.NO_PREMS);
                 return false;
             }
         }

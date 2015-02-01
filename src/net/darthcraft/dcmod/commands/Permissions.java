@@ -2,6 +2,8 @@ package net.darthcraft.dcmod.commands;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.logging.Level;
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DarthCraft;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -24,7 +26,7 @@ public @interface Permissions
         ADMIN("darthcraft.admin"),
         HEADADMIN("darthcraft.headadmin"),
         HOST("darthcraft.host");
-        private String permission;
+        private final String permission;
 
         public String getPermission()
         {
@@ -59,7 +61,7 @@ public @interface Permissions
             }
             catch (NullPointerException e)
             {
-                plugin.logger.warning("Command " + commandClass.getName() + " doesn't have permissions set!");
+                plugin.logger.log(Level.WARNING, DC_Messages.NO_COMMAND_PERMS, commandClass.getName());
                 return true;
             }
 

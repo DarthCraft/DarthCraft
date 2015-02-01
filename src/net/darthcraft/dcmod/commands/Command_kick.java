@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
@@ -24,20 +25,20 @@ public class Command_kick extends DarthCraftCommand
 
         if (args.length < 2)
         {
-            return warn("Please provide a valid reason when using this command.");
+            return warn(DC_Messages.SPECIFY_REASON);
         }
 
         Player player = PlayerUtils.getPlayer(args[0]);
         if (player == null)
         {
-            return warn("Player not found!");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         if (Permissions.PermissionUtils.hasPermission(player, Permission.ADMIN))
         {
             if (!Permissions.PermissionUtils.hasPermission(sender, Permission.HEADADMIN))
             {
-                return warn("You may not kick that player.");
+                return warn(DC_Messages.CANNOT_KICK_PLAYER);
             }
         }
 
@@ -46,8 +47,8 @@ public class Command_kick extends DarthCraftCommand
         util.adminAction(sender, "Kicking " + player.getName() + " for " + reason);
 
         player.kickPlayer(ChatColor.RED
-                          + "You have been kicked\n"
-                          + "Reason: " + reason);
+                          + DC_Messages.YOU_BEEN_KICKED + " \n"
+                          + reason);
 
         return true;
     }

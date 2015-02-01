@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.pravian.bukkitlib.command.SourceType;
@@ -43,7 +44,7 @@ public class Command_report extends DarthCraftCommand
 
         if (player == sender)
         {
-            sender.sendMessage(ChatColor.RED + "Don't try to report yourself, idiot.");
+            sender.sendMessage(DC_Messages.WORLD_IMPLODE);
             return true;
         }
 
@@ -51,14 +52,14 @@ public class Command_report extends DarthCraftCommand
         {
             if (Permissions.PermissionUtils.hasPermission((Player) admins, Permission.ADMIN) || Permissions.PermissionUtils.hasPermission((Player) admins, Permission.HEADADMIN) || Permissions.PermissionUtils.hasPermission((Player) admins, Permission.HOST))
             {
-                admins.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &a" + sender.getName() + " &4has reported &a" + Reported + " - " + player.getAddress().getAddress().getHostAddress() + " &4 for &2" + report_reason + "&4."));
+                admins.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &a" + sender.getName() + ChatColor.DARK_RED + DC_Messages.REPORT_REASON + Reported + " - " + player.getAddress().getAddress().getHostAddress() + " &2" + report_reason + "&4."));
 
             }
         }
 
-        player.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &4Please note that you have been reported for &2" + report_reason + " &4and that a admin will be reviewing this shortly ."));
+        player.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &4" + DC_Messages.REPORTEE + "&5" + report_reason));
 
-        sender.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &4Your report against &a " + Reported + " &4for &2" + report_reason + " &4has been recieved and a admin will be reviewing it shortly ."));
+        sender.sendMessage(DC_Utils.colorize("&8[&4DarthCraft Plugin&8] &4" + DC_Messages.REPORT));
 
         return true;
     }

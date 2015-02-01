@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import net.darthcraft.dcmod.player.PlayerManager.PlayerInfo;
@@ -24,14 +25,14 @@ public class Command_unmute extends DarthCraftCommand
         Player player = PlayerUtils.getPlayer(args[0]);
         if (player == null)
         {
-            return warn("Player not found!");
+            return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
         PlayerInfo info = plugin.playerManager.getInfo(player);
 
         if (!info.isMuted())
         {
-            return warn("That player is not muted.");
+            return warn(DC_Messages.UNMUTED);
         }
 
         util.adminAction(sender, "Unmuting " + player.getName());

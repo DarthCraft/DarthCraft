@@ -2,6 +2,8 @@ package net.darthcraft.dcmod.commands;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.logging.Level;
+import net.darthcraft.dcmod.DC_Messages;
 import net.pravian.bukkitlib.command.SourceType;
 import net.darthcraft.dcmod.DarthCraft;
 import org.bukkit.command.CommandSender;
@@ -35,7 +37,7 @@ public @interface Source
             }
             catch (NullPointerException ex)
             {
-                plugin.logger.warning("Command " + commandClass.getName() + " doesn't have a command-source set!");
+                plugin.logger.log(Level.WARNING, DC_Messages.NO_COMMAND_SOURCE, commandClass.getName());
                 return true;
             }
 

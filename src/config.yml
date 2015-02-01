@@ -4,9 +4,11 @@
 ##
 
 # Visitor Counter
-
 uniqueplayers: 0
 players: 0
+
+#Website for ban appeals
+website: www.darthcraft.net/forums
 
 # Enable the plugin
 enabled: true

@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.player.PlayerManager;
 import net.pravian.bukkitlib.command.SourceType;
@@ -40,7 +41,7 @@ public class Command_dellogin extends DarthCraftCommand
 
             info.setLoginMessage(null);
 
-            sender.sendMessage(ChatColor.DARK_GREEN + "You have successfuly reset your login message. You will no longer have one when you join the server.");
+            sender.sendMessage(DC_Messages.MESSAGE_REMOVED);
             return true;
         }
     }

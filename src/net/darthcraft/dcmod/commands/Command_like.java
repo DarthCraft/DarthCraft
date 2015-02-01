@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.command.SourceType;
@@ -32,8 +33,8 @@ public class Command_like extends DarthCraftCommand
         if (args[0].equals("amount"))
         {
             msg(ChatColor.GREEN + "There are " + ChatColor.DARK_RED.toString() + plugin.likeSigns.getLikers().size() + ChatColor.GREEN + " players who have DarthCraft!");
-            msg(ChatColor.GREEN + (plugin.likeSigns.getLikers().contains(sender.getName()) ? "You liked DarthCraft, thanks!" + ChatColor.LIGHT_PURPLE + "<3"
-                                   : "You haven't liked DarthCraft yet! To like try /warp like"));
+            msg(ChatColor.GREEN + (plugin.likeSigns.getLikers().contains(sender.getName()) ? DC_Messages.YOU_LIKED + ChatColor.LIGHT_PURPLE + "<3"
+                                   : DC_Messages.NOT_LIKED));
             return true;
         }
 
@@ -47,18 +48,18 @@ public class Command_like extends DarthCraftCommand
             final Block block = ((Player) sender).getTargetBlock(null, 10);
             if (block == null || !(block.getState() instanceof Sign))
             {
-                return warn("You have to be looking at a sign");
+                return warn(DC_Messages.MUST_LOOK);
             }
 
             if (plugin.likeSigns.getSigns().contains(block.getLocation()))
             {
-                return warn("That is already a LikeSign");
+                return warn(DC_Messages.ALREADY_LIKE_SIGN);
             }
 
             plugin.likeSigns.getSigns().add(block.getLocation());
             plugin.likeSigns.updateSign(block.getLocation());
             plugin.likeSigns.saveSettings();
-            return msg("LikeSign set");
+            return msg(DC_Messages.LIKESIGN_SET);
         }
 
         if (args[0].equals("remove"))
@@ -71,12 +72,12 @@ public class Command_like extends DarthCraftCommand
             final Block block = ((Player) sender).getTargetBlock(null, 10);
             if (block == null || !(block.getState() instanceof Sign))
             {
-                return warn("You have to be looking at a sign");
+                return warn(DC_Messages.MUST_LOOK);
             }
 
             if (!plugin.likeSigns.getSigns().contains(block.getLocation()))
             {
-                return warn("That is not a LikeSign");
+                return warn(DC_Messages.NOT_LIKESIGN);
             }
 
             plugin.likeSigns.getSigns().remove(block.getLocation());
@@ -89,7 +90,7 @@ public class Command_like extends DarthCraftCommand
             sign.setLine(3, "");
             sign.update();
 
-            return msg("LikeSign removed");
+            return msg(DC_Messages.LIKESIGN_REMOVED);
         }
 
         return showUsage(cmd);
