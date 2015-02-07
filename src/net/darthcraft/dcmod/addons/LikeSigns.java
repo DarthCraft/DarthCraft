@@ -2,8 +2,10 @@ package net.darthcraft.dcmod.addons;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import net.darthcraft.dcmod.DarthCraft;
+import net.darthcraft.dcmod.player.PlayerManager;
 import net.pravian.bukkitlib.serializable.SerializableBlockLocation;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -126,13 +128,15 @@ public class LikeSigns extends DarthCraftAddon
 
     public void like(Player player)
     {
-        if (likers.contains(player.getName()))
+        String uuid = player.getUniqueId().toString();
+        
+        if (likers.contains(uuid))
         {
             util.msg(player, ChatColor.GREEN + "You've already liked DarthCraft, thanks! " + ChatColor.LIGHT_PURPLE + "<3");
             return;
         }
 
-        likers.add(player.getName());
+        likers.add(uuid);
 
         saveSettings();
         updateSigns();

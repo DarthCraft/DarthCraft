@@ -1,6 +1,7 @@
 package net.darthcraft.dcmod.addons;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -55,7 +56,7 @@ public class BanWarner extends DarthCraftAddon
                     json = (JSONObject) JSONValue.parse(in.readLine());
                     in.close();
                 }
-                catch (Exception ex)
+                catch (IOException ex)
                 {
                     logger.severe("Error fetching fishbans information from " + url.getHost());
                     logger.severe(ex);
