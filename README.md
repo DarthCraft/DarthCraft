@@ -4,9 +4,9 @@
 
 The DarthCraftMod plugin is designed to add minor yet effective game changing improvements to further enhance the player experience for all member of the DarthCraft community. This plugin is designed with our players and administrators in mind and aims to make it as easy as possible for everyone to use the features that they need the most for the best survival experience.
 
-### Licence
+### License
 
-We have a very clear licence currently being actively worked on that will give you all the things you can and cannot do with the projects in general. You can find this [here](https://github.com/Superior-Development/Licence) and there will be a project specific licence published for additional restrictions / waivers published to this repository in the near future. 
+We have a very clear license currently being actively worked on that will give you all the things you can and cannot do with the projects in general. You can find this [here](https://github.com/Superior-Development/License) and there will be a project specific licence published for additional restrictions / waivers published to this repository in the near future. 
 
 ### Requirements
 
