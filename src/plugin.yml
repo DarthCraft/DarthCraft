@@ -81,6 +81,3 @@ commands:
   abduct:
       description: Abducts other players... Host evilness. 
       usage: /<command>
-  skull:
-      description: Set the owner of a player skull
-      usage: /<command> [owner]

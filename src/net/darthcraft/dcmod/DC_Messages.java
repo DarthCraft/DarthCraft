@@ -47,7 +47,7 @@ public class DC_Messages
     public static final String UNMUTED = ChatColor.DARK_GREEN + "The player is not actually muted...";
     public static final String NO_MORE_THAN_TEN = ChatColor.DARK_RED + "You are unable to issue greater than 10 points. Please contact a host or higher if you feel it appropriate to issue this amount.";
     public static final String CANNOT_REMOVE_POINTS = ChatColor.DARK_RED + "To remove warning points you will need to contact a head admin or host.";
-    public static final String WARNING_BROADCAST_MESSAGE = " - Issuing a warning to the following player with the warning reason.";
+    public static final String WARNING_BROADCAST_MESSAGE = "Issuing a warning to the following player with the warning reason.";
     public static final String CONSOLE_ONLY = "This command may only be executed via the console.";
     public static final String PLAYER_ONLY = "This command may only be executed through the console.";
     public static final String NO_COMMAND_PERMS = "Command {0} doesn''t have permissions set!";

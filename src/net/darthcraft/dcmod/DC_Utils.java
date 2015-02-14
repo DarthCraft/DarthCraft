@@ -27,8 +27,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class DC_Utils
 {
 
-    public static final List<String> HOSTS = Arrays.asList("pbgben", "DarthSalamon", "KickAssScott", "wild1145");
-    public static final List<String> HEADADMINS = Arrays.asList("JabbaTheJake", "boulos77");
+    public static final List<String> HOSTS = Arrays.asList("pbgben", "DarthSalamon", "KickAssScott", "Wild1145");
+    public static final List<String> HEADADMINS = Arrays.asList("JabbaTheJake", "boulos");
     public static ArrayList<String> DOOMHAMMERS = new ArrayList<>();
 
     private final DarthCraft plugin;

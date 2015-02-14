@@ -71,7 +71,7 @@ public class Command_warn extends DarthCraftCommand
                 return false;
             }
 
-            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE  + player.getName() + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " (" + amount + ")");
+            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE  + ChatColor.DARK_GREEN + player.getName() + ChatColor.DARK_PURPLE + " " + reason + ChatColor.RED + " (" + amount + ")");
 
             int curwarning = info.getWarnings();
             info.setWarnings(curwarning + amount);
