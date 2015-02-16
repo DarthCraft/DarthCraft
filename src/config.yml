@@ -83,7 +83,7 @@ chat:
 
   # Trollmode - options for /trollmode
   trollmode:
-    enabled: true 
+    enabled: false 
     phrases:
       - noob;nub
       - ok;okies
