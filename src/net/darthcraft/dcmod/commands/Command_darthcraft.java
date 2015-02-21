@@ -23,7 +23,7 @@ public class Command_darthcraft extends DarthCraftCommand
             sender.sendMessage(ChatColor.GOLD + "It is made possible by a long list of names of whom which developers, administrators and "
                                + "other staff who can't all be named.");
             sender.sendMessage(ChatColor.RED + "Special thanks to:");
-            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "pbgben" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Owner, Host, Developer" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "KimJongBen" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Owner, Host, Developer" + ChatColor.WHITE + ")");
             sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "Wild1145" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Lead Developer" + ChatColor.WHITE + ")");
             sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "KickAssScott" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Host, Game manager" + ChatColor.WHITE + ")");
             sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Exiled, Developer" + ChatColor.WHITE + ")");
