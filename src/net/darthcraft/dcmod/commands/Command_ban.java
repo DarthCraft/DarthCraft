@@ -75,15 +75,11 @@ public class Command_ban extends DarthCraftCommand
             ((Player) player).kickPlayer(ban.getKickMessage());
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M hh:mm");
-        String Time = sdf.format(new Date());
-        // Changed to Unix Time Frame. 
-
         long unixTime = System.currentTimeMillis() / 1000L;
 
         try
         {
-            DC_Utils.updateDatabase("INSERT INTO bans (Name, UUID, BanBy, Reason, Expires, Time) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '" + sender.getName() + "', '" + reason + "','" + Time + "');");
+            DC_Utils.updateDatabase("INSERT INTO bans (Name, UUID, BanBy, Reason, Expires, Time) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '" + sender.getName() + "', '" + reason + " ', '" + ban.getExpiryDate() + "','" + unixTime + "');");
 
         }
         catch (SQLException ex)
