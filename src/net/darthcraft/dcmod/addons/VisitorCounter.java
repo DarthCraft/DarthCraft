@@ -20,12 +20,13 @@ public class VisitorCounter extends DarthCraftAddon
 
         players++;
         plugin.mainConfig.set("players", players);
-        Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "[DC Visitor Counter] There have been " + players + " players that have joined the server.");
+        //Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "[DC Visitor Counter] There have been " + players + " players that have joined the server.");
 
         if (!event.getPlayer().hasPlayedBefore())
         {
             unique++;
             plugin.mainConfig.set("uniqueplayers", unique);
+            Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "[DC Visitor Counter] There have been " + players + " players that have joined the server.");
             Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "[DC Visitor Counter] There have been " + unique + " unique players that have joined the server.");
 
         }
