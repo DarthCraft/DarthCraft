@@ -81,3 +81,6 @@ commands:
   abduct:
       description: Abducts other players... Host evilness. 
       usage: /<command>
+  pie:
+      description: What flavour pie did you make? PI Flavour! 
+      usage: /<command>
