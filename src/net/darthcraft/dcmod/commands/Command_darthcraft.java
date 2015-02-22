@@ -15,6 +15,9 @@ public class Command_darthcraft extends DarthCraftCommand
     @Override
     public boolean run(CommandSender sender, Command cmd, String[] args)
     {
+        int unique = plugin.mainConfig.getInt("uniqueplayers");
+        int players = plugin.mainConfig.getInt("players");
+
         if (args.length == 0)
         {
             sender.sendMessage(ChatColor.GRAY + "-- " + ChatColor.DARK_PURPLE + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.GRAY + " --");
@@ -29,6 +32,7 @@ public class Command_darthcraft extends DarthCraftCommand
             sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "DarthSalamon" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Exiled, Developer" + ChatColor.WHITE + ")");
             sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "JabbaTheJake" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
             sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.DARK_GREEN + "boulos77" + ChatColor.WHITE + " (" + ChatColor.YELLOW + "Head-Admin" + ChatColor.WHITE + ")");
+            sender.sendMessage(ChatColor.GOLD + "There have been a total of " + ChatColor.DARK_RED + unique + ChatColor.GOLD + " unique players and a total of " + ChatColor.DARK_RED + players + " player joins to the DarthCraft Server.");
             return true;
         }
 
