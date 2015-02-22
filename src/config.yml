@@ -3,6 +3,9 @@
 ## By DarthSalamon & Wild1145
 ##
 
+# GeoIP Stuff (Requires Manual Uploading)
+geoip: true
+
 # Visitor Counter
 uniqueplayers: 0
 players: 0
