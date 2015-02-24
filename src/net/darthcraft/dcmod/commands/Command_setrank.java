@@ -46,14 +46,14 @@ public class Command_setrank extends DarthCraftCommand
         if (args[1].equalsIgnoreCase("member"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " member");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'member'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'member'");
             return true;
 
         }
         else if (args[1].equalsIgnoreCase("loyalmember"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " loyalmember");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'loyal'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'loyal'");
             return true;
         }
 
@@ -66,22 +66,22 @@ public class Command_setrank extends DarthCraftCommand
         if (args[1].equalsIgnoreCase("premium"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " premium");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'premium'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'premium'");
             return true;
 
         }
         else if (args[1].equalsIgnoreCase("admin"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " admin");
-            util.adminAction(sender, "Congratulations to " + player + " for achiving the rank of admin!");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'admin'");
+            util.adminAction(sender, "Congratulations to " + player.getName() + " for achiving the rank of admin!");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'admin'");
             return true;
 
         }
         else if (args[1].equalsIgnoreCase("premiumadmin"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " premiumadmin");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'pradmin'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'pradmin'");
             return true;
         }
 
@@ -95,15 +95,15 @@ public class Command_setrank extends DarthCraftCommand
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " headadmin");
             player.setOp(true);
-            util.adminAction(sender, "Congratulations to " + player + " for achiving the rank of Head Admin!");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'headadmin'");
+            util.adminAction(sender, "Congratulations to " + player.getName() + " for achiving the rank of Head Admin!");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'headadmin'");
             return true;
 
         }
         else if (args[1].equalsIgnoreCase("partner"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " partner");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'partner'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'partner'");
             return true;
 
         }
@@ -112,19 +112,19 @@ public class Command_setrank extends DarthCraftCommand
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " host");
             player.setOp(true);
             util.adminAction(sender, "Congratulations to " + player.getName() + " for achiving the rank of host!");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "host'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "host'");
             return true;
         }
         else if (args[1].equalsIgnoreCase("legacymember"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " legacymember");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'legacymember'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'legacymember'");
             return true;
         }
         else if (args[1].equalsIgnoreCase("legacypremium"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " legacypremium");
-            msg("Set " + player.getName() + DC_Messages.RANK_SET + "'legacypremium'");
+            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'legacypremium'");
             return true;
         }
 
