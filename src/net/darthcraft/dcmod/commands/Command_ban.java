@@ -15,6 +15,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.darthcraft.dcmod.DC_Messages;
+import net.pravian.bukkitlib.util.LoggerUtils;
 
 @Source(SourceType.ANY)
 @Permissions(Permission.ADMIN)
@@ -77,14 +78,21 @@ public class Command_ban extends DarthCraftCommand
 
         long unixTime = System.currentTimeMillis() / 1000L;
 
-        try
+        if (plugin.mainConfig.getBoolean("mysqlenabled"))
         {
-            DC_Utils.updateDatabase("INSERT INTO bans (Name, UUID, BanBy, Reason, Expires, Time) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '" + sender.getName() + "', '" + reason + " ', '" + ban.getExpiryDate() + "','" + unixTime + "');");
+            try
+            {
+                DC_Utils.updateDatabase("INSERT INTO bans (Name, UUID, BanBy, Reason, Expires, Time) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '" + sender.getName() + "', '" + reason + " ', '" + ban.getExpiryDate() + "','" + unixTime + "');");
 
+            }
+            catch (SQLException ex)
+            {
+                sender.sendMessage(DC_Messages.ERROR);
+            }
         }
-        catch (SQLException ex)
+        else
         {
-            sender.sendMessage(DC_Messages.ERROR);
+            LoggerUtils.info(plugin, "MySQL is not enabled and this ban has not been stored to MySQL - If MySQL is enabled Wild has broken something...");
         }
 
         return true;

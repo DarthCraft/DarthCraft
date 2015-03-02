@@ -14,6 +14,7 @@ import net.darthcraft.dcmod.player.Ban.BanType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.pravian.bukkitlib.util.TimeUtils;
 import net.pravian.bukkitlib.util.IpUtils;
+import net.pravian.bukkitlib.util.LoggerUtils;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
@@ -135,34 +136,36 @@ public class Command_banip extends DarthCraftCommand
         }
 
         util.adminAction(sender,
-                         "Banning IP" + (ips.size() > 1 ? "s " : " ") + PlayerUtils.concatPlayernames(ips) + " (" + target.getName() + ") for " + reason);
+                "Banning IP" + (ips.size() > 1 ? "s " : " ") + PlayerUtils.concatPlayernames(ips) + " (" + target.getName() + ") for " + reason);
 
         for (Player player : server.getOnlinePlayers())
         {
             if (ips.contains(IpUtils.getIp(player)))
             {
                 player.kickPlayer(ChatColor.RED
-                                  + "Banned!\n"
-                                  + "Reason: " + reason + "\n"
-                                  + "Expires: " + TimeUtils.parseDate(null) + "\n"
-                                  + "Banned by: " + sender.getName());
+                        + "Banned!\n"
+                        + "Reason: " + reason + "\n"
+                        + "Expires: " + TimeUtils.parseDate(null) + "\n"
+                        + "Banned by: " + sender.getName());
             }
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M hh:mm");
-        String Time = sdf.format(new Date());
-        // Changed to Unix Time Frame. 
-
         long unixTime = System.currentTimeMillis() / 1000L;
-
-        try
+        if (plugin.mainConfig.getBoolean("mysqlenabled"))
         {
-            DC_Utils.updateDatabase("INSERT INTO bans (IP, BanBy, Reason, Expires, Time) VALUES ('" + ips + "', '" + sender.getName() + "', '" + reason + "','" + Time + "');");
+            try
+            {
+                DC_Utils.updateDatabase("INSERT INTO ipbans (IP, BanBy, Reason, Expires, Time) VALUES ('" + ips + "', '" + sender.getName() + "', '" + reason + "','" + ban.getExpiryDate() + "','" + unixTime + "');");
 
+            }
+            catch (SQLException ex)
+            {
+                sender.sendMessage(DC_Messages.ERROR);
+            }
         }
-        catch (SQLException ex)
+        else
         {
-            sender.sendMessage(DC_Messages.ERROR);
+            LoggerUtils.info(plugin, "MySQL is not showing as enabled - IP Ban NOT stored in SQL. If shit impoloded then blame wild...");
         }
 
         return true;
