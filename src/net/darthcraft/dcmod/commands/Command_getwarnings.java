@@ -53,7 +53,7 @@ public class Command_getwarnings extends DarthCraftCommand
             final OfflinePlayer player = PlayerUtils.getOfflinePlayer(args[0]);
             final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
 
-            if (sender == player || (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.ADMIN)))
+            if (sender == player || (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.ADMIN) || (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.HOST))))
             {
                 sender.sendMessage(ChatColor.DARK_AQUA + player.getName() + DC_Messages.OTHER_WARNING_AMOUNT + info.getWarnings());
                 sender.sendMessage(DC_Messages.WARNINGS_AS_FOLLOWS);
