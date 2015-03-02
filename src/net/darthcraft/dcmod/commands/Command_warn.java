@@ -38,14 +38,11 @@ public class Command_warn extends DarthCraftCommand
             return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
-        if (player.isOnline())
+        if (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.ADMIN))
         {
-            if (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.ADMIN))
+            if (!Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
             {
-                if (!Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
-                {
-                    return warn(DC_Messages.CANNOT_WARN_PLAYER);
-                }
+                return warn(DC_Messages.CANNOT_WARN_PLAYER);
             }
         }
 
@@ -64,14 +61,14 @@ public class Command_warn extends DarthCraftCommand
         else
         {
 
-            if ("wild1145".equals(player.getName()) &! "wild1145".equals(sender.getName()))
+            if ("wild1145".equals(player.getName()) & !"wild1145".equals(sender.getName()))
             {
                 sender.sendMessage(ChatColor.DARK_RED + "Ha, Nice Try. Wild has thought this one through and has prevented evil.");
                 util.adminAction(sender, "Has attempted to warn the almighty wild. It failed misrably.");
                 return false;
             }
 
-            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE  + ChatColor.DARK_GREEN + player.getName() + ChatColor.DARK_PURPLE + " " + reason + ChatColor.RED + " (" + amount + ")");
+            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE + ChatColor.DARK_GREEN + player.getName() + ChatColor.DARK_PURPLE + " " + reason + ChatColor.RED + " (" + amount + ")");
 
             int curwarning = info.getWarnings();
             info.setWarnings(curwarning + amount);

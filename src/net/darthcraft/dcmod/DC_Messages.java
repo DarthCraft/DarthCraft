@@ -5,14 +5,14 @@ import org.bukkit.ChatColor;
 public class DC_Messages
 {
 // Error messages
-    public static final String PLAYER_NOT_FOUND = "The player you have entered cannot be found. Please check that the spelling is correct.";
-    public static final String ERROR = ChatColor.DARK_RED + "There has been an error somewhere in the mystical code!  Please contact a developer!";
+    public static final String PLAYER_NOT_FOUND = "The player you have entered cannot be found. Please check that the spelling is correct and the player is online.";
+    public static final String ERROR = ChatColor.DARK_RED + "Someone forget to feed the developers and there is a bug or two somewhere in the mystical code!  Please post this on the forums!";
     public static final String CANNOT_BAN_PLAYER = ChatColor.DARK_RED + "The player you have entered cannot be banned!  Please contact a host, immediately!";
-    public static final String NO_PREMS = ChatColor.DARK_RED + "It appears that you do not have permissions to execute this command. If this is an error, please contact an administrator.";
-    public static final String COMMAND_NOT_LOADED = ChatColor.RED + "Command Error: Command not loaded: ";
+    public static final String NO_PREMS = ChatColor.DARK_RED + "It appears that you do not have permissions to execute this command. If this is an error, please contact any admin.";
+    public static final String COMMAND_NOT_LOADED = ChatColor.RED + "Command Error: Command not loaded - Please contact a member of staff: ";
     public static final String COMMAND_NOT_LOADED_LOG = "Command not loaded: {0}";
     public static final String UNKOWN_COMMAND_ERROR = "Unknown command error: {0}";
-    public static final String COMMAND_ERROR = "Command Error: ";
+    public static final String COMMAND_ERROR = "There has been a Command Error: ";
     public static final String MYSQL_ENABLED = "Success - MySQL connection has been successfully established!";
 // Administrator related
     public static final String SPECIFY_REASON = ChatColor.DARK_RED + "You have not specified a valid reason.  Please, try again";
@@ -20,7 +20,7 @@ public class DC_Messages
     public static final String CANNOT_KICK_PLAYER = ChatColor.DARK_RED + "You cannot kick this player. Please contact a host.";
     public static final String MUTING = "Muting ";
     public static final String CANNOT_MUTE_PLAYER = ChatColor.DARK_RED + "You are unable to mute the following user... Abort mission!";
-    public static final String ALREADY_MUTED = ChatColor.DARK_RED + "The following user is already muted!  If you are trying to remove the mute, use /unmute";
+    public static final String ALREADY_MUTED = ChatColor.DARK_RED + "This user is already muted!  If you are trying to remove the mute, use /unmute";
     public static final String INVALID_DATE = ChatColor.DARK_RED + "You have entered an invalid expiry date.  Try again..";
     public static final String PLAYER_NOT_BANNED = ChatColor.DARK_RED + "The player is not currently banned.";
     public static final String IP_NOT_BANNED = ChatColor.DARK_RED + "The IP you have entered is not currently banned";

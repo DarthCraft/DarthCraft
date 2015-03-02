@@ -5,6 +5,7 @@ import net.pravian.bukkitlib.command.SourceType;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.pravian.bukkitlib.util.PlayerUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -46,14 +47,14 @@ public class Command_setrank extends DarthCraftCommand
         if (args[1].equalsIgnoreCase("member"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " member");
-            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'member'");
+            sender.sendMessage(ChatColor.YELLOW + "Set " + player.getName() + DC_Messages.RANK_SET + "'member'");
             return true;
 
         }
         else if (args[1].equalsIgnoreCase("loyalmember"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " loyalmember");
-            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'loyal'");
+            sender.sendMessage(ChatColor.YELLOW + "Set " + player.getName() + DC_Messages.RANK_SET + "'loyal'");
             return true;
         }
 
@@ -66,7 +67,7 @@ public class Command_setrank extends DarthCraftCommand
         if (args[1].equalsIgnoreCase("premium"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " premium");
-            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'premium'");
+            sender.sendMessage(ChatColor.YELLOW + "Set " + player.getName() + DC_Messages.RANK_SET + "'premium'");
             return true;
 
         }
@@ -74,14 +75,14 @@ public class Command_setrank extends DarthCraftCommand
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " admin");
             util.adminAction(sender, "Congratulations to " + player.getName() + " for achiving the rank of admin!");
-            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'admin'");
+            sender.sendMessage(ChatColor.YELLOW + "Set " + player.getName() + DC_Messages.RANK_SET + "'admin'");
             return true;
 
         }
         else if (args[1].equalsIgnoreCase("premiumadmin"))
         {
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " premiumadmin");
-            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'pradmin'");
+            sender.sendMessage(ChatColor.YELLOW + "Set " + player.getName() + DC_Messages.RANK_SET + "'pradmin'");
             return true;
         }
 
@@ -96,7 +97,7 @@ public class Command_setrank extends DarthCraftCommand
             server.dispatchCommand(server.getConsoleSender(), "manuadd " + player.getName() + " headadmin");
             player.setOp(true);
             util.adminAction(sender, "Congratulations to " + player.getName() + " for achiving the rank of Head Admin!");
-            sender.sendMessage("Set " + player.getName() + DC_Messages.RANK_SET + "'headadmin'");
+            sender.sendMessage(ChatColor.YELLOW + "Set " + player.getName() + DC_Messages.RANK_SET + "'headadmin'");
             return true;
 
         }

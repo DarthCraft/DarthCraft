@@ -88,11 +88,15 @@ public class DC_Utils
         return ChatColor.GRAY;
     }
 
+    @Deprecated
+    // Now use the ChatUtils thing
     public static String decolorize(String string)
     {
         return string.replaceAll("\\u00A7(?=[0-9a-fk-or])", "&");
     }
-
+    
+    @Deprecated
+    // Now use the ChatUtils thing
     public static String colorize(String string)
     {
         return ChatColor.translateAlternateColorCodes('&', string);
