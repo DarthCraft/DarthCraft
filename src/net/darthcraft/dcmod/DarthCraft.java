@@ -10,6 +10,7 @@ import me.husky.mysql.MySQL;
 import net.darthcraft.dcmod.addons.*;
 import net.darthcraft.dcmod.chat.AdminChat;
 import net.darthcraft.dcmod.chat.ChatFilter;
+import net.darthcraft.dcmod.chat.TradeChat;
 import net.darthcraft.dcmod.commands.DarthCraftCommand;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
@@ -68,6 +69,7 @@ public class DarthCraft extends BukkitPlugin
     public AbductionHammer abductionHammer;
     public VisitorCounter visitorCounter;
     public PlayerSource playerSource;
+    public TradeChat tradeChat;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -116,6 +118,7 @@ public class DarthCraft extends BukkitPlugin
         abductionHammer = new AbductionHammer(plugin);
         visitorCounter = new VisitorCounter(plugin);
         playerSource = new PlayerSource(plugin);
+        tradeChat = new TradeChat(plugin);
 
         // Plugin build-number and build-date
         try

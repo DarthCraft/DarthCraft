@@ -144,6 +144,7 @@ public class PlayerManager extends DarthCraftAddon
         //
         // Unsaved items
         private boolean inAdminChat = false;
+        private boolean inTradeChat = false;
         private boolean muted = false;
         private boolean busy = false;
 
@@ -555,6 +556,26 @@ public class PlayerManager extends DarthCraftAddon
         public void setInAdminChat(boolean inAdminChat)
         {
             this.inAdminChat = inAdminChat;
+        }
+        
+         /**
+         * This will check if the player is currently in Trade chat or not
+         *
+         * @return inTradeChat
+         */
+        public boolean isInTradeChat()
+        {
+            return inTradeChat;
+        }
+
+        /**
+         * This will set if the player is in Trade chat or not.
+         *
+         * @param inTradeChat
+         */
+        public void setInTradeChat(boolean inTradeChat)
+        {
+            this.inTradeChat = inTradeChat;
         }
 
         /**
