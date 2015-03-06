@@ -56,7 +56,7 @@ public class PlayerListener implements Listener
     {
         plugin.likeSigns.onPlayerInteractEvent(event);
     }
-    
+
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerJoinEvent(PlayerJoinEvent event)
     {
@@ -64,6 +64,7 @@ public class PlayerListener implements Listener
         plugin.visitorCounter.onPlayerJoinEvent(event);
         plugin.playerSource.onPlayerJoinEvent(event);
     }
+
     @EventHandler
     public void onPlayerUseItem(PlayerInteractEvent event)
     {

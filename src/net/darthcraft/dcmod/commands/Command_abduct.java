@@ -17,10 +17,10 @@ public class Command_abduct extends DarthCraftCommand
     public boolean run(CommandSender sender, Command cmd, String[] args)
     {
         Player player = (Player) sender;
-        if(!DC_Utils.DOOMHAMMERS.contains(player.getName()))
+        if (!DC_Utils.DOOMHAMMERS.contains(player.getName()))
         {
-            
-            for(int i = 0; i < 5; i++)
+
+            for (int i = 0; i < 5; i++)
             {
                 player.getWorld().strikeLightningEffect(player.getLocation());
             }

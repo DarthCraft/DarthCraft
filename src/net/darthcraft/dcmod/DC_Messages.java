@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 public class DC_Messages
 {
 // Error messages
+
     public static final String PLAYER_NOT_FOUND = "The player you have entered cannot be found. Please check that the spelling is correct and the player is online.";
     public static final String ERROR = ChatColor.DARK_RED + "Someone forget to feed the developers and there is a bug or two somewhere in the mystical code!  Please post this on the forums!";
     public static final String CANNOT_BAN_PLAYER = ChatColor.DARK_RED + "The player you have entered cannot be banned!  Please contact a host, immediately!";

@@ -34,7 +34,7 @@ public class Command_like extends DarthCraftCommand
         {
             msg(ChatColor.GREEN + "There are " + ChatColor.DARK_RED.toString() + plugin.likeSigns.getLikers().size() + ChatColor.GREEN + " players who have DarthCraft!");
             msg(ChatColor.GREEN + (plugin.likeSigns.getLikers().contains(sender.getName()) ? DC_Messages.YOU_LIKED + ChatColor.LIGHT_PURPLE + "<3"
-                                   : DC_Messages.NOT_LIKED));
+                    : DC_Messages.NOT_LIKED));
             return true;
         }
 

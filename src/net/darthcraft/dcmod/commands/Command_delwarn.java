@@ -62,7 +62,7 @@ public class Command_delwarn extends DarthCraftCommand
 
             int curwarning = info.getWarnings();
             int newwarning = curwarning - amount;
-            
+
             if (newwarning > 0)
             {
                 sender.sendMessage(DC_Messages.WORLD_IMPLODE);
@@ -70,8 +70,7 @@ public class Command_delwarn extends DarthCraftCommand
             }
             info.setWarnings(newwarning);
             info.addWaiveReason(reason + "  -  (" + amount + ")");
-            
-            
+
             util.adminAction(sender, "Has waived a warning for " + player.getName() + " with the reason " + ChatColor.DARK_PURPLE + reason + ChatColor.RED + " worth " + amount + " warning points");
 
             info.save();

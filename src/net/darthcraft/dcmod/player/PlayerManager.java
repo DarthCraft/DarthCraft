@@ -557,8 +557,8 @@ public class PlayerManager extends DarthCraftAddon
         {
             this.inAdminChat = inAdminChat;
         }
-        
-         /**
+
+        /**
          * This will check if the player is currently in Trade chat or not
          *
          * @return inTradeChat

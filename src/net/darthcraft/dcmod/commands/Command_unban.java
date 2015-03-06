@@ -95,8 +95,8 @@ public class Command_unban extends DarthCraftCommand
         }
 
         util.adminAction(sender, "Unbanning " + (!nameUnbanned
-                                                 ? "IP " + ip + (player != null ? " (" + player.getName() + ")" : "")
-                                                 : player.getName() + (ipUnbanned ? " and IP " + ip : "")));
+                ? "IP " + ip + (player != null ? " (" + player.getName() + ")" : "")
+                : player.getName() + (ipUnbanned ? " and IP " + ip : "")));
 
         /*
          // Unbanning IP

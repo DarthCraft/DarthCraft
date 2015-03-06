@@ -172,10 +172,10 @@ public class Ban
     public String getKickMessage()
     {
         return ChatColor.RED
-               + "Your " + (type == BanType.IP ? "IP-Address" : "UUID") + " is banned from this server.\n"
-               + "Reason: " + reason + "\n"
-               + "Expires: " + TimeUtils.parseDate(expiry) + "\n"
-               + "Banned by: " + by;
+                + "Your " + (type == BanType.IP ? "IP-Address" : "UUID") + " is banned from this server.\n"
+                + "Reason: " + reason + "\n"
+                + "Expires: " + TimeUtils.parseDate(expiry) + "\n"
+                + "Banned by: " + by;
     }
 
     public boolean isExpired()

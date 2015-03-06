@@ -95,7 +95,7 @@ public class BanWarner extends DarthCraftAddon
                     }
 
                     plugin.adminChat.sendAdminMessage("BanWarner", ChatColor.RED + "Warning: "
-                                                                   + stats.get("username") + " has been banned " + stats.get("totalbans") + " times!");
+                            + stats.get("username") + " has been banned " + stats.get("totalbans") + " times!");
 
                     final JSONObject services = (JSONObject) stats.get("service");
 
@@ -107,7 +107,7 @@ public class BanWarner extends DarthCraftAddon
                         }
 
                         plugin.adminChat.sendAdminMessage("BanWarner", ChatColor.RED + "Warning: "
-                                                                       + services.get(service) + " times on " + service);
+                                + services.get(service) + " times on " + service);
                     }
 
                 }

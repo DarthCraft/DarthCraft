@@ -129,7 +129,7 @@ public class LikeSigns extends DarthCraftAddon
     public void like(Player player)
     {
         String uuid = player.getUniqueId().toString();
-        
+
         if (likers.contains(uuid))
         {
             util.msg(player, ChatColor.GREEN + "You've already liked DarthCraft, thanks! " + ChatColor.LIGHT_PURPLE + "<3");

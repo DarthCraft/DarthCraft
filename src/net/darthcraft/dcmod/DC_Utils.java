@@ -56,7 +56,7 @@ public class DC_Utils
         sender.sendMessage(ChatColor.YELLOW + message);
 
     }
-    
+
     public static ItemStack getDoomHammer()
     {
         ItemStack banhammer = new ItemStack(Material.GOLD_AXE, 1);
@@ -94,7 +94,7 @@ public class DC_Utils
     {
         return string.replaceAll("\\u00A7(?=[0-9a-fk-or])", "&");
     }
-    
+
     @Deprecated
     // Now use the ChatUtils thing
     public static String colorize(String string)

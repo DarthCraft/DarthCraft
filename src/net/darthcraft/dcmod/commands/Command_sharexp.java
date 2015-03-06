@@ -21,12 +21,12 @@ public class Command_sharexp extends DarthCraftCommand
         final Player player = PlayerUtils.getPlayer(args[0]);
         final Player sender_p = (Player) sender;
 
-         if (sender_p == player)
-         {
-         sender_p.sendMessage(DC_Messages.WORLD_IMPLODE);
-         return showUsage(cmd);
-         }
-         
+        if (sender_p == player)
+        {
+            sender_p.sendMessage(DC_Messages.WORLD_IMPLODE);
+            return showUsage(cmd);
+        }
+
         if (args.length >= 2)
         {
 
@@ -36,7 +36,7 @@ public class Command_sharexp extends DarthCraftCommand
             final int senderoriginal = sender_p.getLevel();
             final int playeramountpretax = playeroriginal + amount;
             final int newsenderamount = senderoriginal - amount;
-            
+
             // Checking if the sender has enough EXP to send. 
             if (senderoriginal < amount)
             {

@@ -185,6 +185,5 @@ public class WarningSystem extends DarthCraftAddon
             }
         }
     }
-    
 
 }

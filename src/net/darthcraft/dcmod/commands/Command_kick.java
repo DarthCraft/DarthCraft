@@ -47,8 +47,8 @@ public class Command_kick extends DarthCraftCommand
         util.adminAction(sender, "Kicking " + player.getName() + " for " + reason);
 
         player.kickPlayer(ChatColor.RED
-                          + DC_Messages.YOU_BEEN_KICKED + " \n"
-                          + reason);
+                + DC_Messages.YOU_BEEN_KICKED + " \n"
+                + reason);
 
         return true;
     }

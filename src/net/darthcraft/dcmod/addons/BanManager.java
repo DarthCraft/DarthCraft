@@ -178,8 +178,8 @@ public class BanManager extends DarthCraftAddon
         catch (IllegalArgumentException | IllegalStateException ex)
         {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.GOLD
-                                                               + DC_Messages.BAN_GET_ERROR
-                                                               + DC_Messages.APPEALAT_MESSAGE + " " + plugin.mainConfig.getString("website"));
+                    + DC_Messages.BAN_GET_ERROR
+                    + DC_Messages.APPEALAT_MESSAGE + " " + plugin.mainConfig.getString("website"));
             logger.log(Level.SEVERE, DC_Messages.CANNOT_CHECK_BANS, name);
             logger.severe(ex);
         }

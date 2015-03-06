@@ -194,10 +194,10 @@ public class DarthCraft extends BukkitPlugin
             logger.warning(DC_Messages.MYSQL_NOT_ENABLED);
         }
 
-         if (mainConfig.getBoolean("geoip", true))
-         {
-             logger.warning("Attention: If you have NOT manually downloaded and installed the required MaxMind Dependencies, you will get a clusterfuck of errors. Please make sure that you do this BEFORE enabling this plugin again!");
-         }
+        if (mainConfig.getBoolean("geoip", true))
+        {
+            logger.warning("Attention: If you have NOT manually downloaded and installed the required MaxMind Dependencies, you will get a clusterfuck of errors. Please make sure that you do this BEFORE enabling this plugin again!");
+        }
 
         // Start the metrics
         {
@@ -205,8 +205,8 @@ public class DarthCraft extends BukkitPlugin
         }
 
         logger.log(Level.INFO, DC_Messages.PLUGIN_ENABLED, new Object[]
-           {
-               pluginVersion, pluginAuthors
+        {
+            pluginVersion, pluginAuthors
         });
     }
 
