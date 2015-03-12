@@ -10,6 +10,9 @@ geoip: true
 uniqueplayers: 0
 players: 0
 
+# Vote to play
+votetoplay: false
+
 #Website for ban appeals
 website: www.darthcraft.net/forums
 

@@ -70,6 +70,7 @@ public class DarthCraft extends BukkitPlugin
     public VisitorCounter visitorCounter;
     public PlayerSource playerSource;
     public TradeChat tradeChat;
+    public VoteToPlay voteToPlay;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -119,6 +120,7 @@ public class DarthCraft extends BukkitPlugin
         visitorCounter = new VisitorCounter(plugin);
         playerSource = new PlayerSource(plugin);
         tradeChat = new TradeChat(plugin);
+        voteToPlay = new VoteToPlay(plugin);
 
         // Plugin build-number and build-date
         try

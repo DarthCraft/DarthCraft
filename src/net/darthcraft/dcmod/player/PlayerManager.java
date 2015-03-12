@@ -55,6 +55,7 @@ public class PlayerManager extends DarthCraftAddon
             info.setLastVote(null);
             info.setWarnings(0);
             info.setWarningLevel(0);
+            info.setDaysLeft(3);
 
             logger.log(Level.INFO, "Added new player: {0}", event.getPlayer().getName());
         }
@@ -141,6 +142,7 @@ public class PlayerManager extends DarthCraftAddon
         private String logintitle;
         private List<String> warningreasons = new ArrayList<>();
         private List<String> warningwaivereasons = new ArrayList<>();
+        private int dayaccess;
         //
         // Unsaved items
         private boolean inAdminChat = false;
@@ -185,6 +187,7 @@ public class PlayerManager extends DarthCraftAddon
             config.set("logintitle", logintitle);
             config.set("reasons", warningreasons);
             config.set("waivereasons", warningwaivereasons);
+            config.set("logindays", dayaccess);
             config.save();
         }
 
@@ -212,6 +215,7 @@ public class PlayerManager extends DarthCraftAddon
             logintitle = config.getString("logintitle");
             warningreasons = config.getStringList("reasons");
             warningwaivereasons = config.getStringList("waivereasons");
+            dayaccess = config.getInt("logindays");
         }
 
         public boolean exists()
@@ -456,6 +460,26 @@ public class PlayerManager extends DarthCraftAddon
         public int getWarningLevel()
         {
             return warninglevel;
+        }
+        
+        /**
+         * This will get the amount of days that you can play left before you will need to vote again
+         * 
+         * @return dayaccess
+         */
+        public int getDaysLeft()
+        {
+            return dayaccess;
+        }
+        
+        /**
+         * This will set the amount of days that the player can join before needing to vote again.
+         * 
+         * @param dayaccess 
+         */
+        public void setDaysLeft(int dayaccess)
+        {
+            this.dayaccess = dayaccess;
         }
 
         /**
