@@ -143,12 +143,12 @@ public class PlayerManager extends DarthCraftAddon
         private List<String> warningreasons = new ArrayList<>();
         private List<String> warningwaivereasons = new ArrayList<>();
         private int dayaccess;
+        private boolean busy;
         //
         // Unsaved items
         private boolean inAdminChat = false;
         private boolean inTradeChat = false;
         private boolean muted = false;
-        private boolean busy = false;
 
         public PlayerInfo(DarthCraft plugin, String name)
         {
@@ -188,6 +188,7 @@ public class PlayerManager extends DarthCraftAddon
             config.set("reasons", warningreasons);
             config.set("waivereasons", warningwaivereasons);
             config.set("logindays", dayaccess);
+            config.set("busystatus", busy);
             config.save();
         }
 
@@ -216,6 +217,7 @@ public class PlayerManager extends DarthCraftAddon
             warningreasons = config.getStringList("reasons");
             warningwaivereasons = config.getStringList("waivereasons");
             dayaccess = config.getInt("logindays");
+            busy = config.getBoolean("busystatus");
         }
 
         public boolean exists()
@@ -461,21 +463,23 @@ public class PlayerManager extends DarthCraftAddon
         {
             return warninglevel;
         }
-        
+
         /**
-         * This will get the amount of days that you can play left before you will need to vote again
-         * 
+         * This will get the amount of days that you can play left before you
+         * will need to vote again
+         *
          * @return dayaccess
          */
         public int getDaysLeft()
         {
             return dayaccess;
         }
-        
+
         /**
-         * This will set the amount of days that the player can join before needing to vote again.
-         * 
-         * @param dayaccess 
+         * This will set the amount of days that the player can join before
+         * needing to vote again.
+         *
+         * @param dayaccess
          */
         public void setDaysLeft(int dayaccess)
         {

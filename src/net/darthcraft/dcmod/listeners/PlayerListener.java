@@ -41,6 +41,7 @@ public class PlayerListener implements Listener
         plugin.forceIp.onPlayerLogin(event);
         plugin.banManager.onPlayerLogin(event);
         plugin.permBan.onPlayerLogin(event);
+        plugin.voteToPlay.onPlayerLogin(event);
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

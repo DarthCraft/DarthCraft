@@ -21,36 +21,37 @@ public class VoteToPlay extends DarthCraftAddon
     {
         if (plugin.mainConfig.getBoolean("votetoplay"))
         {
-        final Player player = event.getPlayer();
-        final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
+            final Player player = event.getPlayer();
+            final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
 
-        if (info.getLastLogin() != new Date())
-        {
-            if (info.getDaysLeft() == 0)
+            if (info.getLastLogin() != new Date())
             {
-                event.disallow(Result.KICK_OTHER, ChatColor.DARK_RED + "You are required to vote again before being able to join. Please do so and try again");
+                if (info.getDaysLeft() == 0)
+                {
+                    event.disallow(Result.KICK_OTHER, ChatColor.DARK_RED + "You are required to vote again before being able to join. Please do so and try again");
+                }
+                else
+                {
+                    event.allow();
+                    info.setDaysLeft(info.getDaysLeft() - 1);
+                    if (info.getDaysLeft() < 2)
+                    {
+                        player.sendMessage(ChatColor.DARK_RED + "Warning: You currently have less than two days of access left. Please do some voting to boost your remaining access days.");
+                    }
+                    else
+                    {
+                        player.sendMessage(ChatColor.DARK_GREEN + "You currently have " + info.getDaysLeft() + " days of playing the server until you will need to vote.");
+                    }
+                }
             }
             else
             {
-                info.setDaysLeft(info.getDaysLeft() - 1);
+                event.allow();
                 if (info.getDaysLeft() < 2)
                 {
                     player.sendMessage(ChatColor.DARK_RED + "Warning: You currently have less than two days of access left. Please do some voting to boost your remaining access days.");
                 }
-                else
-                {
-                    player.sendMessage(ChatColor.DARK_GREEN + "You currently have " + info.getDaysLeft() + " days of playing the server until you will need to vote.");
-                }
             }
-        }
-        else
-        {
-            event.allow();
-            if (info.getDaysLeft() < 2)
-            {
-                player.sendMessage(ChatColor.DARK_RED + "Warning: You currently have less than two days of access left. Please do some voting to boost your remaining access days.");
-            }
-        }
         }
         else
         {
