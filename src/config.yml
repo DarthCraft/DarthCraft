@@ -6,10 +6,6 @@
 # GeoIP Stuff (Requires Manual Uploading)
 geoip: true
 
-# Visitor Counter
-uniqueplayers: 0
-players: 0
-
 # Vote to play
 votetoplay: false
 
