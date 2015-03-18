@@ -1,7 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
 import net.pravian.bukkitlib.command.SourceType;
-import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
