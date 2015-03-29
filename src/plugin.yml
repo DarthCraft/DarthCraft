@@ -84,3 +84,9 @@ commands:
   pie:
       description: What flavour pie did you make? PI Flavour! 
       usage: /<command>
+  tc: 
+      description: Talk in TradeChat
+      usage: /<command> <message>
+  hidemyass:
+      description: Enable vanish mode
+      usage: /<command>
