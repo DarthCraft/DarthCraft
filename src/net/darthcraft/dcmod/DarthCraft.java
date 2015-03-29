@@ -72,6 +72,7 @@ public class DarthCraft extends BukkitPlugin
     public PlayerSource playerSource;
     public TradeChat tradeChat;
     public VoteToPlay voteToPlay;
+    public TreeDetector treeDetector;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -123,6 +124,7 @@ public class DarthCraft extends BukkitPlugin
         playerSource = new PlayerSource(plugin);
         tradeChat = new TradeChat(plugin);
         voteToPlay = new VoteToPlay(plugin);
+        treeDetector = new TreeDetector(plugin);
 
         // Plugin build-number and build-date
         try
