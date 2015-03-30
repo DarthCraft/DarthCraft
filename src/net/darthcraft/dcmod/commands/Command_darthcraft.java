@@ -14,8 +14,8 @@ public class Command_darthcraft extends DarthCraftCommand
     @Override
     public boolean run(CommandSender sender, Command cmd, String[] args)
     {
-        int unique = plugin.mainConfig.getInt("uniqueplayers");
-        int players = plugin.mainConfig.getInt("players");
+        int unique = plugin.dataFile.getInt("uniqueplayers");
+        int players = plugin.dataFile.getInt("players");
 
         sender.sendMessage(ChatColor.DARK_AQUA + "--" + ChatColor.GOLD + "Darth" + ChatColor.LIGHT_PURPLE + "Craft" + ChatColor.DARK_AQUA + " Server" + ChatColor.DARK_AQUA + "--");
         sender.sendMessage("");
