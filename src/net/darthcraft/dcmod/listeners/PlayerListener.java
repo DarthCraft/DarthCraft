@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.server.ServerListPingEvent;
 
 public class PlayerListener implements Listener
 {
@@ -70,5 +71,11 @@ public class PlayerListener implements Listener
     public void onPlayerUseItem(PlayerInteractEvent event)
     {
         plugin.abductionHammer.onPlayerUseItem(event);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onServerPing(ServerListPingEvent event)
+    {
+      //  plugin.motd.onServerPing(event);
     }
 }

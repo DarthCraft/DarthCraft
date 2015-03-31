@@ -92,7 +92,7 @@ public class PlayerManager extends DarthCraftAddon
 
         return info;
     }
-
+    
     public String getPlayerNameByIp(String ip)
     {
         final File dir = new File(plugin.getDataFolder() + "/players");

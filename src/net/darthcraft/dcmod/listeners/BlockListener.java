@@ -21,12 +21,12 @@ public class BlockListener implements Listener
     public void onUncancelledBlockBreakEvent(BlockBreakEvent event)
     {
         plugin.likeSigns.onUncancelledBlockBreakEvent(event);
-        plugin.treeDetector.onUncancelledBlockBreakEvent(event);
+        //plugin.treeDetector.onUncancelledBlockBreakEvent(event);
     }
     
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void BlockPlaceEvent(BlockPlaceEvent event)
     {
-        plugin.treeDetector.BlockPlaceEvent(event);
+       // plugin.treeDetector.BlockPlaceEvent(event);
     }
 }
