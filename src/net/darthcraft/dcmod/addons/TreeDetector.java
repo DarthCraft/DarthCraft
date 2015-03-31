@@ -20,8 +20,8 @@ public class TreeDetector extends DarthCraftAddon
     {
         if (event.getBlock().getType() == Material.SAPLING)
         {
-            Bukkit.broadcastMessage(ChatColor.DARK_RED + event.getPlayer().getName() + "Has destroyed a saplin, they clearly hate the trees! ATTACK!!!!");
-            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "eco take " + event.getPlayer().getName() + " 25");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + event.getPlayer().getName() + " Has destroyed a saplin, they clearly hate the trees! ATTACK!!!!");
+            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "eco take " + event.getPlayer().getName() + " 12.5");
             event.getPlayer().sendMessage(ChatColor.DARK_AQUA + "You have destroyed a saplin, shame on you. You have been fined 25Dar by order of the lord and mighty Ben.");
         }
         else if (event.getBlock().getType() == Material.WOOD)
@@ -34,8 +34,8 @@ public class TreeDetector extends DarthCraftAddon
     {
         if (event.getBlock().getType() == Material.SAPLING)
         {
-            Bukkit.broadcastMessage(ChatColor.DARK_RED + event.getPlayer().getName() + "Has planted a saplin, they clearly love the trees!");
-            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "eco give " + event.getPlayer().getName() + " 15");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + event.getPlayer().getName() + " Has planted a saplin, they clearly love the trees!");
+            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "eco give " + event.getPlayer().getName() + " 5");
             event.getPlayer().sendMessage(ChatColor.DARK_AQUA + "You have destroyed a saplin, shame on you. You have been given 15Dar by order of the lord and mighty Ben.");
         }
     }
