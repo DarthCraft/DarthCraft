@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.addons;
 
+import java.util.HashSet;
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.DarthCraft;
 import org.bukkit.Location;
@@ -39,7 +40,7 @@ public class AbductionHammer extends DarthCraftAddon
         Entity e = null;
         if (item.equals(DC_Utils.getDoomHammer()) && DC_Utils.DOOMHAMMERS.contains(player.getName()))
         {
-            for (Block block : player.getLineOfSight(null, 50))
+            for (Block block : player.getLineOfSight((HashSet<Byte>) null, 50))
             {
                 Location loc2 = block.getLocation();
                 for (LivingEntity entity : player.getWorld().getLivingEntities())

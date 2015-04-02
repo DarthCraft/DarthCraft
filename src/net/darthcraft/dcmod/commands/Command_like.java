@@ -1,5 +1,6 @@
 package net.darthcraft.dcmod.commands;
 
+import java.util.HashSet;
 import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
@@ -45,7 +46,7 @@ public class Command_like extends DarthCraftCommand
                 return noPerms();
             }
 
-            final Block block = ((Player) sender).getTargetBlock(null, 10);
+            final Block block = ((Player) sender).getTargetBlock((HashSet<Byte>) null, 10);
             if (block == null || !(block.getState() instanceof Sign))
             {
                 return warn(DC_Messages.MUST_LOOK);
@@ -69,7 +70,7 @@ public class Command_like extends DarthCraftCommand
                 return noPerms();
             }
 
-            final Block block = ((Player) sender).getTargetBlock(null, 10);
+            final Block block = ((Player) sender).getTargetBlock((HashSet<Byte>) null, 10);
             if (block == null || !(block.getState() instanceof Sign))
             {
                 return warn(DC_Messages.MUST_LOOK);
