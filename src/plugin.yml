@@ -88,5 +88,8 @@ commands:
       description: Talk in TradeChat
       usage: /<command> <message>
   hidemyass:
-      description: Enable vanish mode
+      description: Toggle vanish mode
+      usage: /<command>
+  fly:
+      description: Toggle fly mode
       usage: /<command>
