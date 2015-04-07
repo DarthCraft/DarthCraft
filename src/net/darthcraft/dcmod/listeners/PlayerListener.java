@@ -51,6 +51,7 @@ public class PlayerListener implements Listener
         plugin.playerManager.onUncancelledPlayerJoin(event);
         plugin.banWarner.onUncancelledPlayerJoin(event);
         plugin.loginTitles.onUncancelledPlayerJoin(event);
+        plugin.motd.onUncancelledPlayerJoin(event);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)

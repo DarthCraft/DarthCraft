@@ -81,4 +81,23 @@ public class DC_Messages
     public static final String RANK_SET = "'s rank has been set to ";
     public static final String XP_LOW = "It appears that your XP is not high enough...  Better luck tomorrow!";
     public static final String NEW_XP = "Your new XP level is: ";
+//MOTD Related
+    /*
+    
+     Avalible Place Holders:
+    
+     # %serverversion% - Replaces with the current server version EG: 1.8.1
+     # %playername% - Replaces with the players current IGN eg Wild1145
+     # %randomplayer% - Replaces with a random online players anme
+     # %onlinecount% - Replaces with the amount of online players
+    
+     */
+    public static final String IGNMOTD_LINE1 = "&5Welcome to the DarthCraft server &6%playername% &7- &3Currently running MC %serverversion%";
+    public static final String IGNMOTD_LINE2 = "&aPlease take the time to read the &c/Rules";
+    public static final String IGNMOTD_LINE3 = "&2There are currently %onlinecount% players online having fun!";
+    public static final String IGNMOTD_LINE4 = "&3If you need any assistance, please do ask either another player or an online member of staff.";
+    public static final String IGNMOTD_LINE5 = "&3If you have any feedback, please do post on our forums at &awww.darthcraft.net !";
+    //
+    public static final String PING_LINE1 = "&5DarthCraft %serverversion%! &7| &3Welcome back &5&l%playername%";
+    public static final String PING_LINE2 = "&1%randomplayer% &b is currently online, why dont you come join them?";
 }

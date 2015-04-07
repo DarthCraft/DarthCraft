@@ -1,7 +1,10 @@
 package net.darthcraft.dcmod.commands;
 
+import net.darthcraft.dcmod.DC_Messages;
+import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.pravian.bukkitlib.command.SourceType;
+import net.pravian.bukkitlib.util.ChatUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -47,6 +50,11 @@ public class Command_darthcraft extends DarthCraftCommand
             sender.sendMessage(ChatColor.DARK_RED + "Plugin Authors: " + plugin.pluginAuthors);
             sender.sendMessage("");
             sender.sendMessage(ChatColor.DARK_PURPLE + "For more information, please see our website: " + ChatColor.AQUA + "http://www.darthcraft.net");
+        }
+
+        else if (args[0].equalsIgnoreCase("devtest"))
+        {
+            sender.sendMessage(ChatColor.DARK_RED + "Nothing to see here...");
         }
 
         return true;

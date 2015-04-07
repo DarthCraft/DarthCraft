@@ -1,8 +1,0 @@
-##
-## DarthCraft Messages File
-## By Wild1145
-##
-
-# Server List MOTD
-serverlistmotd: &5DarthCraft %serverversion%! &7| &3Welcome back &5&l%playername%
-serverlistmotdline2: &1%randomplayer% &b is currently online, why dont you come join them?

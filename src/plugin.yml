@@ -92,4 +92,7 @@ commands:
       usage: /<command>
   fly:
       description: Toggle fly mode
+      usage: /<command> [player]
+  motd:
+      description: Shows you the current message of the day.
       usage: /<command>
