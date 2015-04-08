@@ -34,8 +34,7 @@ public class AdminChat extends DarthCraftAddon
         {
             if (PermissionUtils.hasPermission(player, Permission.ADMIN))
             {
-                util.msg(player, ChatColor.WHITE + "<" + ChatColor.DARK_PURPLE + "ADMIN" + ChatColor.WHITE + "> "
-                        + ChatColor.DARK_RED + name + ChatColor.WHITE + ": " + ChatColor.AQUA + msg);
+                player.sendMessage(ChatColor.WHITE + "<" + ChatColor.DARK_PURPLE + "ADMIN" + ChatColor.WHITE + "> " + ChatColor.RED + player.getDisplayName() + ChatColor.GRAY + ": " + ChatColor.DARK_GREEN + msg);
             }
         }
         plugin.logger.info("<ADMIN> " + name + ": " + msg);
