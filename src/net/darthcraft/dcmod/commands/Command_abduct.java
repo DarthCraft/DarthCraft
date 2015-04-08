@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @Source(SourceType.PLAYER)
-@Permissions(Permission.HOST)
+@Permissions(Permission.HEADADMIN)
 public class Command_abduct extends DarthCraftCommand
 {
 

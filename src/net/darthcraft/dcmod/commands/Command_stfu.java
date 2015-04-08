@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @Source(SourceType.ANY)
-@Permissions(Permission.LEGACY)
+@Permissions(Permission.ADMIN)
 public class Command_stfu extends DarthCraftCommand
 {
 

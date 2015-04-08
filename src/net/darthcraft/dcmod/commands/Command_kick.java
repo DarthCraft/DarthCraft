@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @Source(SourceType.ANY)
-@Permissions(Permission.LEGACY)
+@Permissions(Permission.SUPERMEMBER)
 public class Command_kick extends DarthCraftCommand
 {
 

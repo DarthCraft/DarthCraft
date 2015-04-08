@@ -18,10 +18,10 @@ public @interface Permissions
     {
 
         // Permission levels
+// Permission levels
         ANYONE(""),
-        GUEST("darthcraft.guest"),
         MEMBER("darthcraft.member"),
-        LEGACY("darthcraft.legacy"),
+        SUPERMEMBER("darthcraft.supermember"),
         PREMIUM("darthcraft.premium"),
         ADMIN("darthcraft.admin"),
         HEADADMIN("darthcraft.headadmin"),
