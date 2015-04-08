@@ -79,6 +79,11 @@ public class DC_Utils
         {
             return ChatColor.GOLD;
         }
+        
+        if (PermissionUtils.hasPermission(player, Permission.PREMIUM))
+        {
+            return ChatColor.AQUA;
+        }
 
         if (PermissionUtils.hasPermission(player, Permission.MEMBER))
         {
