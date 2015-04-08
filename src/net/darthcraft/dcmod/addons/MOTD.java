@@ -5,6 +5,7 @@ import java.util.Random;
 import net.darthcraft.dcmod.DC_Messages;
 import net.darthcraft.dcmod.DC_Utils;
 import net.darthcraft.dcmod.DarthCraft;
+import net.pravian.bukkitlib.util.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -24,25 +25,27 @@ public class MOTD extends DarthCraftAddon
         super(plugin);
     }
 
-// This is disabled for now. It will be re-worked in a future version. 
-    /*
-     public void onServerPing(ServerListPingEvent event)
-     {
-     final String playerip = event.getAddress().getHostAddress();
-     final String playername = plugin.playerManager.getPlayerNameByIp(playerip);
+    public void onServerPing(ServerListPingEvent event)
+    {
+        final String playerip = event.getAddress().getHostAddress();
+        final String playername = plugin.playerManager.getPlayerNameByIp(playerip);
         
-     if(playername == null)
-     {
-     final String randomplayer = "";
-     }
-     else
-     {
-     final String randomplayer = playername;
-     }
 
-     event.setMotd(DC_Utils.colorize(plugin.messages.getString("serverlistmotd").replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", ((randomplayer))).replace("%randomplayer%", randomplayer.getName())) + "\n" + (plugin.messages.getString("serverlistmotdline2").replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", (randomplayer)).replace("%randomplayer%", randomplayer.getName())));
-     }
-     */
+        if (playername == null)
+        {
+            final String randomplayer = "";
+        }
+        else
+        {
+            final String randomplayer = playername;
+        }
+
+        final String pingmotdline1 = ChatUtils.colorize(DC_Messages.PING_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", playername)).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
+        final String pingmotdline2 = ChatUtils.colorize(DC_Messages.PING_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", playername)).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
+
+        event.setMotd(pingmotdline1 + "\n" + pingmotdline2);
+    }
+
     public void onUncancelledPlayerJoin(PlayerJoinEvent event)
     {
         Player player = event.getPlayer();
