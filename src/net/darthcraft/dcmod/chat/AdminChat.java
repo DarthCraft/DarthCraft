@@ -2,7 +2,6 @@ package net.darthcraft.dcmod.chat;
 
 import net.darthcraft.dcmod.DarthCraft;
 import net.darthcraft.dcmod.addons.DarthCraftAddon;
-import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.darthcraft.dcmod.player.PlayerManager.PlayerInfo;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
@@ -34,7 +33,7 @@ public class AdminChat extends DarthCraftAddon
         {
             if (PermissionUtils.hasPermission(player, Permission.ADMIN))
             {
-                player.sendMessage(ChatColor.WHITE + "<" + ChatColor.DARK_PURPLE + "ADMIN" + ChatColor.WHITE + "> " + ChatColor.RED + player.getDisplayName() + ChatColor.GRAY + ": " + ChatColor.DARK_GREEN + msg);
+                player.sendMessage(ChatColor.WHITE + "<" + ChatColor.DARK_PURPLE + "ADMIN" + ChatColor.WHITE + "> " + ChatColor.RED + name + ChatColor.GRAY + ": " + ChatColor.DARK_GREEN + msg);
             }
         }
         plugin.logger.info("<ADMIN> " + name + ": " + msg);

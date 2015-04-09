@@ -16,16 +16,18 @@ public class Command_o extends DarthCraftCommand
     @Override
     public boolean run(CommandSender sender, Command cmd, String[] args)
     {
-
-        if (args.length >= 1)
-        {
-            plugin.adminChat.sendAdminMessage(sender.getName(), StringUtils.join(args, " "));
-            return true;
-        }
-
         if (!(sender instanceof Player))
         {
             return warn(DC_Messages.IGN_ONLY);
+        }
+
+        Player player = (Player) sender;
+
+        if (args.length >= 1)
+        {
+            plugin.adminChat.sendAdminMessage(player.getDisplayName(), StringUtils.join(args, " "));
+
+            return true;
         }
 
         plugin.adminChat.toggleAdminChat((Player) sender);
