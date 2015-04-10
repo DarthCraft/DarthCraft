@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import me.husky.mysql.MySQL;
 import net.darthcraft.dcmod.addons.*;
-import net.darthcraft.dcmod.chat.AdminChat;
+import net.darthcraft.dcmod.addons.AdminChat;
 import net.darthcraft.dcmod.chat.ChatFilter;
 import net.darthcraft.dcmod.chat.TradeChat;
 import net.darthcraft.dcmod.commands.DarthCraftCommand;

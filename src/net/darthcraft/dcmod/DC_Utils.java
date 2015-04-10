@@ -82,7 +82,7 @@ public class DC_Utils
         
         if (PermissionUtils.hasPermission(player, Permission.PREMIUM))
         {
-            return ChatColor.AQUA;
+            return ChatColor.DARK_AQUA;
         }
 
         if (PermissionUtils.hasPermission(player, Permission.MEMBER))
