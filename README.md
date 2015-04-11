@@ -18,7 +18,6 @@ You will also require the following libraries / plugins to actually build this p
 
  - BukkitLib (Just to build the plugin - It is built into DCMod when built)
  - Spigot (Just to build the plugin - You will need to be running it on your server anyway)
- - MaxMindGEOIP Custom Dependency (Just to build the plugin - It is built into DCMod when built)
  
 The MaxMindGEOIP Custom dependency is not currently available to be downloaded, however can be sent on request. Please email [admin@superior-networks.com](mailto:admin@superior-networks.com) and we can have the jar file sent through to you. 
 
