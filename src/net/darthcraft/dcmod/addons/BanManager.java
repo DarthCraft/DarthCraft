@@ -33,7 +33,7 @@ public class BanManager extends DarthCraftAddon
     {
 
         // Player bans
-        ConfigurationSection section = bansconfig.getConfigurationSection("UUID");
+        ConfigurationSection section = bansconfig.getConfigurationSection("uuid");
         if (section != null)
         {
             for (String player : section.getKeys(false))
@@ -41,7 +41,7 @@ public class BanManager extends DarthCraftAddon
 
                 try
                 {
-                    ConfigurationSection cs = bansconfig.getConfigurationSection("UUID." + player);
+                    ConfigurationSection cs = bansconfig.getConfigurationSection("uuid." + player);
 
                     Ban ban = new Ban();
                     ban.setType(BanType.UUID);
@@ -52,6 +52,7 @@ public class BanManager extends DarthCraftAddon
                     ban.addIps(cs.getStringList("ips"));
 
                     bans.add(ban);
+                    logger.debug(player.toLowerCase() + "'s ban loaded.");
 
                 }
                 catch (Exception e)
@@ -81,6 +82,8 @@ public class BanManager extends DarthCraftAddon
                     ban.setExpiryDate(TimeUtils.parseString(cs.getString("expires")));
 
                     bans.add(ban);
+                    
+                    logger.debug(IpUtils.fromEscapedString(ip) + "'s ban loaded.");
 
                 }
                 catch (Exception e)

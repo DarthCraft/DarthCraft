@@ -48,7 +48,6 @@ public class DarthCraft extends BukkitPlugin
     public YamlConfig likersConfig;
     public YamlConfig topicsConfig;
     public YamlConfig dataFile;
-    public YamlConfig messages;
     //
     public DC_Utils util;
     public BukkitLogger logger;
@@ -101,7 +100,6 @@ public class DarthCraft extends BukkitPlugin
         likersConfig = new YamlConfig(plugin, "likers.yml", true);
         topicsConfig = new YamlConfig(plugin, "topics.yml", true);
         dataFile = new YamlConfig(plugin, "data.yml", true);
-        messages = new YamlConfig(plugin, "messages.yml", true);
 
         // Utilities
         logger = new BukkitLogger(plugin);
@@ -176,7 +174,6 @@ public class DarthCraft extends BukkitPlugin
         likersConfig.load();
         topicsConfig.load();
         dataFile.load();
-        messages.load();
         topicGenerator = new TopicGenerator(plugin);
 
         // Parse old DarthCraft ban files
