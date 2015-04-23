@@ -32,21 +32,21 @@ public class Command_sharexp extends DarthCraftCommand
 
             // Getting Information about the current XP and such. 
             final int amount = Integer.parseInt(args[1]);
-            final int playeroriginal = player.getLevel();
-            final int senderoriginal = sender_p.getLevel();
+            final int playeroriginal = (int) player.getExp();
+            final int senderoriginal = (int) player.getExp();
             final int playeramountpretax = playeroriginal + amount;
             final int newsenderamount = senderoriginal - amount;
 
             // Checking if the sender has enough EXP to send. 
-            if (senderoriginal < amount)
+            if (senderoriginal < amount && amount <= 0)
             {
                 sender.sendMessage(ChatColor.DARK_RED + DC_Messages.XP_LOW + senderoriginal);
                 return true;
             }
             else
             {
-                player.setLevel(playeramountpretax);
-                sender_p.setLevel(newsenderamount);
+                player.setExp(playeramountpretax);
+                sender_p.setExp(newsenderamount);
                 player.sendMessage(ChatColor.DARK_GREEN + DC_Messages.NEW_XP + playeramountpretax);
                 sender_p.sendMessage(ChatColor.DARK_GREEN + DC_Messages.NEW_XP + newsenderamount);
                 return true;
