@@ -38,7 +38,7 @@ public class Command_sharexp extends DarthCraftCommand
             final int newsenderamount = senderoriginal - amount;
 
             // Checking if the sender has enough EXP to send. 
-            if (senderoriginal < amount && amount <= 0)
+            if (senderoriginal <= amount && amount <= 0)
             {
                 sender.sendMessage(ChatColor.DARK_RED + DC_Messages.XP_LOW + senderoriginal);
                 return true;

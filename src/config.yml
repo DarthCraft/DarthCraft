@@ -6,6 +6,9 @@
 # GeoIP Stuff (Requires Manual Uploading)
 geoip: true
 
+# Servers Offline
+offline: false
+
 # Vote to play
 votetoplay: false
 
