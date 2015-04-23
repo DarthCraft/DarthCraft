@@ -44,7 +44,7 @@ public class AdminChat extends DarthCraftAddon
     {
         if (plugin.playerManager.getInfo(event.getPlayer()).isInAdminChat())
         {
-            sendAdminMessage(event.getPlayer().getName(), event.getMessage());
+            sendAdminMessage(event.getPlayer().getDisplayName(), event.getMessage());
             event.setCancelled(true);
         }
 
