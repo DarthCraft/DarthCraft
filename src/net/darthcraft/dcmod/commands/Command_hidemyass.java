@@ -32,7 +32,7 @@ public class Command_hidemyass extends DarthCraftCommand
             player.setGameMode(GameMode.SURVIVAL);
             player.setAllowFlight(true);
             player.setFlying(true);            
-            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player + " top");
+            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player.getName() + " top");
             player.setHealth(1);
         }
 
