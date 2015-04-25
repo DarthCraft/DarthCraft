@@ -3,7 +3,6 @@ package net.darthcraft.dcmod.commands;
 import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

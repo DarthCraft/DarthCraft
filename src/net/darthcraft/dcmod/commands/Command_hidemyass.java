@@ -1,6 +1,8 @@
 package net.darthcraft.dcmod.commands;
 
 import net.pravian.bukkitlib.command.SourceType;
+import org.bukkit.Bukkit;
+import static org.bukkit.Bukkit.getServer;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,6 +30,10 @@ public class Command_hidemyass extends DarthCraftCommand
         else
         {
             player.setGameMode(GameMode.SURVIVAL);
+            player.setAllowFlight(true);
+            player.setFlying(true);            
+            Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "sudo " + player + " top");
+            player.setHealth(1);
         }
 
         return true;
