@@ -75,6 +75,8 @@ public class DarthCraft extends BukkitPlugin
     public TreeDetector treeDetector;
     public MOTD motd;
     public Backup backup;
+    public TaxSystem taxSystem;
+    public BeaconTax beaconTax;
     //
     public static MySQL mySQL;
     public String mysqlport;
@@ -129,6 +131,8 @@ public class DarthCraft extends BukkitPlugin
         treeDetector = new TreeDetector(plugin);
         motd = new MOTD(plugin);
         backup = new Backup(plugin);
+        beaconTax = new BeaconTax(plugin);
+        taxSystem = new TaxSystem(plugin);
 
         // Plugin build-number and build-date
         try

@@ -22,11 +22,13 @@ public class BlockListener implements Listener
     {
         plugin.likeSigns.onUncancelledBlockBreakEvent(event);
         //plugin.treeDetector.onUncancelledBlockBreakEvent(event);
+        plugin.beaconTax.onUncancelledBlockBreakEvent(event);
     }
     
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void BlockPlaceEvent(BlockPlaceEvent event)
     {
        // plugin.treeDetector.BlockPlaceEvent(event);
+        plugin.beaconTax.BlockPlaceEvent(event);
     }
 }

@@ -1,12 +1,10 @@
 package net.darthcraft.dcmod.addons;
 
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.addons.BanManager;
 import net.darthcraft.dcmod.player.PlayerManager;
 import org.bukkit.Bukkit;
 import static org.bukkit.Bukkit.getServer;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 
 public class WarningSystem extends DarthCraftAddon
 {

@@ -92,7 +92,7 @@ public class PlayerManager extends DarthCraftAddon
 
         return info;
     }
-    
+
     public String getPlayerNameByIp(String ip)
     {
         final File dir = new File(plugin.getDataFolder() + "/players");
@@ -144,6 +144,8 @@ public class PlayerManager extends DarthCraftAddon
         private List<String> warningwaivereasons = new ArrayList<>();
         private int dayaccess;
         private boolean busy;
+        private int beacons;
+        private Date lasttax;
         //
         // Unsaved items
         private boolean inAdminChat = false;
@@ -189,6 +191,8 @@ public class PlayerManager extends DarthCraftAddon
             config.set("waivereasons", warningwaivereasons);
             config.set("logindays", dayaccess);
             config.set("busystatus", busy);
+            config.set("beacons", beacons);
+            config.set("lastbeacontax", lasttax);
             config.save();
         }
 
@@ -218,6 +222,8 @@ public class PlayerManager extends DarthCraftAddon
             warningwaivereasons = config.getStringList("waivereasons");
             dayaccess = config.getInt("logindays");
             busy = config.getBoolean("busystatus");
+            beacons = config.getInt("beacons");
+            lasttax = TimeUtils.parseString("lastbeacontax");
         }
 
         public boolean exists()
@@ -487,6 +493,27 @@ public class PlayerManager extends DarthCraftAddon
         }
 
         /**
+         * This will get the current amount of beacons that a player has placed
+         * across the map.
+         *
+         * @return beacons
+         */
+        public int getBeaconCount()
+        {
+            return beacons;
+        }
+
+        /**
+         * This will set the amount of placed beacons that a player has.
+         *
+         * @param beacons
+         */
+        public void setBeaconCount(int beacons)
+        {
+            this.beacons = beacons;
+        }
+
+        /**
          * This sets the amount of warning level that the player currently has.
          *
          * @param warninglevel
@@ -525,6 +552,27 @@ public class PlayerManager extends DarthCraftAddon
         {
             this.firstLogin = login;
         }
+        
+         /**
+         * This will get the first login date to the server
+         *
+         * @return lasttax
+         */
+        public Date getLastTaxDate()
+        {
+            return lasttax;
+        }
+
+        /**
+         * This will set the first login date to the server.
+         *
+         * @param lasttax
+         */
+        public void setLastTaxDate(Date lasttax)
+        {
+            this.lasttax = lasttax;
+        }
+
 
         /**
          * This will get the last login date of the player.

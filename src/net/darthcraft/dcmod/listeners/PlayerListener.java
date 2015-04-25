@@ -53,6 +53,7 @@ public class PlayerListener implements Listener
         plugin.banWarner.onUncancelledPlayerJoin(event);
         plugin.loginTitles.onUncancelledPlayerJoin(event);
         plugin.motd.onUncancelledPlayerJoin(event);
+        plugin.taxSystem.onUncancelledPlayerJoin(event);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
