@@ -28,6 +28,7 @@ public class Command_tc extends DarthCraftCommand
             return warn(DC_Messages.IGN_ONLY);
         }
 
+        plugin.tradeChat.toggleTradeChat((Player) sender);
         return true;
     }
 }

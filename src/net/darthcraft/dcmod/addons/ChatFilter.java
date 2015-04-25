@@ -1,4 +1,4 @@
-package net.darthcraft.dcmod.chat;
+package net.darthcraft.dcmod.addons;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import net.pravian.bukkitlib.util.ChatUtils;
 import net.darthcraft.dcmod.DarthCraft;
-import net.darthcraft.dcmod.addons.DarthCraftAddon;
 import net.darthcraft.dcmod.player.PlayerManager.PlayerInfo;
 import net.darthcraft.dcmod.commands.Permissions.Permission;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
