@@ -6,6 +6,7 @@ import net.pravian.bukkitlib.command.SourceType;
 import net.pravian.bukkitlib.util.PlayerUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -29,22 +30,26 @@ public class Command_warn extends DarthCraftCommand
             return warn(DC_Messages.SPECIFY_REASON);
         }
 
-        final Player player = PlayerUtils.getPlayer(args[0]);
         final int amount = Integer.parseInt(args[1]);
-        final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(player);
 
-        if (player == null)
+        final OfflinePlayer target = PlayerUtils.getOfflinePlayer(args[0]);
+        if (target == null || !target.hasPlayedBefore())
         {
             return warn(DC_Messages.PLAYER_NOT_FOUND);
         }
 
-        if (Permissions.PermissionUtils.hasPermission((Player) player, Permissions.Permission.ADMIN))
+        if (target.isOnline())
         {
-            if (!Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
+            if (Permissions.PermissionUtils.hasPermission((Player) target, Permissions.Permission.ADMIN))
             {
-                return warn(DC_Messages.CANNOT_WARN_PLAYER);
+                if (!Permissions.PermissionUtils.hasPermission(sender, Permissions.Permission.HEADADMIN))
+                {
+                    return warn(DC_Messages.CANNOT_WARN_PLAYER);
+                }
             }
         }
+
+        final PlayerManager.PlayerInfo info = plugin.playerManager.getInfo(target);
 
         final String reason = StringUtils.join(args, " ", 2, args.length);
 
@@ -61,14 +66,14 @@ public class Command_warn extends DarthCraftCommand
         else
         {
 
-            if ("wild1145".equals(player.getName()) & !"wild1145".equals(sender.getName()))
+            if ("wild1145".equals(target.getName()) & !"wild1145".equals(sender.getName()))
             {
                 sender.sendMessage(ChatColor.DARK_RED + "Ha, Nice Try. Wild has thought this one through and has prevented evil.");
                 util.adminAction(sender, "Has attempted to warn the almighty wild. It failed misrably.");
                 return false;
             }
 
-            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE + ChatColor.DARK_GREEN + player.getName() + ChatColor.DARK_PURPLE + " " + reason + ChatColor.RED + " (" + amount + ")");
+            util.adminAction(sender, DC_Messages.WARNING_BROADCAST_MESSAGE + ChatColor.DARK_GREEN + target.getName() + ChatColor.DARK_PURPLE + " " + reason + ChatColor.RED + " (" + amount + ")");
 
             int curwarning = info.getWarnings();
             info.setWarnings(curwarning + amount);
@@ -77,9 +82,9 @@ public class Command_warn extends DarthCraftCommand
 
             info.save();
 
-            sender.sendMessage(ChatColor.DARK_GRAY + player.getName() + "'s new warnings are: " + newwarning);
+            sender.sendMessage(ChatColor.DARK_GRAY + target.getName() + "'s new warnings are: " + newwarning);
 
-            plugin.warningSystem.warningCheck(player);
+            plugin.warningSystem.warningCheck(target);
 
             return true;
 
