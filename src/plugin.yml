@@ -1,0 +1,5 @@
+name: DarthCraftMod
+version: 3.0
+description: The DarthCraftmod is a custom plugin designed for the DarthCraft server.
+authors: [Wild1145, Prozza]
+main: net.darthcraft.darthcraftmod.DarthCraftMod
