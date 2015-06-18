@@ -69,7 +69,7 @@ public class DarthCraft extends BukkitPlugin
     public PermBan permBan;
     public AbductionHammer abductionHammer;
     public VisitorCounter visitorCounter;
-    public PlayerSource playerSource;
+   // public PlayerSource playerSource;
     public TradeChat tradeChat;
     public VoteToPlay voteToPlay;
     public TreeDetector treeDetector;
@@ -125,7 +125,7 @@ public class DarthCraft extends BukkitPlugin
         permBan = new PermBan(plugin);
         abductionHammer = new AbductionHammer(plugin);
         visitorCounter = new VisitorCounter(plugin);
-        playerSource = new PlayerSource(plugin);
+        //playerSource = new PlayerSource(plugin);
         tradeChat = new TradeChat(plugin);
         voteToPlay = new VoteToPlay(plugin);
         treeDetector = new TreeDetector(plugin);

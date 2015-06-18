@@ -38,7 +38,7 @@ public class AdminBusy extends DarthCraftAddon
             util.adminAction(player, ChatColor.AQUA + DC_Messages.BUSY_OFF);
         }
 
-        if (DC_Utils.HOSTS.contains(player.getName()) || DC_Utils.HEADADMINS.contains(player.getName()))
+        if (Permissions.PermissionUtils.hasPermission(player, Permissions.Permission.HOST) || Permissions.PermissionUtils.hasPermission(player, Permissions.Permission.HEADADMIN))
         {
             // player.setPlayerListName(ChatColor.LIGHT_PURPLE + player.getName());
             player.setPlayerListName((info.isBusy() ? ChatColor.GRAY + player.getName() : ChatColor.LIGHT_PURPLE + player.getName()));

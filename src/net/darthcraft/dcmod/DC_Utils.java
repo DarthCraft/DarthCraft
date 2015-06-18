@@ -1,7 +1,6 @@
 package net.darthcraft.dcmod;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import static net.darthcraft.dcmod.DarthCraft.mySQL;
@@ -27,8 +26,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class DC_Utils
 {
 
-    public static final List<String> HOSTS = Arrays.asList("KimJongBen", "DarthSalamon", "KickAssScott", "Wild1145");
-    public static final List<String> HEADADMINS = Arrays.asList("JabbaTheJake", "boulos");
     public static ArrayList<String> DOOMHAMMERS = new ArrayList<>();
 
     private final DarthCraft plugin;

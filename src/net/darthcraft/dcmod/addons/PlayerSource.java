@@ -1,4 +1,4 @@
-package net.darthcraft.dcmod.addons;
+/*package net.darthcraft.dcmod.addons;
 
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
@@ -41,7 +41,7 @@ public class PlayerSource extends DarthCraftAddon
      * @param ip
      * @return IsoCode
      */
-    public String getCountryName(String ip)
+  /*  public String getCountryName(String ip)
     {
         try
         {
@@ -81,3 +81,4 @@ public class PlayerSource extends DarthCraftAddon
     }
 
 }
+*/
