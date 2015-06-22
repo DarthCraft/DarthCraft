@@ -1,5 +1,7 @@
 # DarthCraftMod Plugin
 
+[![Join the chat at https://gitter.im/DarthCraft/DarthCraft](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DarthCraft/DarthCraft?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### Project Overview
 
 The DarthCraftMod plugin is designed to add minor yet effective game changing improvements to further enhance the player experience for all member of the DarthCraft community. This plugin is designed with our players and administrators in mind and aims to make it as easy as possible for everyone to use the features that they need the most for the best survival experience.
