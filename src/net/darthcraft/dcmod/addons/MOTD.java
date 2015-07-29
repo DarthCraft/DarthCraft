@@ -13,11 +13,11 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 public class MOTD extends DarthCraftAddon
 {
-
+   
     Random random = new Random();
-    Collection<? extends Player> onlinePlayers = server.getOnlinePlayers();
+    Collection<? extends Player> onlinePlayers = server.getOnlinePlayers();    
     final int onlineplayercount = onlinePlayers.size();
-    int randomPlayer = random.nextInt(onlineplayercount);
+    int randomPlayer = random.nextInt(onlineplayercount + 1);
     Player randomplayer = (Player) onlinePlayers.toArray()[randomPlayer];
 
     public MOTD(DarthCraft plugin)
@@ -26,7 +26,7 @@ public class MOTD extends DarthCraftAddon
     }
 
     public void onServerPing(ServerListPingEvent event)
-    {
+    {        
         final String playerip = event.getAddress().getHostAddress();
         final String playername = plugin.playerManager.getPlayerNameByIp(playerip);
         
@@ -55,5 +55,6 @@ public class MOTD extends DarthCraftAddon
         player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE3.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
         player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE4.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
         player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE5.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
+    
     }
 }

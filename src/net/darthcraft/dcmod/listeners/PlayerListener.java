@@ -1,6 +1,7 @@
 package net.darthcraft.dcmod.listeners;
 
 import net.darthcraft.dcmod.DarthCraft;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -44,6 +45,7 @@ public class PlayerListener implements Listener
         plugin.banManager.onPlayerLogin(event);
         plugin.permBan.onPlayerLogin(event);
         plugin.voteToPlay.onPlayerLogin(event);
+        
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -54,6 +56,7 @@ public class PlayerListener implements Listener
         plugin.loginTitles.onUncancelledPlayerJoin(event);
         plugin.motd.onUncancelledPlayerJoin(event);
         plugin.taxSystem.onUncancelledPlayerJoin(event);
+        
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -68,6 +71,7 @@ public class PlayerListener implements Listener
         plugin.tabColors.onPlayerJoinEvent(event);
         plugin.visitorCounter.onPlayerJoinEvent(event);
       //  plugin.playerSource.onPlayerJoinEvent(event);
+        
     }
 
     @EventHandler

@@ -8,9 +8,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import me.husky.mysql.MySQL;
 import net.darthcraft.dcmod.addons.*;
-import net.darthcraft.dcmod.addons.AdminChat;
-import net.darthcraft.dcmod.addons.ChatFilter;
-import net.darthcraft.dcmod.addons.TradeChat;
 import net.darthcraft.dcmod.commands.DarthCraftCommand;
 import net.darthcraft.dcmod.commands.Permissions.PermissionUtils;
 import net.darthcraft.dcmod.commands.Source.SourceUtils;
@@ -195,9 +192,9 @@ public class DarthCraft extends BukkitPlugin
 
         // Register events
         final PluginManager pm = plugin.getServer().getPluginManager();
-        pm.registerEvents(new PlayerListener(plugin), plugin);
-        pm.registerEvents(new BlockListener(plugin), plugin);
-        pm.registerEvents(new CustomListener(plugin), plugin);
+        pm.registerEvents(new PlayerListener(this), plugin);
+        pm.registerEvents(new BlockListener(this), plugin);
+        pm.registerEvents(new CustomListener(this), plugin);
 
         if (mysqlenabled)
         {
