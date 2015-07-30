@@ -52,7 +52,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 2)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 12h");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 12h Warning Level has been reached. ");
                 info.setWarningLevel(2);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 12 hour ban.");
             }
@@ -66,7 +66,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 3)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 24h");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 24h Warning Level has been reached. ");
                 info.setWarningLevel(3);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 24 hour ban.");
             }
@@ -80,7 +80,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 4)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 3d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 3d Warning Level has been reached. ");
                 info.setWarningLevel(4);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 3 days ban.");
             }
@@ -93,7 +93,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 5)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 7d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 7d Warning Level has been reached. ");
                 info.setWarningLevel(5);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 7 days ban.");
             }
@@ -107,7 +107,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 5)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 14d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 14d Warning Level has been reached. ");
                 info.setWarningLevel(5);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 14 days ban.");
             }
@@ -121,7 +121,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 6)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 28d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 28d Warning Level has been reached. ");
                 info.setWarningLevel(6);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 28 days ban.");
             }
@@ -135,7 +135,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 6)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 42d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 42d Warning Level has been reached. ");
                 info.setWarningLevel(6);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 42 days ban.");
             }
@@ -149,7 +149,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 7)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 84d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 84d Warning Level has been reached. ");
                 info.setWarningLevel(7);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 84 days ban.");
             }
@@ -163,7 +163,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 8)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 168d");
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "tempban " + target + " 168d Warning Level has been reached. ");
                 info.setWarningLevel(8);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a 168 days ban.");
             }
@@ -177,7 +177,7 @@ public class WarningSystem extends DarthCraftAddon
         {
             if (info.getWarningLevel() != 9)
             {
-                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "ban" + target);
+                Bukkit.getServer().dispatchCommand(getServer().getConsoleSender(), "ban" + target + " Warning Level has been reached. ");
                 info.setWarningLevel(9);
                 logger.debug(target.getName() + " has been warned and has hit the first infraction level of a infinate days ban.");
             }
