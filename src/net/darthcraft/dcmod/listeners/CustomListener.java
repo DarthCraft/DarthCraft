@@ -58,11 +58,9 @@ public class CustomListener implements Listener
         info.setLastVote(new Date());
         info.save();
 
-        Bukkit.broadcastMessage(ChatColor.GREEN + "A Thank you goes to " + player.getName() + " who has just voted for the server on " + vote.getServiceName());
+        Bukkit.broadcastMessage(ChatColor.GREEN + "A Thank you goes to " + player.getName() + " who has just voted for the server on " + ChatColor.DARK_PURPLE + vote.getServiceName().toLowerCase() + ChatColor.GREEN + " and has recived some money as a reward");
 
-        plugin.getServer().dispatchCommand(server.getConsoleSender(), "eco give " + player.getName() + " 100");
-
-        server.broadcastMessage(ChatColor.GREEN + player.getName() + " received 100Dar for voting");
+        plugin.getServer().dispatchCommand(server.getConsoleSender(), "eco give " + player.getName() + " 75");
 
         // Random Reward Thing
         Random random = new Random();
@@ -74,6 +72,7 @@ public class CustomListener implements Listener
         if (number < 30)
         {
             LoggerUtils.info(player + " has voted but got nothing cool and extra :(");
+            player.getPlayer().sendMessage(ChatColor.DARK_RED + "Sorry :( You got nothing cool or extra this time...");
         }
         else if (number <= 30 && number < 55)
         {
@@ -82,7 +81,7 @@ public class CustomListener implements Listener
         }
         else if (number <= 55 && number < 57)
         {
-            player.getPlayer().getInventory().addItem(new ItemStack(Material.GRAVEL, 1));
+            player.getPlayer().getInventory().addItem(new ItemStack(Material.DIRT, 1));
             Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + player.getName() + " has voted and has won nothing of value. They can have this dirt as a sign of condolence");
         }
         else if (number <= 57 && number < 60)
@@ -113,7 +112,7 @@ public class CustomListener implements Listener
                 player.getPlayer().getInventory().addItem(new ItemStack(Material.IRON_CHESTPLATE, 1));
                 Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + player.getName() + " has voted and has won something... That something just happens to be an Iron Chestplate. May the odds agaisnt the mobs be ever in your favor.!");
             }
-            else if (subrandomnum == 0)
+            else if (subrandomnum == 3)
             {
                 player.getPlayer().getInventory().addItem(new ItemStack(Material.IRON_HELMET, 1));
                 Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + player.getName() + " has voted and has won something... That something just happens to be an Iron Helmet. Its better than tin foil, but cant quite pick up the local wi-fi :(");
@@ -151,7 +150,7 @@ public class CustomListener implements Listener
 
         if (info.getVotes() % 3 == 0)
         {
-            plugin.util.msg(player.getPlayer(), ChatColor.BLUE + "Here, have some diamonds cake for all that hard work.");
+            plugin.util.msg(player.getPlayer(), ChatColor.BLUE + "Here, have some cake for all that hard work.");
             player.getPlayer().getInventory().addItem(new ItemStack(Material.CAKE, 1));
         }
     }
