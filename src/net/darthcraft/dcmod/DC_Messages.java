@@ -87,8 +87,7 @@ public class DC_Messages
      Avalible Place Holders:
     
      # %serverversion% - Replaces with the current server version EG: 1.8.1
-     # %playername% - Replaces with the players current IGN eg Wild1145
-     # %randomplayer% - Replaces with a random online players anme
+     # %playername% - Replaces with the players current IGN eg Wild1145 (Only works on the IGN MOTD System)
      # %onlinecount% - Replaces with the amount of online players
     
      */
@@ -98,6 +97,6 @@ public class DC_Messages
     public static final String IGNMOTD_LINE4 = "&3If you need any assistance, please do ask either another player or an online member of staff.";
     public static final String IGNMOTD_LINE5 = "&3If you have any feedback, please do post on our forums at &awww.darthcraft.net !";
     //
-    public static final String PING_LINE1 = "&5DarthCraft %serverversion%! &7| &3Welcome back &5&l%playername%";
-    public static final String PING_LINE2 = "&1%randomplayer% &b is currently online, why dont you come join them?";
+    public static final String PING_LINE1 = "&5DarthCraft %serverversion%! &7| &3Welcome back!";
+    public static final String PING_LINE2 = "&dWhy not login and say hello?";
 }
