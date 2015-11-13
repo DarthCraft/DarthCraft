@@ -13,13 +13,9 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 public class MOTD extends DarthCraftAddon
 {
+    
+    public Player randomplayer;
    
-    Random random = new Random();
-    Collection<? extends Player> onlinePlayers = server.getOnlinePlayers();    
-    final int onlineplayercount = onlinePlayers.size();
-    int randomPlayer = random.nextInt(onlineplayercount + 1);
-    Player randomplayer = (Player) onlinePlayers.toArray()[randomPlayer];
-
     public MOTD(DarthCraft plugin)
     {
         super(plugin);
@@ -27,6 +23,16 @@ public class MOTD extends DarthCraftAddon
 
     public void onServerPing(ServerListPingEvent event)
     {        
+        Random newrandom = new Random();
+        
+        if(server.getOnlinePlayers().isEmpty())
+        {
+            Player randomplayer = null;
+        }
+        else
+        {
+            Player randomplayer = (Player) server.getOnlinePlayers().toArray()[server.getOnlinePlayers().size()];
+        }
         final String playerip = event.getAddress().getHostAddress();
         final String playername = plugin.playerManager.getPlayerNameByIp(playerip);
         
@@ -39,6 +45,11 @@ public class MOTD extends DarthCraftAddon
         {
             final String randomplayer = playername;
         }
+        
+        if(server.getOnlinePlayers().equals(0))
+        {
+            Player randomplayer = null;
+        }
 
         final String pingmotdline1 = ChatUtils.colorize(DC_Messages.PING_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", playername)).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
         final String pingmotdline2 = ChatUtils.colorize(DC_Messages.PING_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", playername)).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
@@ -49,6 +60,18 @@ public class MOTD extends DarthCraftAddon
     public void onUncancelledPlayerJoin(PlayerJoinEvent event)
     {
         Player player = event.getPlayer();
+        
+         Random newrandom = new Random();
+         
+        if(server.getOnlinePlayers().isEmpty())
+        {
+            randomplayer = player;
+            
+        }
+        else
+        {
+            Player randomplayer = (Player) server.getOnlinePlayers().toArray()[server.getOnlinePlayers().size()];
+        }
 
         player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
         player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
