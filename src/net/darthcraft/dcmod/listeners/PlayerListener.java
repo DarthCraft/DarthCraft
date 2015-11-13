@@ -83,6 +83,6 @@ public class PlayerListener implements Listener
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onServerPing(ServerListPingEvent event)
     {
-       // plugin.motd.onServerPing(event);
+       plugin.motd.onServerPing(event);
     }
 }

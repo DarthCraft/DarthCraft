@@ -14,7 +14,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 public class MOTD extends DarthCraftAddon
 {
     
-    public Player randomplayer;
+    public Player randomplayer = null;
    
     public MOTD(DarthCraft plugin)
     {
@@ -25,7 +25,9 @@ public class MOTD extends DarthCraftAddon
     {        
         Random newrandom = new Random();
         
-        if(server.getOnlinePlayers().isEmpty())
+        
+        
+       /* if(server.getOnlinePlayers().isEmpty())
         {
             Player randomplayer = null;
         }
@@ -49,10 +51,11 @@ public class MOTD extends DarthCraftAddon
         if(server.getOnlinePlayers().equals(0))
         {
             Player randomplayer = null;
-        }
-
-        final String pingmotdline1 = ChatUtils.colorize(DC_Messages.PING_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", playername)).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
-        final String pingmotdline2 = ChatUtils.colorize(DC_Messages.PING_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", playername)).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
+        }*/
+        
+        
+        final String pingmotdline1 = ChatUtils.colorize(DC_Messages.PING_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", "")).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
+        final String pingmotdline2 = ChatUtils.colorize(DC_Messages.PING_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", "")).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size()));
 
         event.setMotd(pingmotdline1 + "\n" + pingmotdline2);
     }
@@ -61,23 +64,11 @@ public class MOTD extends DarthCraftAddon
     {
         Player player = event.getPlayer();
         
-         Random newrandom = new Random();
-         
-        if(server.getOnlinePlayers().isEmpty())
-        {
-            randomplayer = player;
-            
-        }
-        else
-        {
-            Player randomplayer = (Player) server.getOnlinePlayers().toArray()[server.getOnlinePlayers().size()];
-        }
-
-        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
-        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
-        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE3.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
-        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE4.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
-        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE5.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%randomplayer%", randomplayer.getName()).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
+        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE1.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
+        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE2.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
+        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE3.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
+        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE4.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
+        player.sendMessage(DC_Utils.colorize(DC_Messages.IGNMOTD_LINE5.replace("%serverversion%", Bukkit.getBukkitVersion()).replace("%playername%", player.getName())).replace("%onlinecount%", Integer.toString(Bukkit.getOnlinePlayers().size())));
     
     }
 }
