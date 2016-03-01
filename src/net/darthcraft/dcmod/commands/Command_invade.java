@@ -22,16 +22,14 @@ public class Command_invade extends DarthCraftCommand
 
         player.setPlayerListName(ChatColor.DARK_RED + player.getName());
 
-        player.chat("Yes, Elgin is far better than my shitty little county thing.");
+        player.chat("Yes, Elgin is far better than my little county thing.");
 
         player.chat("I command all of you to join Elgin right now!");
 
         player.awardAchievement(Achievement.OVERKILL);
 
         player.playEffect(null, Effect.GHAST_SHOOT, cmd);
-
-        player.throwSnowball();
-
+        
         return false;
 
     }
