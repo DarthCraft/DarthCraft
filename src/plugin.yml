@@ -1,9 +1,9 @@
 name: DarthCraft
-version: 2.8.1
+version: 2.8.2
 description: Custom plugin for DarthCraft
 softdepend: [Votifier]
 #depend: [Vault]
-authors: [DarthSalamon & Wild1145]
+authors: [DarthSalamon, Wild1145]
 main: net.darthcraft.dcmod.DarthCraft
 commands:
   ban:
